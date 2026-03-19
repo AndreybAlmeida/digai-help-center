@@ -1,6 +1,7 @@
 "use client";
 
 import { SITE_CONFIG } from "@/lib/config";
+import { useMobile } from "@/hooks/useMobile";
 import { Bot, ExternalLink, Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function TopNav() {
   const pathname = usePathname();
+  const isMobile = useMobile();
 
   return (
     <header
@@ -76,67 +78,72 @@ export default function TopNav() {
           </span>
         </Link>
 
-        {/* Nav links */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-          {navLinks.map(({ href, label }) => {
-            const active = pathname.startsWith(href);
-            return (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  padding: "6px 12px",
-                  borderRadius: "8px",
-                  fontSize: "14px",
-                  fontWeight: active ? 600 : 400,
-                  color: active ? "var(--brand)" : "var(--fg-muted)",
-                  background: active ? "var(--brand-dim)" : "transparent",
-                  textDecoration: "none",
-                  transition: "color 0.15s, background 0.15s",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* Nav links — hidden on mobile */}
+        {!isMobile && (
+          <nav style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            {navLinks.map(({ href, label }) => {
+              const active = pathname.startsWith(href);
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: active ? 600 : 400,
+                    color: active ? "var(--brand)" : "var(--fg-muted)",
+                    background: active ? "var(--brand-dim)" : "transparent",
+                    textDecoration: "none",
+                    transition: "color 0.15s, background 0.15s",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
 
         {/* Right */}
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "8px" }}>
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 12px",
-              borderRadius: "8px",
-              fontSize: "13px",
-              color: "var(--fg-muted)",
-              background: "transparent",
-              textDecoration: "none",
-              border: "1px solid var(--border)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Search style={{ width: "13px", height: "13px" }} />
-            Buscar
-            <kbd
+          {/* Buscar — hidden on mobile */}
+          {!isMobile && (
+            <Link
+              href="/"
               style={{
-                marginLeft: "4px",
-                borderRadius: "4px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "6px 12px",
+                borderRadius: "8px",
+                fontSize: "13px",
+                color: "var(--fg-muted)",
+                background: "transparent",
+                textDecoration: "none",
                 border: "1px solid var(--border)",
-                background: "var(--bg-subtle)",
-                padding: "1px 5px",
-                fontSize: "10px",
-                color: "var(--fg-subtle)",
-                fontFamily: "inherit",
+                whiteSpace: "nowrap",
               }}
             >
-              ⌘K
-            </kbd>
-          </Link>
+              <Search style={{ width: "13px", height: "13px" }} />
+              Buscar
+              <kbd
+                style={{
+                  marginLeft: "4px",
+                  borderRadius: "4px",
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-subtle)",
+                  padding: "1px 5px",
+                  fontSize: "10px",
+                  color: "var(--fg-subtle)",
+                  fontFamily: "inherit",
+                }}
+              >
+                ⌘K
+              </kbd>
+            </Link>
+          )}
 
           <Link
             href="/chat"
@@ -144,7 +151,7 @@ export default function TopNav() {
               display: "flex",
               alignItems: "center",
               gap: "6px",
-              padding: "7px 14px",
+              padding: isMobile ? "7px 12px" : "7px 14px",
               borderRadius: "8px",
               fontSize: "13px",
               fontWeight: 600,
@@ -155,30 +162,33 @@ export default function TopNav() {
             }}
           >
             <Bot style={{ width: "13px", height: "13px" }} />
-            Falar com ANA
+            {isMobile ? "ANA" : "Falar com ANA"}
           </Link>
 
-          <a
-            href={SITE_CONFIG.platformUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              fontSize: "13px",
-              fontWeight: 500,
-              color: "var(--brand)",
-              textDecoration: "none",
-              padding: "6px 12px",
-              borderRadius: "8px",
-              border: "1px solid var(--brand)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <ExternalLink style={{ width: "13px", height: "13px" }} />
-            Acesse a DigAI
-          </a>
+          {/* Acesse a DigAI — hidden on mobile */}
+          {!isMobile && (
+            <a
+              href={SITE_CONFIG.platformUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                fontSize: "13px",
+                fontWeight: 500,
+                color: "var(--brand)",
+                textDecoration: "none",
+                padding: "6px 12px",
+                borderRadius: "8px",
+                border: "1px solid var(--brand)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <ExternalLink style={{ width: "13px", height: "13px" }} />
+              Acesse a DigAI
+            </a>
+          )}
 
           <ThemeToggle />
         </div>

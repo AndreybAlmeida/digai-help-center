@@ -4,7 +4,7 @@
 export const SUPPORT_CONFIG = {
   whatsapp: {
     enabled: true,
-    phone: "+55XXXXXXXXXXX", // ← Substituir pelo número real do WhatsApp Business
+    phone: "+5511983869977",
     message: "Olá! Preciso de ajuda com a DigAI.",
   },
   email: {

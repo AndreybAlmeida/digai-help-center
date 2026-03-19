@@ -1,19 +1,21 @@
 "use client";
 
 import { onboardingSteps } from "@/data/onboarding";
+import { useMobile } from "@/hooks/useMobile";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function OnboardingTeaser() {
+  const isMobile = useMobile();
   const preview = onboardingSteps.slice(0, 4);
 
   return (
     <section style={{ borderTop: "1px solid var(--border)", padding: "56px 24px" }}>
       <div style={{ maxWidth: "1024px", margin: "0 auto" }}>
-        <div style={{ display: "flex", gap: "64px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: isMobile ? "24px" : "64px", flexWrap: "wrap" }}>
 
           {/* Left */}
-          <div style={{ maxWidth: "280px", flexShrink: 0 }}>
+          <div style={{ maxWidth: isMobile ? "100%" : "280px", flexShrink: 0, width: isMobile ? "100%" : undefined }}>
             <p
               style={{
                 fontSize: "11px",

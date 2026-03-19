@@ -8,13 +8,35 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: SITE_CONFIG.name,
-    template: `%s — ${SITE_CONFIG.name}`,
+    default: "DigAI — The First Talent Intelligence Platform in Brazil",
+    template: `%s — Central de Ajuda DigAI`,
   },
   description: SITE_CONFIG.description,
   icons: {
     icon: "/favicon-digai-32.png",
     apple: "/favicon-digai-32.png",
+  },
+  openGraph: {
+    title: "DigAI — The First Talent Intelligence Platform in Brazil",
+    description: SITE_CONFIG.description,
+    url: "https://digaihelp.com",
+    siteName: "Central de Ajuda DigAI",
+    images: [
+      {
+        url: "https://digaihelp.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "DigAI — The First Talent Intelligence Platform in Brazil",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DigAI — The First Talent Intelligence Platform in Brazil",
+    description: SITE_CONFIG.description,
+    images: ["https://digaihelp.com/opengraph-image"],
   },
 };
 

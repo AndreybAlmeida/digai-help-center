@@ -38,7 +38,7 @@ export default function CategoryGrid() {
           style={{
             display: "grid",
             gap: "10px",
-            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
           }}
         >
           {categories.map((cat) => {

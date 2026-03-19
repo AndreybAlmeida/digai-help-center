@@ -63,7 +63,7 @@ export default function FeaturedArticles() {
           style={{
             display: "grid",
             gap: "10px",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))",
           }}
         >
           {articles.map((article) => (

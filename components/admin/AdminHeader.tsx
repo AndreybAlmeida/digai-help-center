@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ArrowLeft, BookOpen, LayoutDashboard, Upload } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { ArrowLeft, BookOpen, LayoutDashboard, LogOut, Upload } from "lucide-react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -12,6 +12,13 @@ const navItems = [
 
 export default function AdminHeader() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  async function handleLogout() {
+    await fetch("/api/admin/logout", { method: "POST" });
+    router.push("/admin/login");
+    router.refresh();
+  }
 
   return (
     <div
@@ -84,6 +91,27 @@ export default function AdminHeader() {
             );
           })}
         </nav>
+
+        {/* Logout */}
+        <button
+          onClick={handleLogout}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "6px 10px",
+            borderRadius: "6px",
+            fontSize: "13px",
+            color: "var(--fg-muted)",
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            flexShrink: 0,
+          }}
+        >
+          <LogOut style={{ width: "14px", height: "14px" }} />
+          Sair
+        </button>
       </div>
     </div>
   );
