@@ -1,0 +1,58 @@
+import { OnboardingStep } from "@/types/content";
+
+export const onboardingSteps: OnboardingStep[] = [
+  {
+    id: "step-1",
+    order: 1,
+    title: "Tour pela plataforma",
+    description: "Assista ao tutorial interativo completo e conheça todos os módulos da DigAI.",
+    articleSlug: "como-usar-digai-tutorial-completo",
+    estimatedTime: 10,
+    icon: "UserCircle",
+  },
+  {
+    id: "step-2",
+    order: 2,
+    title: "Crie seu primeiro Workspace",
+    description: "Organize suas vagas e processos seletivos criando um Workspace dedicado.",
+    articleSlug: "como-criar-workspace",
+    estimatedTime: 5,
+    icon: "Building2",
+  },
+  {
+    id: "step-3",
+    order: 3,
+    title: "Configure uma Triagem",
+    description: "Crie entrevistas automatizadas com IA para avaliar candidatos 24h por dia.",
+    articleSlug: "como-criar-triagem",
+    estimatedTime: 7,
+    icon: "Users",
+  },
+  {
+    id: "step-4",
+    order: 4,
+    title: "Compartilhe com candidatos",
+    description: "Envie o link de triagem por WhatsApp, e-mail ou link direto e acompanhe acessos.",
+    articleSlug: "como-compartilhar-entrevistas-candidatos",
+    estimatedTime: 4,
+    icon: "Briefcase",
+  },
+  {
+    id: "step-5",
+    order: 5,
+    title: "Avalie e filtre candidatos",
+    description: "Use os filtros inteligentes e as notas automáticas da IA para encontrar os melhores perfis.",
+    articleSlug: "como-filtrar-avaliar-candidatos",
+    estimatedTime: 6,
+    icon: "Users2",
+  },
+  {
+    id: "step-6",
+    order: 6,
+    title: "Hunting — busca avançada",
+    description: "Explore a base de talentos completa com a IA de Hunting para posições estratégicas.",
+    articleSlug: "como-usar-busca-global-hunting",
+    estimatedTime: 8,
+    icon: "BarChart3",
+  },
+];
