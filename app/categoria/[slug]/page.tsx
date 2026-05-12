@@ -34,6 +34,10 @@ export default function CategoryPage({
   const [filter, setFilter] = useState("all");
   const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([]);
   const [showAllFaq, setShowAllFaq] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const faqItems = knowledgeItems.filter((i) => i.tipo === "faq");
+  const cardItems = knowledgeItems.filter((i) => i.tipo !== "faq");
 
   useEffect(() => {
     fetch("/knowledge-export.json")
@@ -58,7 +62,7 @@ export default function CategoryPage({
       : allArticles.filter((a) => a.contentType === (filter as ContentType));
 
   const FAQ_PREVIEW = 5;
-  const visibleFaq = showAllFaq ? knowledgeItems : knowledgeItems.slice(0, FAQ_PREVIEW);
+  const visibleFaq = showAllFaq ? faqItems : faqItems.slice(0, FAQ_PREVIEW);
 
   return (
     <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "32px 24px 64px" }}>
@@ -80,9 +84,9 @@ export default function CategoryPage({
           {category.description}
         </p>
         <p style={{ marginTop: "4px", fontSize: "12px", color: "var(--fg-subtle)" }}>
-          {allArticles.length} {allArticles.length === 1 ? "artigo" : "artigos"}
-          {knowledgeItems.length > 0 && (
-            <span> · {knowledgeItems.length} {knowledgeItems.length === 1 ? "pergunta" : "perguntas"}</span>
+          {allArticles.length + cardItems.length} {allArticles.length + cardItems.length === 1 ? "artigo" : "artigos"}
+          {faqItems.length > 0 && (
+            <span> · {faqItems.length} {faqItems.length === 1 ? "pergunta" : "perguntas"}</span>
           )}
         </p>
       </div>
@@ -136,8 +140,61 @@ export default function CategoryPage({
         </>
       )}
 
+      {/* Knowledge cards (tutorial, onboarding, boas-praticas, api) */}
+      {cardItems.length > 0 && (
+        <div style={{ marginBottom: "40px" }}>
+          <div style={{ display: "grid", gap: "10px", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}>
+            {cardItems.map((item) => {
+              const isOpen = expandedCard === item.id;
+              const tipoLabel: Record<string, string> = {
+                tutorial: "Tutorial", onboarding: "Onboarding",
+                "boas-praticas": "Boas Práticas", api: "API",
+              };
+              return (
+                <div
+                  key={item.id}
+                  style={{
+                    borderRadius: "12px",
+                    border: "1px solid var(--border)",
+                    background: "var(--surface)",
+                    overflow: "hidden",
+                    transition: "box-shadow 0.15s, border-color 0.15s",
+                  }}
+                >
+                  <div style={{ height: "80px", background: "linear-gradient(135deg,#00B896 0%,#0284c7 100%)", display: "flex", alignItems: "center", padding: "0 16px" }}>
+                    <span style={{ fontSize: "11px", fontWeight: 600, color: "#fff", background: "rgba(0,0,0,0.25)", padding: "3px 10px", borderRadius: "100px" }}>
+                      {tipoLabel[item.tipo] ?? item.tipo}
+                    </span>
+                  </div>
+                  <div style={{ padding: "14px 16px" }}>
+                    <h3 style={{ fontSize: "14px", fontWeight: 700, color: "var(--fg)", lineHeight: 1.4, margin: 0 }}>
+                      {item.pergunta}
+                    </h3>
+                    {isOpen ? (
+                      <div style={{ marginTop: "10px", fontSize: "13px", color: "var(--fg-muted)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>
+                        {item.resposta}
+                      </div>
+                    ) : (
+                      <p style={{ marginTop: "6px", fontSize: "12px", color: "var(--fg-muted)", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+                        {item.resposta}
+                      </p>
+                    )}
+                    <button
+                      onClick={() => setExpandedCard(isOpen ? null : item.id)}
+                      style={{ marginTop: "10px", background: "none", border: "none", cursor: "pointer", fontSize: "12px", fontWeight: 600, color: "var(--brand)", padding: 0 }}
+                    >
+                      {isOpen ? "Mostrar menos ↑" : "Ler mais →"}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Knowledge / FAQ section */}
-      {knowledgeItems.length > 0 && (
+      {faqItems.length > 0 && (
         <div>
           {/* Section header */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
@@ -154,7 +211,7 @@ export default function CategoryPage({
               fontSize: "11px",
               fontWeight: 600,
             }}>
-              {knowledgeItems.length}
+              {faqItems.length}
             </span>
           </div>
 
@@ -179,7 +236,7 @@ export default function CategoryPage({
           </div>
 
           {/* Show more / less */}
-          {knowledgeItems.length > FAQ_PREVIEW && (
+          {faqItems.length > FAQ_PREVIEW && (
             <div style={{ textAlign: "center", marginTop: "16px" }}>
               <button
                 onClick={() => setShowAllFaq((v) => !v)}
@@ -196,7 +253,7 @@ export default function CategoryPage({
               >
                 {showAllFaq
                   ? "Mostrar menos"
-                  : `Ver mais ${knowledgeItems.length - FAQ_PREVIEW} perguntas`}
+                  : `Ver mais ${faqItems.length - FAQ_PREVIEW} perguntas`}
               </button>
             </div>
           )}
@@ -204,7 +261,7 @@ export default function CategoryPage({
       )}
 
       {/* Empty state when no articles AND no knowledge items */}
-      {allArticles.length === 0 && knowledgeItems.length === 0 && (
+      {allArticles.length === 0 && knowledgeItems.length === 0 && cardItems.length === 0 && (
         <div
           style={{
             borderRadius: "12px",

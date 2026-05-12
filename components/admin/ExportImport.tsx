@@ -43,7 +43,13 @@ export default function ExportImport({ onRefresh }: ExportImportProps) {
     setPublishing(true);
     setPublishResult(null);
     try {
-      const res = await fetch("/api/knowledge/publish", { method: "POST" });
+      const storeJson = exportStore();
+      const store = JSON.parse(storeJson);
+      const res = await fetch("/api/knowledge/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: store.items }),
+      });
       const data = await res.json();
       if (res.ok) {
         setPublishResult(`✓ ${data.count} itens publicados para a ANA`);
