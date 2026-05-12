@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ArrowLeft, BookOpen, LayoutDashboard, LogOut, Upload } from "lucide-react";
+import { ArrowLeft, BookOpen, FileText, LayoutDashboard, LogOut, Upload } from "lucide-react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/base", label: "Base de Conhecimento", icon: BookOpen, exact: false },
+  { href: "/admin/documentos", label: "Documentos", icon: FileText, exact: false },
   { href: "/admin/exportar", label: "Exportar / Publicar", icon: Upload, exact: true },
 ];
 

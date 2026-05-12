@@ -7,12 +7,28 @@ import {
   Code2, Cpu, Plug, Rocket, SearchCheck,
 } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const iconMap: Record<string, React.ComponentType<{ style?: React.CSSProperties }>> = {
   Rocket, Briefcase, Cpu, SearchCheck, Plug, BarChart3, Code2, CircleHelp,
 };
 
 export default function CategoryGrid() {
+  const [faqCounts, setFaqCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetch("/knowledge-export.json")
+      .then((r) => r.json())
+      .then((data) => {
+        const counts: Record<string, number> = {};
+        for (const item of data.items ?? []) {
+          if (item.publicado) counts[item.categoria] = (counts[item.categoria] ?? 0) + 1;
+        }
+        setFaqCounts(counts);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section style={{ padding: "56px 24px" }}>
       <div style={{ maxWidth: "1024px", margin: "0 auto" }}>
@@ -43,7 +59,9 @@ export default function CategoryGrid() {
         >
           {categories.map((cat) => {
             const Icon = iconMap[cat.icon] || CircleHelp;
-            const count = articles.filter((a) => a.category === cat.slug && a.published).length;
+            const articleCount = articles.filter((a) => a.category === cat.slug && a.published).length;
+            const faqCount = faqCounts[cat.slug] ?? 0;
+            const count = articleCount + faqCount;
 
             return (
               <Link

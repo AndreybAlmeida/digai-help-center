@@ -30,8 +30,18 @@ export default function FAQPage() {
   const [allItems, setAllItems] = useState<KnowledgeItem[]>([]);
 
   useEffect(() => {
-    initStore();
-    setAllItems(getItemsByTipo("faq"));
+    fetch("/knowledge-export.json")
+      .then((r) => r.json())
+      .then((data) => {
+        const items: KnowledgeItem[] = (data.items ?? []).filter(
+          (i: KnowledgeItem) => i.publicado && i.tipo === "faq"
+        );
+        setAllItems(items);
+      })
+      .catch(() => {
+        initStore();
+        setAllItems(getItemsByTipo("faq"));
+      });
   }, []);
 
   const searched =

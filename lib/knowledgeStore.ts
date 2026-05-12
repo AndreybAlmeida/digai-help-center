@@ -216,6 +216,19 @@ export function resetToSeed(): void {
   writeStore(knowledgeStoreInitial);
 }
 
+/** Merge external items (e.g. generated FAQs from DB) into localStorage without overwriting existing ones. */
+export function mergeItems(newItems: KnowledgeItem[]): void {
+  const store = readStore();
+  const storedIds = new Set(store.items.map((i) => i.id));
+  const toAdd = newItems.filter((i) => !storedIds.has(i.id));
+  if (toAdd.length === 0) return;
+  writeStore({
+    ...store,
+    items: [...store.items, ...toAdd],
+    lastUpdated: new Date().toISOString().slice(0, 10),
+  });
+}
+
 export function getStoreStats() {
   const store = readStore();
   const total = store.items.length;

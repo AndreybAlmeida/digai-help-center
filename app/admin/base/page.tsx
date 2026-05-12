@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { initStore, getAllItems } from "@/lib/knowledgeStore";
+import { initStore, getAllItems, mergeItems } from "@/lib/knowledgeStore";
 import { KnowledgeItem } from "@/types/knowledge";
 import KnowledgeTable from "@/components/admin/KnowledgeTable";
 import { Plus } from "lucide-react";
@@ -16,7 +16,14 @@ export default function BasePage() {
 
   useEffect(() => {
     initStore();
-    refresh();
+    // Sync generated FAQs from documents into the local store
+    fetch("/api/admin/generated-faqs")
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data?.items)) mergeItems(data.items);
+      })
+      .catch(() => {})
+      .finally(() => refresh());
   }, []);
 
   return (

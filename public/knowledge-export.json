@@ -1,0 +1,1596 @@
+{
+  "items": [
+    {
+      "id": "ki-f01",
+      "pergunta": "Como faço para acessar a plataforma DigAI?",
+      "resposta": "Acesse app.digai.ai com seu e-mail e senha. Caso seja seu primeiro acesso, use as credenciais enviadas pela equipe DigAI. Se precisar redefinir a senha, clique em **Esqueci minha senha** na tela de login.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "acesso",
+        "login",
+        "senha",
+        "primeiro acesso"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f02",
+      "pergunta": "Por onde devo começar na DigAI?",
+      "resposta": "Siga o guia **Comece por Aqui**: 1) Assista ao tutorial completo, 2) Crie seu primeiro Workspace, 3) Configure uma Triagem, 4) Compartilhe o link com candidatos. O tutorial cobre tudo em menos de 30 minutos.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "onboarding",
+        "começar",
+        "tutorial",
+        "workspace"
+      ],
+      "tipo": "onboarding",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f03",
+      "pergunta": "Posso usar a DigAI no celular?",
+      "resposta": "Sim. A interface é responsiva e funciona em smartphones via navegador. O recrutador obtém melhor experiência no desktop para configurações e análise. O candidato tem melhor experiência no celular via WhatsApp.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "mobile",
+        "celular",
+        "responsivo",
+        "smartphone"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f04",
+      "pergunta": "Como adicionar novos usuários à conta?",
+      "resposta": "Para incluir novos usuários na plataforma, é necessário **solicitar ao time de Customer Success da DigAI**. Entre em contato pelo suporte e informe o nome, e-mail e função do colaborador que deseja adicionar. Nossa equipe cuidará do acesso.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "usuários",
+        "convite",
+        "equipe",
+        "colaborador",
+        "adicionar",
+        "novo usuário",
+        "cs",
+        "customer success"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-19",
+      "publicado": true
+    },
+    {
+      "id": "ki-ps01",
+      "pergunta": "Como faço meu primeiro acesso à plataforma?",
+      "resposta": "Acesse www.digai.ai, clique em **Login Empresas**, use seu e-mail corporativo, crie uma senha e valide com SMS.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "primeiro acesso",
+        "login empresas",
+        "sms",
+        "e-mail corporativo"
+      ],
+      "tipo": "onboarding",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-ps02",
+      "pergunta": "Preciso instalar algum aplicativo para usar a DigAI?",
+      "resposta": "Não. A DigAI é 100% web — não há instalação necessária.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "instalar",
+        "app",
+        "web",
+        "navegador"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-ps03",
+      "pergunta": "Como criar uma vaga na DigAI?",
+      "resposta": "Siga estes passos: 1) Crie um **workspace**, 2) Crie uma **triagem**, 3) Escolha o tipo de processo. Tenha em mãos uma boa descrição da vaga antes de começar.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "criar vaga",
+        "workspace",
+        "triagem",
+        "processo seletivo"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-ps04",
+      "pergunta": "Posso duplicar uma vaga existente?",
+      "resposta": "Sim. Use a opção de **duplicação** ou crie a partir de **templates**. Isso agiliza a criação de vagas recorrentes com a mesma estrutura.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "duplicar",
+        "vaga",
+        "template",
+        "copiar"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f05",
+      "pergunta": "Como mover um candidato de etapa no pipeline?",
+      "resposta": "Na visão Kanban, arraste o card para a etapa desejada. Ou abra o perfil do candidato e clique em **Avançar etapa**. O candidato recebe notificação automática por e-mail ao ser movido.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "candidato",
+        "etapa",
+        "pipeline",
+        "kanban",
+        "mover"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f06",
+      "pergunta": "Como reprovar um candidato e enviar feedback?",
+      "resposta": "Abra o perfil do candidato, clique em **Reprovar**, selecione o motivo e ative o envio de e-mail automático de feedback. O e-mail pode ser personalizado em Configurações → Comunicação.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "reprovar",
+        "candidato",
+        "feedback",
+        "e-mail",
+        "reprovação"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f07",
+      "pergunta": "Posso personalizar as etapas do processo seletivo?",
+      "resposta": "Sim. Ao criar ou editar um Workspace, você pode adicionar, remover e renomear as etapas do funil conforme seu processo.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "etapas",
+        "funil",
+        "processo seletivo",
+        "personalizar",
+        "workspace"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f08",
+      "pergunta": "A IA gera perguntas de triagem automaticamente?",
+      "resposta": "Sim. Ao criar uma triagem, a IA sugere perguntas baseadas no título e descrição da vaga. Você pode aceitar, editar ou substituir qualquer pergunta sugerida.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "perguntas",
+        "IA",
+        "triagem",
+        "automático",
+        "sugestão"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f09",
+      "pergunta": "Como a IA avalia as respostas dos candidatos na triagem?",
+      "resposta": "A IA analisa cada resposta e gera: uma **nota de 0 a 10**, scores por critério (comunicação, aderência técnica, experiência) e um resumo textual da performance. Veja isso no perfil de cada candidato.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "avaliação",
+        "nota",
+        "IA",
+        "score",
+        "critério"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f10",
+      "pergunta": "O candidato precisa instalar algum aplicativo para fazer a triagem?",
+      "resposta": "Não. A triagem acontece 100% via navegador. O candidato acessa o link recebido sem necessidade de download ou cadastro prévio.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "candidato",
+        "acesso",
+        "navegador",
+        "link",
+        "app"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-t01",
+      "pergunta": "A triagem inteligente substitui a triagem manual?",
+      "resposta": "Sim. A DigAI automatiza toda a triagem, eliminando a necessidade de revisar currículos manualmente. O recrutador recebe os candidatos já ranqueados.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "triagem manual",
+        "automatizar",
+        "currículo",
+        "substituir"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-t02",
+      "pergunta": "Como acompanhar candidatos durante a triagem?",
+      "resposta": "Acompanhe em tempo real pela DigAI ou pelo ATS integrado. Veja status de cada candidato (convite enviado, respondeu, aguardando) no painel da vaga.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "acompanhar",
+        "candidatos",
+        "status",
+        "painel",
+        "ATS"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f11",
+      "pergunta": "O que é a IA de Hunting?",
+      "resposta": "É a busca global da DigAI que encontra candidatos em toda a base de talentos — incluindo pessoas que não se candidataram à vaga atual. Ela cruza perfis com os requisitos da posição e retorna candidatos ranqueados por score.",
+      "categoria": "hunting",
+      "palavrasChave": [
+        "hunting",
+        "busca global",
+        "IA",
+        "sourcing",
+        "talentos"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f12",
+      "pergunta": "De onde vêm os candidatos da busca global?",
+      "resposta": "A base inclui candidatos de triagens anteriores, convidados e importados via integrações (Gupy, Greenhouse, etc.). Quanto mais sua empresa usa a DigAI, mais rica fica a base.",
+      "categoria": "hunting",
+      "palavrasChave": [
+        "base de talentos",
+        "candidatos",
+        "hunting",
+        "importar"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-h01",
+      "pergunta": "Como melhorar os resultados do hunting com IA?",
+      "resposta": "Forneça contexto claro na busca: **cargo específico**, **nível de senioridade** e **localização**. Quanto mais detalhada a descrição, mais preciso o resultado.",
+      "categoria": "hunting",
+      "palavrasChave": [
+        "hunting",
+        "melhorar resultado",
+        "contexto",
+        "cargo",
+        "senioridade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f13",
+      "pergunta": "A DigAI se integra com outros ATSs?",
+      "resposta": "Sim. A DigAI tem integrações nativas com **Gupy** e **Greenhouse**. Para outros sistemas, oferecemos integração via API REST e webhooks.",
+      "categoria": "integracoes",
+      "palavrasChave": [
+        "ATS",
+        "integração",
+        "gupy",
+        "greenhouse",
+        "api"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f14",
+      "pergunta": "O número de WhatsApp da DigAI é compartilhado?",
+      "resposta": "Depende do plano. No padrão, usamos um número compartilhado gerenciado pela DigAI. Com o número dedicado, você tem um número exclusivo integrado ao WhatsApp Business API da Meta.",
+      "categoria": "integracoes",
+      "palavrasChave": [
+        "whatsapp",
+        "número",
+        "dedicado",
+        "compartilhado",
+        "meta"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-i01",
+      "pergunta": "Como funciona a integração com o ATS via API?",
+      "resposta": "Via **token de API**. A DigAI envia e recebe dados automaticamente: ranking, notas e respostas dos candidatos são sincronizados com o ATS em tempo real.",
+      "categoria": "integracoes",
+      "palavrasChave": [
+        "integração",
+        "api",
+        "token",
+        "sincronizar",
+        "ranking"
+      ],
+      "tipo": "tutorial",
+      "nivel": "avancado",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-i02",
+      "pergunta": "O que acontece se o candidato já existir no ATS?",
+      "resposta": "Nada muda. A integração verifica duplicatas automaticamente. O candidato não é criado novamente — os dados são atualizados no registro existente.",
+      "categoria": "integracoes",
+      "palavrasChave": [
+        "candidato existente",
+        "duplicata",
+        "ATS",
+        "sincronizar"
+      ],
+      "tipo": "faq",
+      "nivel": "avancado",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f15",
+      "pergunta": "Como funciona a autenticação da API?",
+      "resposta": "A API usa **Bearer Token**. Gere seu token em Configurações → Desenvolvedor → API Keys. Envie no header: `Authorization: Bearer {token}` em todas as requisições.",
+      "categoria": "api-tecnico",
+      "palavrasChave": [
+        "api",
+        "autenticação",
+        "token",
+        "bearer",
+        "header"
+      ],
+      "tipo": "api",
+      "nivel": "avancado",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f16",
+      "pergunta": "Onde encontro os relatórios de recrutamento?",
+      "resposta": "Acesse **Relatórios** no menu lateral. Você encontra dashboards de métricas, relatórios de funil, tempo de contratação, taxa de conversão e diversidade.",
+      "categoria": "relatorios",
+      "palavrasChave": [
+        "relatórios",
+        "dashboard",
+        "métricas",
+        "funil"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-f17",
+      "pergunta": "Como exportar dados para Excel?",
+      "resposta": "Em qualquer relatório ou lista de candidatos, clique em **Exportar** e selecione o formato (Excel, PDF ou CSV). Para exportações automáticas recorrentes, use a API.",
+      "categoria": "relatorios",
+      "palavrasChave": [
+        "exportar",
+        "excel",
+        "csv",
+        "download",
+        "dados"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-rel01",
+      "pergunta": "Quais métricas a DigAI acompanha?",
+      "resposta": "A DigAI fornece métricas de **SLA** (tempo de resposta), **adesão** (taxa de participação dos candidatos), **assertividade** (qualidade dos aprovados) e **ROI** (retorno sobre o investimento em recrutamento).",
+      "categoria": "relatorios",
+      "palavrasChave": [
+        "métricas",
+        "sla",
+        "adesão",
+        "assertividade",
+        "roi"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-rel02",
+      "pergunta": "Como medir o ROI com a DigAI?",
+      "resposta": "O ROI é calculado pela **redução de tempo de triagem** (horas salvas) + **ganho de produtividade** (vagas preenchidas mais rápido). A DigAI exibe esse comparativo nos relatórios.",
+      "categoria": "relatorios",
+      "palavrasChave": [
+        "roi",
+        "retorno",
+        "produtividade",
+        "tempo",
+        "redução"
+      ],
+      "tipo": "faq",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e01",
+      "pergunta": "Como funciona a entrevista inteligente da DigAI?",
+      "resposta": "A IA entrevista candidatos via **áudio pelo WhatsApp** e gera um ranking automático. O processo é assíncrono — o candidato responde quando quiser, no celular.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "entrevista",
+        "áudio",
+        "whatsapp",
+        "ranking",
+        "assíncrono"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e02",
+      "pergunta": "A IA realiza a entrevista sozinha?",
+      "resposta": "Sim, mas não substitui o recrutador. A IA conduz as perguntas e avalia as respostas. O recrutador recebe o ranking e faz a análise final, focando nos melhores candidatos.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "IA autônoma",
+        "recrutador",
+        "entrevista",
+        "ranking"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e03",
+      "pergunta": "Posso personalizar as perguntas da entrevista?",
+      "resposta": "Sim. Você define as perguntas, o número de tentativas e o tempo máximo de resposta. A IA também sugere perguntas com base na descrição da vaga.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "perguntas",
+        "personalizar",
+        "tentativas",
+        "tempo de resposta"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e04",
+      "pergunta": "Como enviar candidatos para a entrevista inteligente?",
+      "resposta": "De forma **automática** via integração com ATS, ou **manual** disparando diretamente pelo painel da vaga. Você pode enviar por WhatsApp, e-mail ou ambos.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "enviar candidatos",
+        "disparo",
+        "whatsapp",
+        "e-mail",
+        "integração"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e05",
+      "pergunta": "O candidato precisa baixar algum aplicativo para a entrevista?",
+      "resposta": "Não. O candidato responde diretamente pelo **WhatsApp**, sem instalar nada. Há follow-up automático para quem não responder.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "candidato",
+        "app",
+        "whatsapp",
+        "download",
+        "follow-up"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-e06",
+      "pergunta": "Como é a experiência do candidato na entrevista?",
+      "resposta": "Rápida e assíncrona. O candidato recebe o convite, responde por **áudio ou texto** no WhatsApp, e recebe feedback ao final. Pode responder no horário que preferir.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "experiência",
+        "candidato",
+        "áudio",
+        "texto",
+        "feedback",
+        "assíncrono"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-r01",
+      "pergunta": "Como funciona o ranking de candidatos?",
+      "resposta": "O ranking é **dinâmico** e baseado nas respostas de cada candidato cruzadas com os critérios da vaga. Cada critério tem um peso e gera uma nota de 0 a 10.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "dinâmico",
+        "critérios",
+        "nota",
+        "score"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-r02",
+      "pergunta": "O que significa estar bem posicionado no ranking?",
+      "resposta": "Alta pontuação indica **alta probabilidade de ser o candidato ideal** para a vaga, com base nos critérios definidos. Quanto mais bem definidos os critérios, mais preciso o ranking.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "posicionamento",
+        "ranking",
+        "pontuação",
+        "candidato ideal"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-r03",
+      "pergunta": "A IA elimina candidatos do processo?",
+      "resposta": "Não. A DigAI **apenas classifica** — nunca elimina automaticamente. O recrutador sempre toma a decisão final de avançar ou reprovar.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "eliminar",
+        "reprovar",
+        "ranking",
+        "decisão",
+        "recrutador"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-r04",
+      "pergunta": "Como melhorar a precisão do ranking?",
+      "resposta": "Defina critérios claros e específicos para a vaga. Critérios vagos geram rankings menos precisos. Revise e ajuste os pesos de cada critério após as primeiras triagens.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "precisão",
+        "critérios",
+        "pesos",
+        "ajuste",
+        "qualidade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-bp01",
+      "pergunta": "Como atrair candidatos mais qualificados?",
+      "resposta": "Configure bem a **descrição da vaga**, as **perguntas** e os **critérios**. Vagas com contexto claro atraem candidatos mais aderentes e geram rankings mais precisos.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "qualificados",
+        "vaga",
+        "perguntas",
+        "critérios",
+        "contexto"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-bp02",
+      "pergunta": "Como melhorar a assertividade das triagens?",
+      "resposta": "Ajuste os **critérios** e as **perguntas** após cada processo. Analise quais candidatos avançaram e calibre os pesos do ranking conforme o perfil aprovado.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "assertividade",
+        "critérios",
+        "perguntas",
+        "calibrar",
+        "ajuste"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-bp03",
+      "pergunta": "Como acelerar o ciclo de contratação com a DigAI?",
+      "resposta": "Use a DigAI em **todos os processos seletivos**, não apenas para vagas de alto volume. Quanto mais consistente o uso, menor o SLA de contratação.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "acelerar",
+        "contratação",
+        "sla",
+        "consistência",
+        "processos"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-bp04",
+      "pergunta": "Quais são os erros mais comuns ao usar a DigAI?",
+      "resposta": "Os principais são: **falta de contexto** na descrição da vaga e **critérios mal definidos**. Isso resulta em rankings imprecisos. Dedique tempo à configuração inicial — ela define a qualidade de todo o processo.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "erros comuns",
+        "contexto",
+        "critérios",
+        "configuração",
+        "ranking"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-p01",
+      "pergunta": "A DigAI substitui o recrutador?",
+      "resposta": "Não. A DigAI **remove o trabalho operacional** (triagem, avaliação, ranking) para que o recrutador foque no que importa: relacionamento, decisão estratégica e experiência do candidato.",
+      "categoria": "posicionamento",
+      "palavrasChave": [
+        "substitui recrutador",
+        "operacional",
+        "IA",
+        "recrutamento"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-p02",
+      "pergunta": "Para quais tipos de vaga a DigAI funciona?",
+      "resposta": "Para **todas as vagas**. Desde operacional e alto volume até posições estratégicas e especializadas. Quanto maior o volume, maior o ganho de eficiência.",
+      "categoria": "posicionamento",
+      "palavrasChave": [
+        "tipos de vaga",
+        "volume",
+        "operacional",
+        "estratégico",
+        "funciona"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-p03",
+      "pergunta": "A DigAI funciona bem em processos de alto volume?",
+      "resposta": "Sim. Alto volume é o cenário ideal — a DigAI escala sem perda de qualidade. Quanto mais candidatos, maior o benefício comparado à triagem manual.",
+      "categoria": "posicionamento",
+      "palavrasChave": [
+        "alto volume",
+        "escala",
+        "triagem",
+        "benefício"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-p04",
+      "pergunta": "Qual é o principal ganho com a DigAI?",
+      "resposta": "**Economia de tempo** (triagem automatizada), **assertividade** (melhores candidatos identificados) e **redução de SLA** (da abertura à contratação mais rápida).",
+      "categoria": "posicionamento",
+      "palavrasChave": [
+        "ganho",
+        "economia",
+        "tempo",
+        "assertividade",
+        "sla",
+        "benefício"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-03-18",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-nhsjqp",
+      "pergunta": "O que são os filtros na DigAI e qual é o objetivo deles?",
+      "resposta": "Os filtros da DigAI ajudam o recrutador a encontrar, com mais velocidade, os candidatos com maior aderência à vaga. **Eles não substituem a análise do recrutador**, mas organizam a leitura do funil e ajudam a montar uma shortlist mais qualificada. Os filtros respondem à pergunta: \"Quais candidatos estão mais próximos do perfil ideal para essa oportunidade?\" Os principais filtros estão relacionados a **três dimensões**: pré-requisitos, experiência e provável leitura.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "filtros",
+        "triagem",
+        "candidatos",
+        "shortlist",
+        "qualificação"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-a278ri",
+      "pergunta": "Como funciona o filtro de pré-requisitos e o que significam as cores?",
+      "resposta": "O filtro de pré-requisitos mostra o quanto o candidato atende aos requisitos definidos para a vaga através de flags coloridas:\n\n- **Verde**: atende todos os pré-requisitos\n- **Amarelo**: atende parcialmente os pré-requisitos\n- **Vermelho**: não atende aos pré-requisitos\n\nO objetivo principal é dar prioridade aos candidatos com flag verde, que atendem todos os pré-requisitos da oportunidade.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "flags",
+        "verde",
+        "amarelo",
+        "vermelho",
+        "qualificação"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-x1qk2y",
+      "pergunta": "Por onde devo começar a análise de candidatos usando os filtros?",
+      "resposta": "A primeira análise deve sempre começar pelos **candidatos que atendem todos os pré-requisitos** (flag verde). Esse grupo representa os candidatos com maior alinhamento às condições mínimas da vaga. Dentro desse grupo, priorize candidatos com maior experiência ou aderência ao perfil. Apenas se a shortlist ficar pequena, avalie os candidatos com flag amarela, mas sempre considerando se é possível flexibilizar algum requisito sem comprometer a contratação.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "análise",
+        "priorização",
+        "verde",
+        "triagem",
+        "shortlist",
+        "workflow"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-oteujr",
+      "pergunta": "Quando posso considerar candidatos com flag amarela nos pré-requisitos?",
+      "resposta": "Candidatos com flag amarela podem ser avaliados quando a shortlist está pequena ou o volume de candidatos verdes não é suficiente. **Importante**: olhar candidatos parciais não significa ignorar pré-requisitos. Você deve avaliar se algum requisito pode ser flexibilizado sem comprometer a contratação. Por exemplo, se a vaga exige experiência em um sistema específico, mas o candidato trabalhou com ferramentas semelhantes, pode haver possibilidade de adaptação. Requisitos legais, regulatórios ou operacionalmente indispensáveis **não devem ser flexibilizados**.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "flexibilização",
+        "amarelo",
+        "pré-requisitos",
+        "análise",
+        "critérios"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-loj0gy",
+      "pergunta": "Como funciona o filtro de experiência na DigAI?",
+      "resposta": "O filtro de experiência mostra a leitura da IA sobre o nível de experiência do candidato em relação à oportunidade. A DigAI classifica como **baixa experiência, média experiência ou alta experiência**. Para vagas técnicas, especialistas ou posições que exigem experiência prévia, a tendência é priorizar candidatos com alta experiência. Já para vagas de entrada, estágio ou primeiro emprego, o filtro funciona mais como leitura de **aderência do candidato à oportunidade**, e baixa experiência não deve ser vista automaticamente como negativa.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "experiência",
+        "senioridade",
+        "nível",
+        "classificação",
+        "aderência"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-m1lukw",
+      "pergunta": "Como devo interpretar o filtro de experiência para vagas júnior ou de entrada?",
+      "resposta": "Para vagas de entrada, estágio, jovem aprendiz, primeiro emprego ou posições juniores, o filtro de experiência não deve esperar alta experiência profissional. Ele funciona mais como uma **leitura de aderência** do candidato à oportunidade. Nesses casos, observe outros sinais como: interesse pela oportunidade, clareza nas respostas, comunicação, disponibilidade, aderência comportamental, motivação, trajetória acadêmica ou cursos, e experiências informais ou projetos. A IA organiza o funil, mas o contexto da vaga define como essa leitura deve ser interpretada.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "vaga júnior",
+        "entrada",
+        "estágio",
+        "experiência",
+        "aderência",
+        "critérios"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-90piah",
+      "pergunta": "O que é o filtro de provável leitura e como utilizá-lo?",
+      "resposta": "O filtro de provável leitura indica se há sinal de que o candidato pode ter lido ou preparado excessivamente a resposta. **Quando aparece em vermelho**, a recomendação é simples: não vale seguir com o candidato. Isso porque uma resposta lida ou excessivamente preparada compromete a autenticidade da entrevista. A DigAI foi desenhada para capturar respostas espontâneas e naturais. Quando a resposta perde espontaneidade, a avaliação também perde qualidade, comprometendo a medição de comunicação, raciocínio e experiência real.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "provável leitura",
+        "autenticidade",
+        "qualidade",
+        "vermelho",
+        "resposta preparada"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-8jfh5j",
+      "pergunta": "Qual é a ordem recomendada para análise de candidatos usando os filtros?",
+      "resposta": "A ordem recomendada é:\n\n1. **Comece pelos candidatos verdes** em pré-requisitos (atendem todos os requisitos)\n2. **Dentro desse grupo, priorize candidatos com maior experiência** ou aderência (alta experiência para vagas experientes, aderência ao perfil para vagas de entrada)\n3. **Elimine ou evite candidatos com provável leitura em vermelho** (compromete a qualidade da avaliação)\n4. **Se a shortlist estiver pequena, avalie candidatos amarelos** (apenas quando houver possibilidade real de flexibilização)",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "workflow",
+        "ordem de análise",
+        "priorização",
+        "processo",
+        "triagem"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-r5yro2",
+      "pergunta": "Os filtros da DigAI substituem a análise do recrutador?",
+      "resposta": "**Não, os filtros não substituem a análise do recrutador.** Eles existem para dar velocidade, clareza e qualidade na tomada de decisão, organizando a leitura do funil e ajudando a montar uma shortlist mais qualificada. O recrutador continua sendo essencial para avaliar o contexto da vaga, definir quais requisitos são inegociáveis, interpretar as classificações de experiência e tomar a decisão final sobre cada candidato.",
+      "categoria": "primeiros-passos",
+      "palavrasChave": [
+        "papel do recrutador",
+        "autonomia",
+        "filtros",
+        "decisão",
+        "análise"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-49e7ed",
+      "pergunta": "Quais sinais devo observar em candidatos de vagas de entrada além da experiência?",
+      "resposta": "Para vagas de entrada, júnior, estágio ou primeiro emprego, observe sinais como:\n\n- Interesse pela oportunidade\n- Clareza nas respostas\n- Qualidade da comunicação\n- Disponibilidade\n- Aderência comportamental\n- Motivação\n- Trajetória acadêmica ou cursos\n- Experiências informais, projetos ou atividades anteriores\n\nEstes sinais compensam a naturalmente baixa experiência profissional formal dessas posições.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "vaga júnior",
+        "critérios alternativos",
+        "avaliação",
+        "entrada",
+        "soft skills"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-nii21s",
+      "pergunta": "O que devo fazer quando identifico provável leitura em vermelho em um candidato?",
+      "resposta": "Quando o filtro de provável leitura aparece em **vermelho**, a recomendação é **não seguir com o candidato**. Esse filtro serve para proteger a qualidade da avaliação. Se o candidato está lendo respostas prontas, a entrevista deixa de medir com precisão comunicação, raciocínio, experiência real e repertório profissional. Priorize candidatos sem sinal crítico de leitura e use esse filtro para preservar a confiabilidade do ranking. Em caso de dúvida, analise o conjunto da entrevista antes de tomar a decisão final.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "provável leitura",
+        "vermelho",
+        "eliminação",
+        "qualidade",
+        "autenticidade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-yqzeuy",
+      "pergunta": "Qual é o resumo prático para usar os três filtros da DigAI?",
+      "resposta": "A regra prática é: **priorize candidatos verdes** (atendem todos os pré-requisitos), **com alta experiência ou alta aderência**, e **sem provável leitura em vermelho**. Se a shortlist ficar pequena, vale olhar candidatos amarelos, desde que exista possibilidade real de flexibilizar algum ponto sem comprometer a contratação. Os filtros servem para garantir que você encontre com mais velocidade os candidatos mais aderentes, ajudando a montar uma shortlist baseada em três leituras: quem atende aos pré-requisitos, quem tem maior experiência/aderência, e quem respondeu com qualidade e autenticidade.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "resumo",
+        "regra prática",
+        "filtros",
+        "priorização",
+        "triagem"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-5zpt7r",
+      "pergunta": "Como a qualidade da descrição da vaga impacta os resultados da DigAI?",
+      "resposta": "A descrição da vaga é o campo mais importante da DigAI, pois é a partir dela que a IA entende o contexto da posição e gera perguntas de entrevista, critérios de avaliação e rankings. **Quanto melhor a entrada, melhor a saída.** Uma descrição robusta deve incluir responsabilidades, requisitos técnicos e desejáveis, nível de experiência, desafios da posição, perfil comportamental, soft skills, contexto da área, cultura da empresa e expectativas do gestor. A regra é simples: se a informação foi discutida no alinhamento da vaga, ela deve estar na descrição.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "descrição de vaga",
+        "qualidade de entrada",
+        "contexto",
+        "assertividade",
+        "requisitos"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-zs18du",
+      "pergunta": "O que deve conter uma descrição de vaga completa na DigAI?",
+      "resposta": "Uma boa descrição deve trazer: principais responsabilidades, requisitos técnicos obrigatórios e desejáveis, nível de experiência esperado, principais desafios da posição, perfil comportamental desejado, soft skills importantes, contexto da área, cultura da empresa, expectativas do gestor e pontos críticos que diferenciam um bom candidato de um médio. **Quanto mais informação for inserida, melhor será a qualidade das perguntas e critérios gerados.** Todo insight do alinhamento com o gestor deve ser incluído na plataforma.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "descrição de vaga",
+        "requisitos",
+        "perfil comportamental",
+        "alinhamento",
+        "soft skills"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-7ifvor",
+      "pergunta": "Por que devo fazer curadoria das perguntas sugeridas pela DigAI?",
+      "resposta": "Embora a DigAI sugira perguntas com base no contexto da vaga usando métodos estruturados como STAR, **a IA sugere, mas o recrutador valida**. O recrutador precisa tomar posse do processo, analisando se as perguntas fazem sentido para aquela vaga específica, gestor, área e senioridade. A curadoria humana é mandatória porque a pergunta certa melhora a qualidade da entrevista, enquanto perguntas erradas geram respostas ruins e comprometem a avaliação final.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "curadoria",
+        "perguntas",
+        "validação",
+        "entrevista",
+        "STAR"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-9dhv19",
+      "pergunta": "Que critérios devo usar ao avaliar as perguntas sugeridas?",
+      "resposta": "Ao fazer curadoria das perguntas, você deve avaliar se: a pergunta está alinhada com a necessidade da vaga, ajuda a identificar o perfil ideal, está clara para o candidato, avalia uma competência realmente importante, está repetitiva, precisa ser ajustada para o contexto da empresa, está muito genérica ou técnica, ou deveria ser mais comportamental. **A pergunta certa melhora a qualidade da entrevista**, enquanto perguntas inadequadas comprometem todo o processo.",
+      "categoria": "entrevista-inteligente",
+      "palavrasChave": [
+        "perguntas",
+        "curadoria",
+        "competências",
+        "alinhamento",
+        "validação"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-ekq4ti",
+      "pergunta": "Por que é importante revisar os critérios de avaliação na DigAI?",
+      "resposta": "Os critérios de avaliação são extremamente importantes porque indicam o que a IA irá observar nas respostas dos candidatos. **O critério é a régua de avaliação** - se a régua estiver errada, o ranking também ficará desalinhado. O recrutador deve revisar cada critério e perguntar se ele realmente faz sentido para avaliar aquela vaga específica. Esse cuidado evita chegar no ranking final e descobrir que a avaliação não reflete o que a vaga realmente precisava.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "critérios de avaliação",
+        "ranking",
+        "régua",
+        "calibração",
+        "assertividade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-zi6erl",
+      "pergunta": "O que são pré-requisitos na DigAI e para que servem?",
+      "resposta": "Pré-requisitos são as **condições mínimas obrigatórias** que o candidato precisa atender para seguir no processo seletivo. Eles funcionam como uma base eliminatória da vaga — se o candidato não atender, dificilmente conseguirá executar a função. O objetivo não é dificultar, mas deixar claro o que é **realmente indispensável** para a contratação. São diferentes dos requisitos desejáveis, que qualificam mas não eliminam.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "triagem",
+        "critérios eliminatórios",
+        "filtros",
+        "configuração de vaga"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-tb0q57",
+      "pergunta": "Como deve ser escrito um bom critério de avaliação?",
+      "resposta": "Um bom critério deve ser objetivo, claro e conectado com a necessidade real da vaga, dizendo exatamente o que será avaliado. **Exemplo ruim:** \"Avaliar comunicação\". **Exemplo melhor:** \"Avaliar se o candidato consegue explicar experiências anteriores com clareza, objetividade e capacidade de estruturar raciocínio diante de situações complexas\". O segundo exemplo orienta a IA sobre o que realmente precisa ser observado, enquanto o primeiro é genérico demais.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "critérios",
+        "objetividade",
+        "clareza",
+        "avaliação",
+        "especificidade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-fswmj4",
+      "pergunta": "Quais são exemplos de pré-requisitos válidos para uma vaga?",
+      "resposta": "Exemplos válidos incluem: **formação obrigatória**, certificações exigidas, experiência mínima indispensável, disponibilidade de horário/localização, conhecimento técnico essencial, registro profissional obrigatório (como COREN), habilitação específica, domínio de idioma necessário e disponibilidade para viagens. Por exemplo, para enfermeiro(a): COREN ativo e formação completa em Enfermagem são pré-requisitos; experiência em pronto atendimento seria apenas desejável.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "exemplos",
+        "formação",
+        "certificação",
+        "experiência"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-net4rs",
+      "pergunta": "O que é o ajuste fino inicial do ranking e por que é importante?",
+      "resposta": "O ajuste fino consiste em avaliar os primeiros 10 candidatos iniciais para fazer uma calibração. **O objetivo não é revisar todos manualmente, mas calibrar o processo.** O recrutador deve observar se as notas estão coerentes, se candidatos fortes estão sendo bem avaliados, se candidatos fracos recebem notas menores, se algum critério está pesando demais ou pouco, e se o ranking faz sentido para a vaga. Se necessário, pode-se ajustar critérios para garantir um ranking mais assertivo no final.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "calibração",
+        "ajuste fino",
+        "validação",
+        "assertividade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-jj0rfi",
+      "pergunta": "Como diferenciar pré-requisito de requisito desejável?",
+      "resposta": "Faça a pergunta: **\"Se o candidato não tiver isso, ele realmente não pode seguir no processo?\"** Se a resposta for sim, é pré-requisito. Se for \"depende\", \"seria bom\" ou \"o gestor prefere\", é requisito desejável. **Pré-requisito elimina** candidatos que não atendem; **desejável qualifica** os que atendem parcialmente. Por exemplo: COREN ativo é pré-requisito para enfermeiro; conhecimento em sistema hospitalar é desejável.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "requisitos desejáveis",
+        "diferença",
+        "eliminatórios",
+        "qualificação"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-4hgezf",
+      "pergunta": "Por que devo evitar excesso de pré-requisitos na DigAI?",
+      "resposta": "O excesso de pré-requisitos pode **reduzir demais o funil** de candidatos e eliminar profissionais qualificados desnecessariamente. Se mal configurados, podem criar vieses e deixar a IA avaliando com base em informações pouco claras. Um bom processo seletivo não começa tentando eliminar todo mundo, mas identificando quem tem aderência real. Use pré-requisitos apenas quando forem **realmente indispensáveis** para a função.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "pré-requisitos",
+        "funil",
+        "eliminação",
+        "candidatos qualificados",
+        "boas práticas"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-esw9rv",
+      "pergunta": "Quais perguntas fazer ao calibrar o ranking inicial?",
+      "resposta": "Ao calibrar os primeiros resultados, você deve avaliar: os candidatos mais fortes estão sendo bem avaliados? Os candidatos fracos estão recebendo notas menores? Algum critério está pesando demais ou pouco relevante? A IA está interpretando corretamente o que deveria ser avaliado? O ranking está fazendo sentido para a realidade da vaga? **Essas questões ajudam a identificar necessidades de ajuste** nos critérios e melhorar a calibragem do processo.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "calibração",
+        "validação",
+        "critérios",
+        "ajuste"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-4b8nmm",
+      "pergunta": "Como escrever pré-requisitos de forma clara para a IA da DigAI?",
+      "resposta": "Use **linguagem clara e objetiva**, evitando critérios subjetivos. Em respostas abertas, contextualize o que deseja. **Exemplo ruim**: \"Ter boa comunicação, perfil proativo, vontade de crescer\" (mistura comportamento e desejo). **Exemplo melhor**: \"Ter disponibilidade para atuar presencialmente de segunda a sexta, das 8h às 18h, na região de Jundiaí\" (objetivo, verificável e ligado à viabilidade da contratação).",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "escrita",
+        "linguagem clara",
+        "IA",
+        "objetividade",
+        "configuração"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-9m4w2c",
+      "pergunta": "Quais são as 3 boas práticas obrigatórias para usar a DigAI?",
+      "resposta": "As três práticas essenciais são: **1) Criar uma descrição de vaga robusta** - quanto mais contexto a DigAI tiver, melhores serão as perguntas, critérios e avaliações; **2) Fazer curadoria das perguntas e critérios** - a IA sugere, mas o recrutador valida e mantém a responsabilidade pelo processo; **3) Calibrar os primeiros candidatos do ranking** - avaliar os primeiros resultados garante que a IA esteja ranqueando de forma alinhada com a necessidade da vaga.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "boas práticas",
+        "descrição de vaga",
+        "curadoria",
+        "calibração",
+        "ranking"
+      ],
+      "tipo": "onboarding",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-oc73p3",
+      "pergunta": "Quais são as boas práticas para configurar pré-requisitos na DigAI?",
+      "resposta": "As principais boas práticas são: **usar pré-requisitos com moderação**, utilizar linguagem clara e objetiva com a IA, evitar critérios subjetivos, evitar excesso de exigências para vagas operacionais e contextualizar bem as respostas abertas. Lembre-se de separar o que é obrigatório do que é desejável **antes** de cadastrar na plataforma. O objetivo é garantir aderência sem eliminar bons candidatos desnecessariamente.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "boas práticas",
+        "pré-requisitos",
+        "configuração",
+        "moderação",
+        "clareza"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-wd938o",
+      "pergunta": "A DigAI substitui o recrutador no processo seletivo?",
+      "resposta": "**Não. A DigAI não substitui o critério do recrutador - ela potencializa.** Para isso acontecer, o recrutador precisa usar a plataforma com intenção, contexto e curadoria. A IA entrega muito mais quando o processo começa bem estruturado com descrição robusta, perguntas bem avaliadas, critérios bem calibrados e ranking acompanhado no início. **A responsabilidade pelo processo continua sendo do time de recrutamento.**",
+      "categoria": "posicionamento",
+      "palavrasChave": [
+        "papel do recrutador",
+        "IA",
+        "potencialização",
+        "curadoria",
+        "responsabilidade"
+      ],
+      "tipo": "faq",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-iw6s3c",
+      "pergunta": "Qual o erro mais comum ao configurar pré-requisitos?",
+      "resposta": "O erro mais comum é **transformar desejo em obrigação**. Nem tudo que a empresa gostaria que o candidato tivesse deve virar pré-requisito. Muitos recrutadores colocam requisitos desejáveis (como \"experiência com vendas SaaS\" para vendedor B2B) como eliminatórios, quando na verdade são apenas diferenciais. Isso reduz drasticamente o número de candidatos qualificados e pode excluir talentos promissores.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "erros comuns",
+        "pré-requisitos",
+        "desejo",
+        "obrigação",
+        "eliminação"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-v27kth",
+      "pergunta": "Por que alguns rankings podem ficar desalinhados com a necessidade da vaga?",
+      "resposta": "Quando o ranking não reflete o que a vaga precisava, normalmente a causa está no começo do processo: **falta de curadoria nos critérios**. Se a régua de avaliação (critérios) estiver errada, o ranking também ficará desalinhado. Por isso, os critérios precisam ser objetivos, claros e conectados com a necessidade real da vaga. O recrutador deve revisar cada critério sugerido e garantir que ele realmente faz sentido para avaliar aquela vaga específica.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "critérios",
+        "desalinhamento",
+        "curadoria",
+        "calibração"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-zojct9",
+      "pergunta": "Como pré-requisitos e filtros impactam o ranking da DigAI?",
+      "resposta": "Pré-requisitos e filtros bem configurados **direcionam melhor o processo seletivo**, reduzem ruído na análise e garantem que o ranking final esteja mais próximo da necessidade real da vaga. Porém, se mal utilizados, podem gerar o **efeito contrário**: excluir bons candidatos, criar vieses ou deixar a IA avaliando com informações pouco claras. Por isso, devem ser objetivos, criteriosos e conectados com a realidade da vaga.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "filtros",
+        "pré-requisitos",
+        "qualidade",
+        "IA"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-7ifn43",
+      "pergunta": "Qual é o impacto de não levar informações do alinhamento para a DigAI?",
+      "resposta": "Quando o recrutador faz um ótimo alinhamento com o gestor, mas não leva essa riqueza de informação para dentro da DigAI, **a IA trabalha com menos contexto do que deveria**. Nesse caso, o problema não está na ferramenta, mas na falta de insumo. A descrição bem feita é o que garante que o processo comece no caminho certo. Todo insight discutido no alinhamento deve ser incluído na descrição da vaga para maximizar a qualidade dos resultados.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "alinhamento",
+        "contexto",
+        "descrição",
+        "informação",
+        "gestor"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-pios8f",
+      "pergunta": "Para vagas operacionais, devo usar muitos pré-requisitos?",
+      "resposta": "**Não.** Para vagas operacionais, evite excesso de exigências. Essas posições geralmente têm maior volume de candidatos e treinamento mais acessível. Foque apenas em pré-requisitos realmente indispensáveis, como disponibilidade de horário, localização ou certificações obrigatórias. Requisitos como \"boa comunicação\" ou \"proatividade\" devem ser avaliados durante o processo, não como filtros eliminatórios iniciais.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "vagas operacionais",
+        "pré-requisitos",
+        "exigências",
+        "simplicidade",
+        "volume"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-lz25oi",
+      "pergunta": "Exemplo prático de pré-requisitos para vaga de Vendedor B2B",
+      "resposta": "**Pré-requisitos corretos**: Disponibilidade para atuar presencialmente na região definida; experiência anterior com vendas consultivas (se realmente indispensável). **Requisitos desejáveis**: Ter vendido para empresas enterprise, conhecimento em CRM, experiência com vendas SaaS. Note que os pré-requisitos são **eliminatórios e verificáveis**, enquanto os desejáveis são diferenciais que ajudam na qualificação mas não impedem o avanço do candidato.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "exemplo",
+        "vendedor",
+        "B2B",
+        "pré-requisitos",
+        "prática"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-bc2p6u",
+      "pergunta": "Por que contextualizar respostas abertas é importante na DigAI?",
+      "resposta": "Contextualizar respostas abertas ajuda a **IA entender exatamente o que você busca** no candidato. Sem contexto, critérios como \"boa comunicação\" ou \"perfil proativo\" são subjetivos demais. Ao invés de dizer \"vontade de crescer\", especifique: \"Disponibilidade para trabalhar de segunda a sexta, das 8h às 18h, na região X\". Isso torna o critério **objetivo, verificável e conectado à realidade** da vaga, melhorando a qualidade do ranking.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "contexto",
+        "respostas abertas",
+        "IA",
+        "objetividade",
+        "clareza"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-7woewv",
+      "pergunta": "Qual a importância de configurar pré-requisitos antes da triagem?",
+      "resposta": "Configurar pré-requisitos **antes do início da triagem** é essencial para garantir qualidade, aderência e assertividade no processo. Esses campos direcionam a análise da IA, reduzem ruído e aproximam o ranking da necessidade real da vaga. Pré-requisitos mal configurados podem gerar o efeito contrário: excluir bons candidatos e criar vieses. Por isso, devem ser definidos de forma **objetiva, criteriosa e conectada com a realidade** da posição.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "configuração",
+        "pré-requisitos",
+        "antes da triagem",
+        "qualidade",
+        "planejamento"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-7aj6tn",
+      "pergunta": "O que são pré-requisitos na DigAI e qual a sua finalidade?",
+      "resposta": "Pré-requisitos são as **condições mínimas obrigatórias** que o candidato precisa atender para seguir no processo seletivo. Eles funcionam como uma base eliminatória da vaga, representando aqueles pontos que, se o candidato não tiver, dificilmente conseguirá executar a função ou atender à necessidade do negócio. O objetivo não é deixar a vaga mais difícil, mas sim deixar claro o que realmente é indispensável para o desempenho da função.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "triagem",
+        "condições mínimas",
+        "eliminatório",
+        "configuração de vagas"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-ccljcq",
+      "pergunta": "Qual é a diferença entre pré-requisito e requisito desejável?",
+      "resposta": "A diferença fundamental é que **pré-requisito elimina** e **desejável qualifica**. Pré-requisitos são condições obrigatórias sem as quais o candidato não pode seguir no processo. Já os requisitos desejáveis são características que ajudam na avaliação e qualificam o candidato, mas sua ausência não impede o avanço no processo seletivo. Antes de cadastrar, pergunte-se: \"Se o candidato não tiver isso, ele realmente não pode seguir?\" Se a resposta for \"depende\" ou \"seria bom\", não é pré-requisito.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "requisitos desejáveis",
+        "eliminatório",
+        "qualificação",
+        "critérios de seleção"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-0z2lqr",
+      "pergunta": "Quais são exemplos de pré-requisitos válidos para uma vaga?",
+      "resposta": "Exemplos de pré-requisitos válidos incluem: **formação obrigatória**, certificações exigidas, experiência mínima em determinada função, disponibilidade de horário, disponibilidade para trabalho presencial/híbrido/remoto, localização necessária, conhecimento técnico indispensável, registro profissional obrigatório (como COREN para enfermeiros), habilitação específica, domínio de determinado idioma e disponibilidade para viagens. Todos devem ser realmente eliminatórios para a função.",
+      "categoria": "gestao-de-vagas",
+      "palavrasChave": [
+        "pré-requisitos",
+        "exemplos",
+        "configuração",
+        "formação",
+        "certificações"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-p5p89l",
+      "pergunta": "Por que não devo transformar todo desejo em pré-requisito?",
+      "resposta": "Transformar desejos em obrigações é um **erro comum que pode prejudicar o processo seletivo**. Quanto mais pré-requisitos forem adicionados, maior a chance de reduzir demais o funil e perder candidatos qualificados. Nem tudo que a empresa gostaria que o candidato tivesse deve virar pré-requisito. Um bom processo seletivo não começa tentando eliminar todo mundo, mas sim identificando quem tem aderência real à vaga.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "pré-requisitos",
+        "funil de candidatos",
+        "boas práticas",
+        "erro comum",
+        "triagem"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-khfocy",
+      "pergunta": "Como utilizar corretamente pré-requisitos na DigAI?",
+      "resposta": "O primeiro passo é **separar o que é obrigatório do que é desejável**. Antes de cadastrar os pré-requisitos, faça a pergunta: \"Se o candidato não tiver isso, ele realmente não pode seguir no processo?\" Se a resposta for sim, pode ser um pré-requisito. Se a resposta for \"depende\", \"seria bom\" ou \"o gestor prefere\", provavelmente é um critério de avaliação ou requisito desejável, não um pré-requisito eliminatório.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "pré-requisitos",
+        "configuração",
+        "critérios",
+        "triagem",
+        "eliminatório"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-t86yt0",
+      "pergunta": "Qual é um exemplo prático de separação entre pré-requisito e desejável para uma vaga de Enfermeiro?",
+      "resposta": "Para uma vaga de Enfermeiro(a), **pré-requisitos corretos** seriam: possuir COREN ativo, ter formação completa em Enfermagem e ter disponibilidade para escala definida. Já os **requisitos desejáveis** incluiriam: experiência prévia em pronto atendimento, conhecimento em sistema hospitalar e vivência com atendimento humanizado. Os pré-requisitos são eliminatórios e ligados à viabilidade da contratação, enquanto os desejáveis qualificam mas não impedem o avanço.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "exemplo prático",
+        "enfermeiro",
+        "pré-requisitos",
+        "requisitos desejáveis",
+        "caso de uso"
+      ],
+      "tipo": "tutorial",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-vczirt",
+      "pergunta": "Quais são as boas práticas para garantir aderência e qualidade nos pré-requisitos?",
+      "resposta": "Use pré-requisitos com **moderação** para não reduzir demais o funil. As principais práticas incluem: usar linguagem clara e objetiva com a IA, evitar critérios subjetivos, evitar excesso de exigências para vagas operacionais e, em critérios de resposta aberta, contextualizar para a IA o que deseja de resposta. Pré-requisitos devem ser objetivos, verificáveis e diretamente ligados à viabilidade da contratação.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "boas práticas",
+        "pré-requisitos",
+        "moderação",
+        "clareza",
+        "objetividade"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-g9n0iu",
+      "pergunta": "Como escrever objetivos de resposta aberta para pré-requisitos na DigAI?",
+      "resposta": "Evite misturar comportamento, desejo e experiência em um mesmo critério. **Exemplo ruim**: \"Ter boa comunicação, perfil proativo, vontade de crescer, senso de dono e experiência no segmento.\" **Exemplo melhor**: \"Ter disponibilidade para atuar presencialmente de segunda a sexta, das 8h às 18h, na região de Jundiaí.\" O texto deve ser objetivo, verificável e diretamente ligado à viabilidade da contratação, não misturando múltiplos critérios subjetivos.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "resposta aberta",
+        "critérios objetivos",
+        "configuração IA",
+        "boas práticas",
+        "clareza"
+      ],
+      "tipo": "tutorial",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-mf1ipt",
+      "pergunta": "Por que pré-requisitos e filtros são importantes antes de iniciar a triagem na DigAI?",
+      "resposta": "Pré-requisitos e filtros são fundamentais para **garantir qualidade, aderência e assertividade** no uso da plataforma. Eles ajudam a direcionar melhor o processo seletivo, reduzir ruído na análise dos candidatos e garantir que o ranking final esteja mais próximo da necessidade real da vaga. Porém, se forem mal utilizados, podem gerar efeito contrário: excluir bons candidatos, criar vieses ou deixar a IA avaliando com base em informações pouco claras.",
+      "categoria": "triagem-inteligente",
+      "palavrasChave": [
+        "pré-requisitos",
+        "filtros",
+        "triagem",
+        "qualidade",
+        "aderência"
+      ],
+      "tipo": "onboarding",
+      "nivel": "basico",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-6wsp8w",
+      "pergunta": "Como os pré-requisitos impactam o ranking final de candidatos na DigAI?",
+      "resposta": "Os pré-requisitos funcionam como **condições eliminatórias** que filtram candidatos antes da avaliação mais aprofundada. Quando bem configurados, garantem que apenas candidatos viáveis avancem no processo, permitindo que a IA foque na qualificação e aderência dos perfis restantes. Isso melhora significativamente a qualidade do ranking final, pois elimina ruídos e mantém apenas candidatos que realmente atendem às necessidades mínimas da vaga.",
+      "categoria": "ranking",
+      "palavrasChave": [
+        "ranking",
+        "pré-requisitos",
+        "triagem",
+        "qualidade",
+        "eliminatório"
+      ],
+      "tipo": "tutorial",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-0kzv82",
+      "pergunta": "Qual é o erro mais comum na configuração de pré-requisitos?",
+      "resposta": "O erro mais comum é **transformar desejo em obrigação**, tornando pré-requisito algo que deveria ser apenas desejável. Isso acontece quando características que \"seria bom ter\" ou que \"o gestor prefere\" são configuradas como eliminatórias. O resultado é a redução excessiva do funil de candidatos e a perda de perfis qualificados que poderiam atender bem à vaga mesmo sem ter todas as características desejadas.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "erro comum",
+        "pré-requisitos",
+        "desejável versus obrigatório",
+        "funil",
+        "configuração"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "intermediario",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    },
+    {
+      "id": "ki-doc-dvr4kl",
+      "pergunta": "Quando devo evitar usar critérios subjetivos como pré-requisitos?",
+      "resposta": "Critérios subjetivos como \"boa comunicação\", \"perfil proativo\" ou \"vontade de crescer\" **não devem ser usados como pré-requisitos eliminatórios**. Esses aspectos são difíceis de verificar objetivamente em currículos e podem criar vieses na triagem inicial. Eles são mais adequados como critérios de avaliação durante entrevistas ou como requisitos desejáveis. Pré-requisitos devem ser sempre objetivos, verificáveis e mensuráveis.",
+      "categoria": "boas-praticas",
+      "palavrasChave": [
+        "critérios subjetivos",
+        "pré-requisitos",
+        "objetividade",
+        "vieses",
+        "triagem"
+      ],
+      "tipo": "boas-praticas",
+      "nivel": "avancado",
+      "updatedAt": "2026-05-12",
+      "publicado": true
+    }
+  ],
+  "lastUpdated": "2026-05-12",
+  "count": 94
+}

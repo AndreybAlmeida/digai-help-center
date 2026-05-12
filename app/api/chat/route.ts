@@ -1,9 +1,6 @@
 import { searchArticles } from "@/data/articles";
-import { knowledgeSeed } from "@/data/knowledgeBase";
-import { KnowledgeItem } from "@/types/knowledge";
 import { NextRequest, NextResponse } from "next/server";
-import { readFile } from "fs/promises";
-import { join } from "path";
+import { findRelevantContextHybrid, formatHybridContext, type ContextItem } from "@/lib/search/hybridSearch";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -12,45 +9,6 @@ interface ChatMessage {
 
 interface ChatRequest {
   messages: ChatMessage[];
-}
-
-// ─── Knowledge base ───────────────────────────────────────────────────────────
-
-async function loadKnowledgeItems(): Promise<KnowledgeItem[]> {
-  try {
-    const filePath = join(process.cwd(), "public", "knowledge-export.json");
-    const raw = await readFile(filePath, "utf-8");
-    const data = JSON.parse(raw);
-    if (Array.isArray(data.items)) return data.items as KnowledgeItem[];
-  } catch {
-    // fallback to seed
-  }
-  return knowledgeSeed.filter((i) => i.publicado);
-}
-
-function findRelevantContext(query: string, items: KnowledgeItem[], limit = 5): KnowledgeItem[] {
-  const q = query.toLowerCase();
-  const scored = items.map((item) => {
-    let score = 0;
-    if (item.pergunta.toLowerCase().includes(q)) score += 3;
-    if (item.palavrasChave.some((k) => k.toLowerCase().includes(q))) score += 2;
-    if (item.resposta.toLowerCase().includes(q)) score += 1;
-    const words = q.split(/\s+/).filter((w) => w.length > 2);
-    for (const word of words) {
-      if (item.pergunta.toLowerCase().includes(word)) score += 1;
-      if (item.palavrasChave.some((k) => k.toLowerCase().includes(word))) score += 0.5;
-    }
-    return { item, score };
-  });
-  return scored
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit)
-    .map(({ item }) => item);
-}
-
-function formatContext(items: KnowledgeItem[]): string {
-  return items.map((i) => `P: ${i.pergunta}\nR: ${i.resposta}`).join("\n\n---\n\n");
 }
 
 const SYSTEM_PROMPT = `Você é a ANA, assistente oficial da DigAI — plataforma de recrutamento com inteligência artificial.
@@ -67,10 +25,9 @@ Regras:
 
 // ─── Mock fallback ────────────────────────────────────────────────────────────
 
-function generateMockReply(userMessage: string, contextItems: KnowledgeItem[]): string {
+function generateMockReply(userMessage: string, contextItems: ContextItem[]): string {
   if (contextItems.length > 0) {
-    const best = contextItems[0];
-    return best.resposta;
+    return contextItems[0].content;
   }
   const q = userMessage.toLowerCase();
   if (q.includes("vaga") || q.includes("criar")) {
@@ -98,12 +55,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Nenhuma mensagem do usuário" }, { status: 400 });
     }
 
-    const knowledgeItems = await loadKnowledgeItems();
-    const contextItems = findRelevantContext(lastUserMessage.content, knowledgeItems);
+    const contextItems = await findRelevantContextHybrid(lastUserMessage.content);
     const suggestedArticles = searchArticles(lastUserMessage.content).slice(0, 3);
 
     const systemWithContext = contextItems.length > 0
-      ? `${SYSTEM_PROMPT}\n\nCONTEXTO DA BASE DE CONHECIMENTO:\n\n${formatContext(contextItems)}`
+      ? `${SYSTEM_PROMPT}\n\nCONTEXTO DA BASE DE CONHECIMENTO:\n\n${formatHybridContext(contextItems)}`
       : SYSTEM_PROMPT;
 
     // ── OpenAI ────────────────────────────────────────────────────────────────

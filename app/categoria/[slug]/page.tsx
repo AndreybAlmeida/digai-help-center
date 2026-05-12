@@ -36,10 +36,20 @@ export default function CategoryPage({
   const [showAllFaq, setShowAllFaq] = useState(false);
 
   useEffect(() => {
-    initStore();
-    const items = getItemsByCategoria(slug as KnowledgeCategorySlug)
-      .filter((i) => i.publicado);
-    setKnowledgeItems(items);
+    fetch("/knowledge-export.json")
+      .then((r) => r.json())
+      .then((data) => {
+        const items: KnowledgeItem[] = (data.items ?? []).filter(
+          (i: KnowledgeItem) => i.publicado && i.categoria === slug
+        );
+        setKnowledgeItems(items);
+      })
+      .catch(() => {
+        initStore();
+        setKnowledgeItems(
+          getItemsByCategoria(slug as KnowledgeCategorySlug).filter((i) => i.publicado)
+        );
+      });
   }, [slug]);
 
   const filtered =
