@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { KnowledgeItem, KnowledgeCategorySlug, KnowledgeItemType, KnowledgeLevel } from "@/types/knowledge";
-import { createItem, updateItem } from "@/lib/knowledgeStore";
+import { createItem, updateItem, exportStore } from "@/lib/knowledgeStore";
 import { nivelLabel, tipoLabel } from "@/lib/utils";
 
 interface KnowledgeFormProps {
@@ -43,7 +43,7 @@ export default function KnowledgeForm({ initial }: KnowledgeFormProps) {
     return Object.keys(e).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
     setSaving(true);
@@ -64,6 +64,18 @@ export default function KnowledgeForm({ initial }: KnowledgeFormProps) {
       updateItem(initial.id, data);
     } else {
       createItem(data);
+    }
+
+    // Auto-publish: sync updated store to knowledge-export.json immediately
+    try {
+      const store = JSON.parse(exportStore());
+      await fetch("/api/knowledge/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: store.items }),
+      });
+    } catch {
+      // Non-fatal: user can manually publish later
     }
 
     setSaving(false);
