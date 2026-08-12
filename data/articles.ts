@@ -1645,6 +1645,29 @@ Mesmo orçamento, resultado **até 8× diferente**. O que muda não é a verba �
 **Sempre:** cargo + cidade na 1ª linha · pessoa real na função · copy concreta com as tarefas reais · salário/benefício quando houver · um CTA só · arte limpa com cargo em destaque · copy de 3–4 linhas.
 
 **Nunca:** frases de marca vazias ("vem ser", "protagonista") · local vago ("na sua região") · encher a arte de requisitos · fundo poluído · cargo escondido no texto · peça só de marca · mais de um CTA ou vários links.
+
+## Especificações da arte
+
+**Formato.** 1080×1080 px para feed (Instagram, Facebook, LinkedIn). 1080×1920 px (9:16) para Stories e Reels.
+
+**Hierarquia visual**, nesta ordem: vaga em destaque → nome da empresa → 2 ou 3 requisitos ou diferenciais → chamada para ação.
+
+**Fundo por segmento** — deve ter relação com o ambiente da vaga:
+
+| Segmento | Fundo |
+|---|---|
+| Varejo | Loja, atendimento, balcão, equipe comercial |
+| Imobiliário | Stand de vendas, prédio, maquete, atendimento |
+| Logística | Veículos, operação, armazém, mobilidade |
+| Corporativo | Escritório, reunião, tecnologia, atendimento |
+
+**Elemento humano.** A pessoa deve representar o perfil da vaga, com postura profissional e aparência compatível com o contexto.
+
+**Chamadas que funcionam:** "Clique e faça sua entrevista agora" · "Candidate-se agora" · "Inicie sua entrevista pelo botão abaixo" · "Participe do processo seletivo".
+
+**Acabamento — evite:** excesso de texto · fontes pequenas · baixa resolução · logo distorcida · fundo poluído · cores sem contraste · imagens genéricas · visual informal demais.
+
+> A logo deve aparecer nítida, bem posicionada e sem alteração de cor, proporção ou formato.
     `,
   },
   {

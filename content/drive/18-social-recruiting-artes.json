@@ -1,0 +1,16 @@
+{
+  "doc": "DigAI_Guia_Social_Recruiting.pdf",
+  "driveId": "1J71GY0g1M45Smzc5DFrc0_tIll5aSDSf",
+  "categoria": "boas-praticas",
+  "titulo": "Artes de vaga que convertem — especificações",
+  "resumo": "Formato, hierarquia visual, fundo por segmento e acabamento da arte de recrutamento.",
+  "faqs": [
+    {"p":"Qual o formato e tamanho ideal da arte de uma vaga?","r":"Use preferencialmente 1080×1080 px, ideal para publicações em feed no Instagram, Facebook, LinkedIn e outras redes. Para campanhas em Stories ou Reels, use 1080×1920 px, respeitando a proporção vertical 9:16.","chaves":["formato","tamanho","1080","stories","reels"]},
+    {"p":"Qual a hierarquia visual de uma arte de vaga?","r":"Quatro níveis, nesta ordem: 1) a vaga em destaque; 2) o nome da empresa; 3) principais requisitos ou diferenciais; 4) a chamada para ação. A leitura precisa ser rápida e objetiva — evite excesso de informações, textos longos ou muitos elementos visuais competindo entre si.","chaves":["hierarquia","leitura","destaque","estrutura"]},
+    {"p":"Que imagem de fundo usar na arte da vaga?","r":"O fundo deve ter relação com o ambiente da vaga ou o segmento da empresa. Varejo: loja, atendimento, balcão ou equipe comercial. Imobiliário: stand de vendas, prédio, maquete ou atendimento ao cliente. Logística: veículos, operação, armazém ou mobilidade. Corporativo: escritório, reunião, tecnologia ou atendimento. Evite fundos genéricos, poluídos ou com aparência amadora.","chaves":["fundo","segmento","varejo","logística","imagem"]},
+    {"p":"Devo colocar uma pessoa na arte da vaga?","r":"Sempre que possível — isso gera identificação e aumenta a conexão com o candidato. A pessoa deve representar o perfil da vaga, com postura profissional, expressão simpática e aparência compatível com o contexto da oportunidade.","chaves":["pessoa","elemento humano","identificação"]},
+    {"p":"Que texto colocar na arte da vaga?","r":"Curto, direto e de fácil leitura. Não coloque todas as informações da vaga na imagem — a arte chama atenção e direciona para a próxima etapa. Estrutura sugerida: nome da vaga, empresa, 2 ou 3 requisitos principais, 1 diferencial da oportunidade e um CTA claro.","chaves":["texto","arte","estrutura","curto"]},
+    {"p":"Quais chamadas para ação funcionam na arte?","r":"Toda arte precisa de uma chamada objetiva orientando o próximo passo. Exemplos: \"Clique e faça sua entrevista agora\", \"Candidate-se agora\", \"Inicie sua entrevista pelo botão abaixo\", \"Participe do processo seletivo\".","chaves":["CTA","chamada","ação","exemplos"]},
+    {"p":"O que evitar no acabamento da arte de recrutamento?","r":"A imagem precisa parecer campanha profissional, não panfleto improvisado. Evite: excesso de texto, fontes pequenas, baixa resolução, logo distorcida, fundo poluído, cores sem contraste, imagens genéricas e visual informal demais. A logo deve aparecer nítida, bem posicionada e sem alterações de cor, proporção ou formato.","chaves":["acabamento","qualidade","evitar","logo"]}
+  ]
+}
