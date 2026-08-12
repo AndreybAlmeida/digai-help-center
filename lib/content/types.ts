@@ -24,8 +24,11 @@ export interface Article {
 export interface Category {
   slug: CategorySlug;
   description: string;
-  /** Derivado da contagem real de artigos — nunca escrito à mão. */
+  /** Só artigos de data/articles.ts — é o dataset do grid da home. */
   articleCount: number;
+  /** Tudo que a página da categoria mostra: artigos + base de conhecimento.
+   *  É o número exibido no rail e no card. Derivado, nunca escrito à mão. */
+  materialCount: number;
 }
 
 export const LEVEL_LABEL: Record<Level, string> = {

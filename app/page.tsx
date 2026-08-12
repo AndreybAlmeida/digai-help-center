@@ -2,7 +2,8 @@ import HomeSections from "@/components/home/HomeSections";
 import { MosaicDefs } from "@/components/home/HeroFeature";
 import type { QuickAction } from "@/components/home/QuickActions";
 import type { TrackStep } from "@/components/home/TrackCard";
-import { ARTICLES, CATEGORIAS_COM_CONTEUDO, CATEGORIES_WITH_COUNT } from "@/lib/content/articles";
+import { ARTICLES } from "@/lib/content/articles";
+import { categoriasComArtigo, getCategorias } from "@/lib/content/counts";
 import { CATEGORIES } from "@/lib/content/categories";
 import { KIND_LABEL } from "@/lib/content/types";
 import type { IconName } from "@/components/icons/Sprite";
@@ -32,7 +33,8 @@ const ACOES_RAPIDAS = [
   { slug: "api-digai-introducao", label: "Começar com a API" },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const categorias = await getCategorias();
   const hero = ARTICLES.find((a) => a.slug === HERO_SLUG);
 
   // O grid da home exclui o artigo que já está em destaque no hero.
@@ -57,8 +59,8 @@ export default function HomePage() {
       <MosaicDefs />
       <HomeSections
         articles={artigos}
-        categorias={CATEGORIES_WITH_COUNT}
-        categoriasComConteudo={CATEGORIAS_COM_CONTEUDO}
+        categorias={categorias}
+        categoriasComConteudo={categoriasComArtigo(categorias)}
         hero={{ href: `/artigo/${HERO_SLUG}`, minutes: hero?.minutes ?? 10 }}
         trilha={TRILHA}
         acoes={acoes}

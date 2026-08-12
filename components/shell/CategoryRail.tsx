@@ -2,7 +2,7 @@
 
 import { Icon, type IconName } from "@/components/icons/Sprite";
 import { CATEGORIES } from "@/lib/content/categories";
-import { CATEGORIES_WITH_COUNT } from "@/lib/content/articles";
+import type { Category } from "@/lib/content/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -21,7 +21,7 @@ const AJUDA: { href: string; icon: IconName; label: string }[] = [
   { href: "/categoria/posicionamento", icon: "building", label: "Sobre a DigAI" },
 ];
 
-export default function CategoryRail() {
+export default function CategoryRail({ categorias }: { categorias: Category[] }) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname?.startsWith(href) ?? false);
 
@@ -38,8 +38,8 @@ export default function CategoryRail() {
 
       <div className="rail-group">
         <div className="rail-label">Categorias</div>
-        {CATEGORIES_WITH_COUNT.map((c) => {
-          const vazia = c.articleCount === 0;
+        {categorias.map((c) => {
+          const vazia = c.materialCount === 0;
           const cor = vazia ? DOT_VAZIO : CATEGORIES[c.slug].c1;
           const href = `/categoria/${c.slug}`;
           return (
@@ -51,7 +51,7 @@ export default function CategoryRail() {
             >
               <span className="dot" />
               <span className="txt-long">{CATEGORIES[c.slug].label}</span>
-              <span className="n">{c.articleCount}</span>
+              <span className="n">{c.materialCount}</span>
             </Link>
           );
         })}

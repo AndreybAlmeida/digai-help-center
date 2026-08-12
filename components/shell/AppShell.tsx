@@ -4,13 +4,21 @@ import CategoryRail from "@/components/shell/CategoryRail";
 import Topbar from "@/components/shell/Topbar";
 import { Icon } from "@/components/icons/Sprite";
 import { SearchProvider } from "@/components/shell/SearchContext";
+import type { Category } from "@/lib/content/types";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const MOBILE = 1000;
 const COOKIE = "digai_rail";
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppShell({
+  children,
+  categorias,
+}: {
+  children: React.ReactNode;
+  /** Vem do servidor: a contagem soma a base de conhecimento, que o client não lê. */
+  categorias: Category[];
+}) {
   // Inicializa lendo o mesmo cookie que o script inline do layout já usou, para
   // o estado do React não discordar da classe que está no DOM e removê-la logo
   // após a hidratação. Nada do que este componente renderiza depende de `mini`,
@@ -65,7 +73,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <SearchProvider>
       <Topbar onToggleRail={toggleRail} />
-      <CategoryRail />
+      <CategoryRail categorias={categorias} />
       <div
         className="rail-scrim"
         onClick={() => setOpen(false)}

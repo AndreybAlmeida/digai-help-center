@@ -1,6 +1,6 @@
 import { articles as rawArticles } from "@/data/articles";
-import { CATEGORY_DESCRIPTIONS, CATEGORY_ORDER, isCategorySlug, type CategorySlug } from "@/lib/content/categories";
-import type { Article, Category, Kind, Level } from "@/lib/content/types";
+import { isCategorySlug, type CategorySlug } from "@/lib/content/categories";
+import type { Article, Kind, Level } from "@/lib/content/types";
 
 /**
  * Adapta a fonte de conteúdo existente (`data/articles.ts`) para o modelo da v2.
@@ -134,18 +134,6 @@ export const ARTICLES: Article[] = rawArticles
 export const getArticlesByCategory = (slug: CategorySlug): Article[] =>
   ARTICLES.filter((a) => a.category === slug);
 
-/**
- * Categorias com a contagem derivada. Ordem fixa: as que têm conteúdo primeiro,
- * na ordem do mapa; as vazias depois. Nunca ordenar por contagem.
- */
-export const CATEGORIES_WITH_COUNT: Category[] = (() => {
-  const todas = CATEGORY_ORDER.map((slug) => ({
-    slug,
-    description: CATEGORY_DESCRIPTIONS[slug],
-    articleCount: ARTICLES.filter((a) => a.category === slug).length,
-  }));
-  return [...todas.filter((c) => c.articleCount > 0), ...todas.filter((c) => c.articleCount === 0)];
-})();
-
-/** Categorias que aparecem como chip de filtro: só as que têm conteúdo. */
-export const CATEGORIAS_COM_CONTEUDO = CATEGORIES_WITH_COUNT.filter((c) => c.articleCount > 0);
+// A contagem exibida vive em lib/content/counts.ts: ela precisa somar a base de
+// conhecimento, que só existe no servidor. Manter um contador aqui, só com
+// artigos, foi o que deixou metade das categorias marcada como "0".

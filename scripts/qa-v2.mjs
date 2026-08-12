@@ -50,12 +50,38 @@ console.log("\n── cards e conteúdo ──");
   // categorias vazias
   const cats = await p.$$eval(".cat", (els) => els.map((e) => ({
     label: e.querySelector("h3")?.textContent ?? "",
+    count: Number(e.querySelector(".count")?.textContent?.match(/\d+/)?.[0] ?? 0),
     soon: !!e.querySelector(".soon"),
     clicavel: e.tagName === "A" && !!e.getAttribute("href"),
   })));
   ok(cats.length === 12, `12 cards de categoria (${cats.length})`);
-  ok(cats.filter((c) => c.soon).length === 6, `6 categorias marcadas "Em produção" (${cats.filter((c) => c.soon).length})`);
-  ok(cats.every((c) => c.clicavel), "categoria vazia continua clicável");
+  ok(cats.every((c) => c.clicavel), "categoria sem material continua clicável");
+
+  // A contagem tem que bater com o que a página da categoria realmente entrega:
+  // artigos estáticos + itens publicados da base. Foi por não somar a base que
+  // metade do rail apareceu zerada, sugerindo categorias vazias que têm material.
+  const railCounts = await p.$$eval(".rail-item .n", (els) =>
+    els.map((e) => ({ label: e.previousElementSibling?.textContent?.trim() ?? "", n: Number(e.textContent) }))
+  );
+  const base = await (await fetch(BASE + "/api/knowledge/items")).json();
+  const pub = (base.items ?? []).filter((i) => i.publicado);
+  const porCategoria = {};
+  for (const i of pub) porCategoria[i.categoria] = (porCategoria[i.categoria] ?? 0) + 1;
+  porCategoria["faq"] = pub.filter((i) => i.tipo === "faq").length;
+
+  const artigosPorLabel = await p.$$eval(".card .row .tag:first-child", (els) => {
+    const m = {};
+    els.forEach((e) => { const k = e.textContent.trim(); m[k] = (m[k] ?? 0) + 1; });
+    return m;
+  });
+
+  const divergentes = railCounts.filter((r) => r.n === 0);
+  ok(divergentes.length === 0, "nenhuma categoria com material aparece como 0",
+     divergentes.map((d) => d.label).join(", "));
+  ok(cats.filter((c) => c.soon).length === railCounts.filter((r) => r.n === 0).length,
+     `"Em produção" só onde o material é realmente 0 (${cats.filter((c) => c.soon).length})`);
+  ok(railCounts.every((r) => r.n >= (artigosPorLabel[r.label] ?? 0)),
+     "contagem do rail nunca é menor que os artigos já visíveis no grid");
 
   ok(errs.length === 0, "sem erro de console na home", errs.slice(0, 2).join(" | "));
   await ctx.close();

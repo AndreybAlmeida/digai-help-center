@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function CategoryCard({ category }: { category: Category }) {
   const cat = CATEGORIES[category.slug];
   const icon = cat.icon as IconName;
-  const vazia = category.articleCount === 0;
+  const vazia = category.materialCount === 0;
 
   return (
     // Categoria vazia continua clicável: a página mostra o estado vazio com CTA
@@ -27,8 +27,11 @@ export default function CategoryCard({ category }: { category: Category }) {
           {vazia ? (
             <span className="soon">Em produção</span>
           ) : (
+            // "materiais" e não "artigos": o número soma artigos, tutoriais e
+            // FAQs da base — chamar tudo de artigo prometeria o que a página
+            // não entrega.
             <span className="count">
-              {category.articleCount} {category.articleCount === 1 ? "artigo" : "artigos"}
+              {category.materialCount} {category.materialCount === 1 ? "material" : "materiais"}
             </span>
           )}
           <span className="arrow">

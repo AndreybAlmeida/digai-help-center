@@ -1,5 +1,6 @@
 import Sprite from "@/components/icons/Sprite";
 import AppShell from "@/components/shell/AppShell";
+import { getCategorias } from "@/lib/content/counts";
 import { SITE_CONFIG } from "@/lib/config";
 import type { Metadata } from "next";
 import { Inter_Tight, Manrope } from "next/font/google";
@@ -65,11 +66,20 @@ export const metadata: Metadata = {
  */
 const RAIL_INIT = `(function(){try{if(document.cookie.indexOf("digai_rail=mini")>-1){document.body.classList.add("rail-collapsed")}}catch(e){}})()`;
 
-export default function RootLayout({
+/**
+ * As contagens vêm do banco (a base de conhecimento), então revalidam de tempos
+ * em tempos em vez de virar rota dinâmica: o HTML segue servido do CDN e o
+ * número acompanha o que foi publicado, com no máximo 5 min de atraso.
+ */
+export const revalidate = 300;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const categorias = await getCategorias();
+
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${interTight.variable}`}>
       {/* suppressHydrationWarning porque o script abaixo mexe no className do
@@ -78,7 +88,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: RAIL_INIT }} />
         <Sprite />
-        <AppShell>{children}</AppShell>
+        <AppShell categorias={categorias}>{children}</AppShell>
       </body>
     </html>
   );
