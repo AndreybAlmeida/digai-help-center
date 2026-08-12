@@ -12,13 +12,22 @@ import type { ContextItem } from "@/lib/search/hybridSearch";
  * manda ela responder exatamente isso quando falta informação.
  */
 
-/** Frases de desistência. A primeira é a que o system prompt determina. */
+/**
+ * Frases de desistência. A primeira é literalmente a que o system prompt manda
+ * a ANA usar, e sozinha pegou 39 das 42 lacunas na auditoria — recall alto sem
+ * precisar de padrão frouxo.
+ *
+ * NÃO incluir "entre em contato com o suporte" aqui: a ANA usa essa frase
+ * dentro de respostas legítimas ("1. Entre em contato com o CS para liberar o
+ * usuário"), e ela sozinha gerou 3 falsos positivos na auditoria. O mesmo vale
+ * para um "não sei" solto, que aparece em construções como "não sei se você já
+ * configurou".
+ */
 const DESISTENCIA = [
   /não encontrei informa(ç|c)(ã|a)o suficiente/i,
-  /não tenho (essa )?informa(ç|c)(ã|a)o/i,
-  /não (consigo|posso) (responder|ajudar) (com )?(isso|essa)/i,
-  /não (sei|tenho como saber)/i,
-  /entre em contato com (o |nosso )?suporte/i,
+  /não tenho (essa|a )?informa(ç|c)(ã|a)o (suficiente|necess(á|a)ria|sobre)/i,
+  /não (consigo|posso) responder (a |essa |isso)/i,
+  /não h(á|a) informa(ç|c)(ã|a)o (suficiente|sobre)/i,
 ];
 
 /** Saudação, agradecimento e afins — não são lacuna de conteúdo. */
