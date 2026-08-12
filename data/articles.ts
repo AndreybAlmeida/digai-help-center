@@ -626,6 +626,345 @@ DELETE /v1/candidates/{id}/data
 Remove todos os dados pessoais em conformidade com a LGPD.
     `,
   },
+  {
+    id: "art-15",
+    slug: "boas-praticas-uso-digai",
+    title: "Guia de Boas Práticas para uso da DigAI",
+    summary: "As 6 práticas que aumentam a assertividade da triagem: descrição da vaga, curadoria das perguntas, critérios, volume, tentativas e calibração do ranking.",
+    category: "boas-praticas",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["boas práticas", "descrição da vaga", "critérios", "tentativas", "calibração", "ranking"],
+    tags: ["boas práticas", "triagem", "qualidade"],
+    readTime: 8,
+    priority: 1,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-05", "art-16"],
+    published: true,
+    content: `
+## Boas práticas para uso da DigAI
+
+A qualidade da resposta da IA depende diretamente da qualidade da informação inserida na plataforma. Este guia reúne seis práticas que aumentam a assertividade do processo.
+
+### 1. Capriche na descrição da vaga
+
+É o campo mais importante da DigAI. É a partir dele que a IA entende o contexto da posição, sugere perguntas, propõe critérios e estrutura a triagem.
+
+Uma boa descrição traz responsabilidades, requisitos técnicos obrigatórios e desejáveis, nível de experiência esperado, principais desafios, soft skills, perfil comportamental, cultura da empresa, contexto da área, expectativas do gestor e os pontos que diferenciam um bom candidato de um candidato médio.
+
+> **Regra simples:** se a informação foi discutida no alinhamento com o gestor, ela deve estar na descrição da vaga.
+
+### 2. Faça curadoria das perguntas sugeridas
+
+A IA sugere perguntas seguindo entrevista por competência com métodos estruturados, como o STAR. O recrutador valida. Avalie se cada pergunta está alinhada à necessidade da vaga, se está clara, se não é genérica ou repetitiva, e se avalia uma competência realmente importante.
+
+### 3. Revise os critérios de avaliação
+
+O critério é a régua: ele indica o que a IA vai observar nas respostas.
+
+| | Exemplo |
+|---|---|
+| Ruim | "Avaliar comunicação." |
+| Melhor | "Avaliar se o candidato consegue explicar experiências anteriores com clareza, objetividade e capacidade de estruturar raciocínio diante de situações complexas." |
+
+### 4. Calibre a quantidade de perguntas
+
+| Perfil da vaga | Principais | Adicionais |
+|---|---|---|
+| Operacional e cargos de entrada | 3 a 5 | até 2 |
+| Middle level e gestão tática | 3 a 6 | até 3 |
+| Gestão, sênior e especialista | 3 a 6 | até 3 |
+| Técnicas e tecnologia (pleno e sênior) | 3 a 6 | até 4 |
+
+As adicionais podem ser feitas até 2 vezes por pergunta principal. **Perguntas em demasia derrubam a adesão** — você troca profundidade por candidatos que não concluem.
+
+### 5. Ajuste a quantidade de tentativas
+
+| Perfil da vaga | Tentativas | O que a régua comunica |
+|---|---|---|
+| Operacional e cargos de entrada | 2 a 3 | Espaço para o nervosismo |
+| Middle level e gestão tática | 2 | Equilíbrio entre chance e objetividade |
+| Gestão estratégica, sênior e especialista | 1 | Assertividade é parte da avaliação |
+
+Tentativa não é complacência, é equidade: você dá ao candidato a mesma margem que daria numa entrevista presencial para aquele nível.
+
+### 6. Faça o ajuste fino no início do ranking
+
+A cada 10 candidatos iniciais, avalie se as notas estão coerentes. Os mais fortes estão bem avaliados? Os fracos estão recebendo notas menores? Algum critério pesa demais ou é pouco relevante? Critérios, perguntas e tentativas são ajustáveis a qualquer momento.
+
+### As 4 rotinas que precisam virar hábito
+
+1. Criar uma descrição de vaga robusta
+2. Fazer curadoria das perguntas e critérios
+3. Dimensionar perguntas e tentativas pela senioridade
+4. Calibrar os primeiros candidatos do ranking
+
+A DigAI não substitui o critério do recrutador. Ela potencializa.
+    `,
+  },
+  {
+    id: "art-16",
+    slug: "filtros-digai-priorizar-candidatos",
+    title: "Filtros na DigAI — como priorizar candidatos",
+    summary: "Os três filtros da plataforma, o que cada flag significa e em que ordem analisar para montar a shortlist.",
+    category: "boas-praticas",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["filtros", "pré-requisitos", "experiência", "provável leitura", "shortlist", "flags"],
+    tags: ["boas práticas", "filtros", "triagem"],
+    readTime: 5,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-15", "art-04"],
+    published: true,
+    content: `
+## Filtros na DigAI
+
+Os filtros existem para ajudar o recrutador a encontrar, com mais velocidade, os candidatos com maior aderência à vaga — sem nunca substituir a análise humana.
+
+### 1. Filtro de pré-requisitos
+
+Mostra o quanto o candidato atende aos requisitos definidos para a vaga.
+
+| Flag | Significado | Leitura |
+|---|---|---|
+| Verde | Atende todos os pré-requisitos | É prioridade |
+| Amarelo | Atende parcialmente | Pode ser oportunidade |
+| Vermelho | Não atende | Tende a não seguir |
+
+**Pode flexibilizar:** a vaga exige experiência em um sistema específico, mas o candidato já trabalhou com ferramentas semelhantes.
+
+**Não flexibilizar:** requisito legal, regulatório ou operacionalmente indispensável — certificação obrigatória, registro profissional, disponibilidade real de horário.
+
+> O erro mais comum é tratar todos os pré-requisitos com o mesmo peso.
+
+### 2. Filtro de experiência
+
+Classifica a leitura da IA sobre o nível de experiência entre baixa, média e alta.
+
+Para vagas plenas, seniores e especialistas, comece pelos de alta experiência. Para vagas de entrada, estágio e jovem aprendiz, o filtro funciona como leitura de aderência — e baixa experiência **não** deve ser interpretada automaticamente como ponto negativo.
+
+Nessas vagas, observe outros sinais: interesse pela oportunidade, clareza nas respostas, comunicação, disponibilidade, aderência comportamental, motivação, trajetória acadêmica e experiências informais ou projetos.
+
+### 3. Filtro de provável leitura
+
+Indica se há sinal de que o candidato leu ou preparou excessivamente a resposta. A DigAI foi desenhada para capturar respostas espontâneas: quando a resposta perde espontaneidade, a entrevista deixa de medir com precisão comunicação, raciocínio e repertório profissional.
+
+Flag vermelha significa alto grau de provável leitura — a recomendação é não seguir com o candidato.
+
+### A ordem de análise na prática
+
+1. Comece pelos candidatos **verdes** em pré-requisitos
+2. Priorize por **maior experiência** ou aderência
+3. **Elimine** os candidatos com provável leitura em vermelho
+4. Se a shortlist estiver pequena, avalie os **amarelos** — apenas com flexibilização real
+    `,
+  },
+  {
+    id: "art-17",
+    slug: "movimentacao-automatica-candidatos",
+    title: "Movimentação automática de candidatos",
+    summary: "Avance candidatos em lote por critérios, nota de corte ou os dois combinados — no Pipeline DigAI ou integrado à sua ATS.",
+    category: "gestao-de-vagas",
+    contentType: "tutorial",
+    difficulty: "intermediate",
+    targetPersona: ["rh", "admin"],
+    keywords: ["movimentação automática", "nota de corte", "critérios", "ATS", "pipeline", "automação"],
+    tags: ["automação", "pipeline", "ats"],
+    readTime: 8,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-18", "art-04"],
+    published: true,
+    content: `
+## Movimentação automática de candidatos
+
+Uma única ação move todos os candidatos que atendem aos parâmetros definidos — por critérios, por pontuação, ou por ambos.
+
+### Os dois cenários
+
+**Dentro do Pipeline DigAI** — mais flexibilidade: você move para a próxima etapa ou para outras etapas do fluxo, e pode encadear automações no mesmo movimento (agendamento automático por IA, coleta de documentos).
+
+**Integrado à sua ATS** — a DigAI sempre avança o candidato para a próxima etapa configurada. Funciona com Gupy, Greenhouse, SuccessFactors, PandaPé e Inhire.
+
+### Antes de automatizar
+
+Automação sem régua é volume sem qualidade. Dois elementos precisam estar definidos:
+
+1. **Critérios de seleção** — leitura provável (detectada / não detectada) e experiência (baixa / média / alta)
+2. **Nota de corte** — a régua de pontuação que define quem avança
+
+### Como escolher a nota de corte
+
+| Cenário da vaga | Nota | Efeito no funil |
+|---|---|---|
+| Vaga crítica ou de difícil preenchimento | 4 | Funil mais largo |
+| Operação em regime normal | 5 | Equilíbrio entre volume e qualidade |
+| Alto volume de candidaturas | 6 – 7 | Funil enxuto, alta aderência |
+
+Um comparativo real: mesma vaga, mesmos critérios. Com nota 6, **6 candidatos** atendiam a 100% dos parâmetros. Baixando para 5, o número subiu para **11** — uma ampliação de 83% com um único ponto.
+
+### Onde acionar
+
+Na etapa **Triagem com IA**, clique em **Movimentação com base em critérios** — o botão fica ao lado do Assistente IA, acima da lista de candidatos ranqueados.
+
+1. Abrir o painel (modal "Mover para próxima etapa")
+2. Definir critérios
+3. Definir a nota de corte — o contador atualiza na hora
+4. Confirmar
+
+> **Dica:** marque "Salvar aprovação automática com base nestes critérios" para que novos candidatos que atenderem aos parâmetros avancem sozinhos.
+
+### Como estruturar as etapas na sua ATS
+
+Crie uma etapa dedicada logo após a Entrevista Inteligente:
+
+**Entrevista Inteligente → Buffer / Análise → Avaliação humana → Contratação**
+
+Nomeie como fizer sentido na sua operação e configure-a preferencialmente sem visibilidade para o candidato — é um estágio operacional interno.
+
+> **Regra de ouro:** automatizou? Garanta que exista, logo depois, uma etapa clara onde esses candidatos serão avaliados.
+
+### Checklist antes de ativar
+
+- Critérios definidos refletindo os pré-requisitos reais da vaga
+- Nota de corte calibrada por perfil, volume e SLA
+- Contador conferido — o número faz sentido para a sua capacidade de avaliação
+- Etapa de destino criada
+- Fluxo de feedback definido para quem não avançou
+    `,
+  },
+  {
+    id: "art-18",
+    slug: "status-do-candidato",
+    title: "Status do candidato: o que fazer em cada um",
+    summary: "Pendente, Em andamento e Concluído — o que cada status libera, o que bloqueia e por que a nota só existe no final.",
+    category: "gestao-de-vagas",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["status", "pendente", "em andamento", "concluído", "nota", "etapa"],
+    tags: ["pipeline", "status", "operação"],
+    readTime: 6,
+    priority: 1,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-17", "art-04"],
+    published: true,
+    content: `
+## Status do candidato
+
+Antes de tudo: **Etapa** e **Status** são informações diferentes, em colunas diferentes.
+
+- **Etapa** — onde o candidato está no processo: Convidados, Triagem com IA, Em avaliação, Contratação (ou Desclassificados)
+- **Status** — a situação da tarefa que ele precisa cumprir: Pendente, Em andamento, Concluído
+
+Pense num prédio: a etapa diz em qual sala ele está; o status diz se ele já terminou o que precisava fazer ali. Os três status valem para **todas** as etapas.
+
+### Os três status, lado a lado
+
+| Status | Significa | Tem nota e ranking? | Posso mover? | De quem é a bola? |
+|---|---|---|---|---|
+| Pendente | Recebeu o convite, não começou | Não | Não | Candidato |
+| Em andamento | Está respondendo ou parou no meio | Não | Não | Candidato |
+| Concluído | Terminou a entrevista 100% | Sim | Sim | Você / RH |
+
+### Por que a nota só existe em Concluído
+
+A IA avalia a entrevista completa: precisa de todas as respostas para comparar o candidato com o que a vaga pede, gerar o score e posicioná-lo no ranking. Uma entrevista pela metade não gera nota pela metade — é o mesmo motivo pelo qual uma prova só é corrigida depois de entregue.
+
+### Pendente
+
+O convite foi enviado por WhatsApp e/ou e-mail, mas o candidato ainda não abriu o link. **Pendente não é erro, é espera.**
+
+**Você pode:** aguardar, reenviar o convite, cobrar pelo WhatsApp, conferir telefone e e-mail no cadastro (dado errado é a causa nº 1 de Pendente parado) e abrir o Histórico para ver quando o convite saiu.
+
+### Em andamento
+
+O candidato iniciou a entrevista e já respondeu uma ou mais perguntas, mas não finalizou. Não existe nota parcial nem percentual de conclusão, e a movimentação fica bloqueada **de propósito** — é uma proteção da qualidade da seleção.
+
+Siga trabalhando os candidatos Concluídos em paralelo; não pare a vaga por causa dele.
+
+### Concluído
+
+Agora você tem nota, posição no ranking, resumo com evidências e liberdade total de movimentação.
+
+**Você não pode:** refazer a entrevista pelo painel (fale com o seu CS), editar a nota da IA (é evidência auditável, não opinião), nem decidir apenas pela nota — ela organiza a fila, a decisão final é humana.
+
+> Concluído se refere à **tarefa**, não ao processo seletivo. É o começo do seu trabalho, não o fim.
+
+### Quando chamar a DigAI
+
+- O convite não consta no Histórico do candidato
+- O candidato afirma que finalizou e o status segue Em andamento
+- Um candidato Concluído está sem nota
+
+Nesses casos, envie nome, CPF e vaga para o seu Customer Success.
+    `,
+  },
+  {
+    id: "art-19",
+    slug: "whatsapp-numero-dedicado-manual",
+    title: "Manual do número de WhatsApp dedicado",
+    summary: "As 3 fases da configuração do WhatsApp Business API, os custos oficiais da Meta e como personalizar os textos da IA.",
+    category: "integracoes",
+    contentType: "article",
+    difficulty: "intermediate",
+    targetPersona: ["admin"],
+    keywords: ["whatsapp", "número dedicado", "meta", "business manager", "custos", "mensageria"],
+    tags: ["whatsapp", "integração", "configuração"],
+    readTime: 6,
+    priority: 3,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-10", "art-11"],
+    published: true,
+    content: `
+## Número de WhatsApp dedicado e personalizado
+
+Como configurar a conta WhatsApp Business com número dedicado, integrada à DigAI. Todo o preenchimento é feito pelo painel da DigAI.
+
+### Fase 1 — Pré-requisitos (antes da call)
+
+- **Login administrador do Facebook Business Manager**, com acesso total à conta que vai vincular o WhatsApp
+- **Número dedicado** (móvel ou fixo) que **nunca** pode ter tido WhatsApp ou WhatsApp Business antes
+- **Termos de Serviço** da empresa em página pública e ativa
+- **Política de Privacidade** em página pública e ativa — obrigatória para a aprovação do WhatsApp
+- **Logo** em boa resolução e o nome exatamente como a marca opera
+
+### Fase 2 — Configuração técnica (call guiada)
+
+Com os itens validados, o time DigAI conduz a call para validar a conta WhatsApp Business, configurar perfil, identidade e permissões, integrar o número à DigAI e garantir compliance e aprovação da Meta.
+
+### Fase 3 — Finalização
+
+O número fica ativo e operacional, pronto para automações e IA, sem risco de bloqueio ou retrabalho.
+
+### Custos de mensageria
+
+Com o WhatsApp Business API, a empresa passa a operar dentro das políticas oficiais da Meta e os custos de mensagens ativas passam a ser responsabilidade direta da contratante. **A DigAI não aplica markup.**
+
+| Tipo de conversa | Valor de referência (BR) |
+|---|---|
+| Recrutamento / utilidade | ~ R$ 0,03 a R$ 0,07 por conversa |
+| Marketing (início ativo pela empresa) | ~ R$ 0,15 a R$ 0,40 por conversa |
+| Serviço (resposta em até 24h) | Gratuita na janela de atendimento |
+
+A cobrança é **por conversa iniciada**, não por mensagem individual, e cada conversa tem janela de 24 horas.
+
+**Boas práticas:** definir limites de disparo por vaga ou campanha, monitorar o volume de conversas iniciadas e acompanhar o custo por contratação.
+
+### Personalização dos textos da IA
+
+Todo conteúdo variável — identificado entre colchetes — é fixo e não pode ser modificado. Apenas os textos fora dos colchetes são editáveis.
+
+1. Baixe a planilha de referência
+2. Altere apenas os textos permitidos
+3. Envie a planilha completa para o time DigAI
+
+**SLA de personalização:** 10 dias após o recebimento da planilha.
+    `,
+  },
 ];
 
 // ─── Utilitários ─────────────────────────────────────────────────────────────

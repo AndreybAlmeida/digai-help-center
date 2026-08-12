@@ -102,6 +102,33 @@ const LEARN: Record<string, [string, string, string]> = {
     "Usar o Partner User ID nas chamadas",
     "Remover dados conforme a LGPD",
   ],
+
+  // ─── Materiais vindos do Drive de conteúdo ──────────────────────────────────
+  "boas-praticas-uso-digai": [
+    "Escrever uma descrição de vaga que dá contexto à IA",
+    "Calibrar perguntas e tentativas por senioridade",
+    "Fazer o ajuste fino nos 10 primeiros do ranking",
+  ],
+  "filtros-digai-priorizar-candidatos": [
+    "Ler as flags verde, amarela e vermelha",
+    "Usar o filtro de experiência conforme a vaga",
+    "Aplicar a ordem de análise da shortlist",
+  ],
+  "movimentacao-automatica-candidatos": [
+    "Definir critérios e calibrar a nota de corte",
+    "Estruturar a etapa de destino na sua ATS",
+    "Fechar o ciclo com desclassificação e feedback",
+  ],
+  "status-do-candidato": [
+    "Diferenciar Etapa de Status no painel",
+    "Saber o que cada status libera e bloqueia",
+    "Resolver dúvidas antes de abrir chamado",
+  ],
+  "whatsapp-numero-dedicado-manual": [
+    "Reunir os pré-requisitos antes da call",
+    "Entender os custos de mensageria da Meta",
+    "Personalizar os textos da IA pela planilha",
+  ],
 };
 
 function assertLearn(slug: string): [string, string, string] {
