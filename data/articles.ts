@@ -1709,6 +1709,128 @@ Mudanças no roteiro levam **até 72 horas para entrar em vigor, e durante esse 
 Isso é diferente do SLA de personalização: o time DigAI leva até **10 dias** para aplicar as alterações solicitadas por planilha. As 72 horas são o tempo de propagação depois de aplicada.
     `,
   },
+  {
+    id: "art-30",
+    slug: "integracao-inhire",
+    title: "Integração InHire + DigAI",
+    summary: "Como funciona a integração via API em 3 etapas — criação de vagas, captura de candidatos e envio de resultados.",
+    category: "integracoes",
+    contentType: "article",
+    difficulty: "advanced",
+    targetPersona: ["admin"],
+    keywords: ["inhire", "integração", "api", "webhooks", "credenciais", "ats"],
+    tags: ["inhire", "integração", "api"],
+    readTime: 5,
+    priority: 4,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-24", "art-27"],
+    published: true,
+    content: `
+## Integração InHire + DigAI
+
+A integração acontece via comunicação entre APIs: do lado da InHire são configurados webhooks que disparam a cada atualização importante; do lado da DigAI, eventos são enviados para a API da InHire ao final do processo para entregar o resultado.
+
+### Etapa 1 — Criação de vagas
+
+As vagas são criadas pelo dashboard da InHire e precisam **obrigatoriamente** ter uma etapa personalizada com a palavra-chave **"entrevista inteligente"**.
+
+Em até **5 minutos**, uma triagem em rascunho é criada automaticamente no painel da DigAI com o mesmo nome. Essa triagem precisa ser revista por uma pessoa, que adiciona as perguntas, finaliza as configurações e publica.
+
+> **Atenção:** vagas que não tiverem a etapa cadastrada no momento da criação não serão duplicadas pela DigAI. Cuide da ortografia e de espaços excessivos no nome da etapa.
+
+**Onde posicionar:** a recomendação é inserir logo após a candidatura inicial, para que a entrevista da DigAI receba todos os candidatos.
+
+### Etapa 2 — Captura de candidatos
+
+Começa quando os candidatos são movidos para a etapa da DigAI. Em até **30 minutos**, eles são convidados a iniciar a triagem. Esta etapa não exige nenhuma configuração adicional — a partir daí, os próximos candidatos movidos já ficam aptos automaticamente.
+
+### Etapa 3 — Envio de resultados
+
+Após a triagem, o resultado é enviado à InHire via **tag e comentário** em até **5 minutos**. O comentário exibe a nota do candidato e um link para acessar detalhes e insights no dashboard da DigAI. O autor do comentário é o usuário criado para a integração.
+
+### Permissões necessárias
+
+São necessárias as credenciais de um usuário de API com as permissões corretas, que pode ser solicitado diretamente à InHire.
+
+> O ideal é um usuário **neutro**, não relacionado a nenhuma pessoa real da plataforma — todas as ações da integração levam a assinatura dele, inclusive os comentários.
+
+As credenciais **não são salvas**: por segurança, apenas o \`refreshToken\` fica no banco de dados. Tudo seguindo a documentação oficial da InHire e com o suporte oficial deles.
+
+### O que a integração acessa
+
+Apesar de o usuário de API ter permissões mais amplas, a integração faz apenas estas ações:
+
+| Ação | Endpoint |
+|---|---|
+| Autenticação | \`POST /refresh\` |
+| Visualizar vagas | \`GET /jobs\` · \`GET /jobs/{jobId}\` |
+| Criar comentários | \`POST /job-talents/talents/{jobTalentId}/activities\` |
+| Visualizar/criar tags | \`GET\` e \`POST /jobs/{jobId}/tags\` |
+| Criar webhooks | \`POST /integrations/webhooks\` |
+
+Os webhooks criados são dois: **JOB_ADDED**, disparado ao criar vagas, e **JOB_TALENT_STAGE_ADDED**, disparado ao avançar candidato.
+    `,
+  },
+  {
+    id: "art-31",
+    slug: "funcionalidades-da-plataforma",
+    title: "As funcionalidades da DigAI e o objetivo de cada uma",
+    summary: "Visão macro da plataforma em três camadas — criação da vaga, gestão de candidatos e aquisição — e o que cada recurso resolve.",
+    category: "posicionamento",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh", "gestor", "admin"],
+    keywords: ["funcionalidades", "plataforma", "visão geral", "hunting", "insights", "DNA HP", "job board"],
+    tags: ["plataforma", "visão geral", "produto"],
+    readTime: 9,
+    priority: 1,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-01", "art-23"],
+    published: true,
+    content: `
+## As funcionalidades da DigAI
+
+Uma visão macro da plataforma — do desenho da vaga à contratação, passando pela gestão de candidatos e pela busca ativa de talentos.
+
+> **Uma plataforma que cresce com o seu uso.** A DigAI respeita as integrações com ATSs, mas dentro dela é possível conduzir um processo de ponta a ponta. Quanto mais etapas você opera na plataforma, mais funções exclusivas são habilitadas — e mesmo gerindo o processo na ATS, ainda dá para aproveitar boa parte dos recursos.
+
+## 01 · Criação da vaga
+
+**Sobre a Vaga** — nível, modelo de trabalho, banco de talentos e configurações avançadas. A marcação *vaga afirmativa para PCD* alimenta dois pontos: permite que candidatos PCD filtrem vagas afirmativas e que o recrutador filtre rapidamente candidatos PCD na triagem.
+
+**Requisitos e Testes de Aptidão** — perguntas eliminatórias ou não-eliminatórias antes da entrevista. As não-eliminatórias geram faróis de decisão no ranking, úteis para compliance ou corte, e as respostas viram filtros. Os testes avaliam português, matemática, lógica, informática e outras categorias, podendo ser gerados pela IA com percentual mínimo de aprovação.
+
+**Perguntas da Entrevista com IA** — o roteiro e os critérios de cada pergunta, criados com auxílio da IA ou manualmente. Pelas configurações dá para calibrar o tempo de resposta e definir se o candidato recebe feedback personalizado.
+
+**Pipeline de Avaliação + Agendamento por IA** — o kanban onde você ordena as etapas do processo (coleta de documentos, entrevista com gestor, fit cultural, case prático). O agendamento automático é um módulo exclusivo: a IA contata os candidatos que atendem aos critérios, consulta o calendário, oferece e confirma horários e faz follow-up.
+
+**Coleta de Documentos por IA** — para quem fecha a contratação na DigAI: a IA solicita os documentos, valida e importa via API para os sistemas de folha de pagamento.
+
+**Job Post & Job Board** — a página pública da vaga, com Insights da IA atribuindo score de atratividade e feedback sobre a descrição. Toda vaga ganha ambiente no Job Board (jobs.digai.ai), com selo de empresa verificada, funcionando como funil adicional de aquisição.
+
+**Perfil de Alta Performance (DNA HP)** — módulo contratado à parte. Mapeia o DNA de alta performance da própria empresa entrevistando quem já trabalha nela, estruturando dimensões como Estrutura Lógica, Ownership, Resolução de Problemas e Agilidade de Aprendizado. Constrói uma IA personalizada que prevê, com cerca de 70% de assertividade, se o candidato tende a performar bem.
+
+## 02 · Gestão de candidatos
+
+**Pipeline Inteligente de Talentos** — funil visual com as etapas Todos, Convidados, Triagem com IA, Em avaliação, Contratação e Desclassificados. Cada candidato aparece com canais de contato, etapa e status, com rastreamento de engajamento multicanal (e-mail entregue, WhatsApp entregue/lido, sem interesse) e histórico completo.
+
+**Ranking Inteligente & Detalhe do Candidato** — entrevista gravada com transcrição, pontuação da IA por etapa (ajustável) e análise qualitativa com pontos fortes e lacunas, num ranking ordenado por aderência.
+
+> Via API, apenas parte dessas informações vai para as ATSs — a leitura completa está na DigAI.
+
+**DigAI Insights** — copiloto conversacional dedicado ao processo do recrutador. Lê toda a vaga e seus candidatos, e responde livremente: se vale avançar com alguém e por quê, quais os pontos fortes e fracos, ou qual candidato tem mais fit.
+
+**Ações Automatizadas por Critérios** — movimenta candidatos entre etapas conforme nota de corte, leitura provável, nível de experiência e pré-requisitos. Pode ser salva como aprovação automática e passa a rodar continuamente, encadeando agendamento e coleta de documentos. Na ATS, a movimentação reflete após a entrevista inteligente.
+
+**Movimentar Candidatos** — avançar entre etapas da vaga ou copiar o candidato para outra vaga ou workspace, aproveitando toda a avaliação já feita. A cópia entre triagens é exclusiva de quem opera na DigAI.
+
+## 03 · Aquisição & Hunting
+
+**Hunting por IA** — a IA indexa todo o LinkedIn e permite busca numa base global ou na base interna da empresa. Em vez de busca booleana, você descreve o perfil conversando e recebe uma shortlist com insights. Em boa parte dos candidatos já existem dados de contato, e a IA aciona automaticamente por WhatsApp ou e-mail.
+
+**Verificar Interesse** — separa quem tem canal de contato válido de quem não tem. Para os primeiros, dispara o contato automático; para os demais, monta lista de verificação manual com mensagem pronta para copiar e atalho ao LinkedIn.
+    `,
+  },
 ];
 
 // ─── Utilitários ─────────────────────────────────────────────────────────────

@@ -186,6 +186,16 @@ const LEARN: Record<string, [string, string, string]> = {
     "Saber o que orientar quando o candidato trava",
     "Entender as regras de alteração do roteiro",
   ],
+  "integracao-inhire": [
+    "Criar a etapa com a palavra-chave na InHire",
+    "Entender os prazos de cada etapa da integração",
+    "Preparar o usuário de API com as permissões certas",
+  ],
+  "funcionalidades-da-plataforma": [
+    "Conhecer as três camadas da plataforma",
+    "Saber quais recursos exigem operar na DigAI",
+    "Entender o que a ATS recebe e o que fica só aqui",
+  ],
 };
 
 function assertLearn(slug: string): [string, string, string] {

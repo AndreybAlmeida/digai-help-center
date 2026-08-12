@@ -23,6 +23,7 @@ export const ARTIGO_PDF: Record<string, string> = {
   "templates-de-triagem": "Usando_Templates_DigAI_Gupy.pdf",
   "integracao-pandape": "Tutorial_Integracao_Pandape_DigAI.pdf",
   "social-recruiting-anuncios": "DigAI - Boas práticas de copy no Social Recruiting .pdf",
+  "funcionalidades-da-plataforma": "DigAI_Apresentacao_Plataforma (1).pdf",
 };
 
 /** Normaliza para casar apesar de espaço duplo, "(1)" e diferença de acento. */
