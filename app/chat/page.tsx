@@ -4,7 +4,7 @@ import ChatMessage from "@/components/chat/ChatMessage";
 import ChatSuggestions from "@/components/chat/ChatSuggestions";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import { Article } from "@/types/content";
-import { Bot, Loader2, MessageCircle, Send, Sparkles } from "lucide-react";
+import { Bot, Loader2, Send, Sparkles } from "lucide-react";
 import { useState as useStateInner } from "react";
 
 function AnaAvatarInline({ size }: { size: number }) {
@@ -23,7 +23,6 @@ function AnaAvatarInline({ size }: { size: number }) {
   );
 }
 import { useEffect, useRef, useState } from "react";
-import { SUPPORT_CONFIG } from "@/lib/config";
 
 interface Message {
   id: string;
@@ -83,10 +82,6 @@ export default function ChatPage() {
       setLoading(false);
     }
   };
-
-  const whatsappUrl = SUPPORT_CONFIG.whatsapp.enabled
-    ? `https://wa.me/${SUPPORT_CONFIG.whatsapp.phone.replace(/\D/g, "")}?text=${encodeURIComponent(SUPPORT_CONFIG.whatsapp.message)}`
-    : null;
 
   return (
     <div
@@ -148,27 +143,6 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {whatsappUrl && (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 12px",
-              borderRadius: "8px",
-              border: "1px solid var(--border)",
-              fontSize: "12px",
-              color: "var(--fg-muted)",
-              textDecoration: "none",
-            }}
-          >
-            <MessageCircle style={{ width: "13px", height: "13px", color: "#25D366" }} />
-            Suporte humano
-          </a>
-        )}
       </div>
 
       {/* Messages */}
@@ -265,11 +239,12 @@ export default function ChatPage() {
       </form>
 
       <p style={{ paddingBottom: "16px", textAlign: "center", fontSize: "11px", color: "var(--fg-subtle)", flexShrink: 0 }}>
-        ANA pode cometer erros.{" "}
+        ANA pode cometer erros. Para informações críticas, fale com o CS responsável no grupo
+        de WhatsApp da sua conta —{" "}
         <a href="/contato" style={{ color: "var(--brand)", textDecoration: "none" }}>
-          Contate o suporte
-        </a>{" "}
-        para informações críticas.
+          ver canais de suporte
+        </a>
+        .
       </p>
     </div>
   );

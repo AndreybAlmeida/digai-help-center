@@ -1,7 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import TopNav from "@/components/layout/TopNav";
 import Providers from "@/components/shared/Providers";
-import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import { SITE_CONFIG } from "@/lib/config";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -57,7 +56,6 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
-          <WhatsAppButton />
         </Providers>
       </body>
     </html>

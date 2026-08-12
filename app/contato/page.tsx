@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/layout/Breadcrumb";
-import { SUPPORT_CONFIG } from "@/lib/config";
+import { SUPPORT_CHANNEL_NOTE, SUPPORT_CONFIG } from "@/lib/config";
 import { Bot, Clock, ExternalLink, Mail, MessageCircle, Ticket } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -10,20 +10,6 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    description: "Atendimento rápido pelo WhatsApp Business. Ideal para dúvidas urgentes.",
-    detail: "Resposta em até 2 horas úteis",
-    cta: "Abrir WhatsApp",
-    iconBg: "rgba(37,211,102,0.1)",
-    iconColor: "#25D366",
-    btnBg: "#25D366",
-    btnColor: "#fff",
-    href: SUPPORT_CONFIG.whatsapp.enabled
-      ? `https://wa.me/${SUPPORT_CONFIG.whatsapp.phone.replace(/\D/g, "")}?text=${encodeURIComponent(SUPPORT_CONFIG.whatsapp.message)}`
-      : null,
-  },
   {
     icon: Mail,
     label: "E-mail",
@@ -77,6 +63,44 @@ export default function ContatoPage() {
           </Link>
           .
         </p>
+      </div>
+
+      {/* Canal principal de CS — orientação, sem acionamento direto. Não colocar
+          número nem link aqui: esta página é pública. */}
+      <div
+        style={{
+          marginBottom: "28px",
+          padding: "18px 20px",
+          borderRadius: "12px",
+          border: "1px solid var(--border-strong)",
+          background: "var(--bg-subtle)",
+          display: "flex",
+          gap: "16px",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            width: "42px",
+            height: "42px",
+            borderRadius: "10px",
+            background: "rgba(37,211,102,0.1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          <MessageCircle style={{ width: "18px", height: "18px", color: "#25D366" }} />
+        </div>
+        <div>
+          <h3 style={{ fontSize: "14px", fontWeight: 600, color: "var(--fg)" }}>
+            {SUPPORT_CHANNEL_NOTE.title}
+          </h3>
+          <p style={{ marginTop: "4px", fontSize: "13px", color: "var(--fg-muted)", lineHeight: 1.6 }}>
+            {SUPPORT_CHANNEL_NOTE.description}
+          </p>
+        </div>
       </div>
 
       {/* Channels */}

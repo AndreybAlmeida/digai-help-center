@@ -1,12 +1,12 @@
 // ─── Configuração de Canais de Suporte ───────────────────────────────────────
 // Edite este arquivo para configurar os canais de suporte da DigAI
 
+// Não existe canal de acionamento direto de CS por WhatsApp aqui, e não deve
+// voltar a existir: esta Central de Ajuda é pública, então um número exposto
+// vira porta de entrada para candidatos pedindo status de candidatura. O
+// suporte ao cliente acontece no grupo de WhatsApp da conta, com o CS
+// responsável — ver SUPPORT_CHANNEL_NOTE.
 export const SUPPORT_CONFIG = {
-  whatsapp: {
-    enabled: true,
-    phone: "+5511983869977",
-    message: "Olá! Preciso de ajuda com a DigAI.",
-  },
   email: {
     enabled: true,
     address: "suporte@digai.ai", // ← Substituir pelo e-mail real de suporte
@@ -16,6 +16,13 @@ export const SUPPORT_CONFIG = {
     enabled: false, // ← Ativar quando o sistema de tickets estiver disponível
     url: "",
   },
+};
+
+/** Texto único de orientação sobre o canal correto de suporte ao cliente. */
+export const SUPPORT_CHANNEL_NOTE = {
+  title: "Suporte ao cliente é no grupo da sua conta",
+  description:
+    "Dúvidas, solicitações e problemas devem ser tratados no grupo de WhatsApp da sua conta, onde o CS responsável pela DigAI já está. É por lá que o time acompanha o histórico e responde.",
 };
 
 // ─── Configuração da IA ───────────────────────────────────────────────────────
