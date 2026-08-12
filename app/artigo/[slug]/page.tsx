@@ -3,8 +3,9 @@ import RelatedContent from "@/components/article/RelatedContent";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import { getArticleBySlug } from "@/data/articles";
 import { getCategoryBySlug } from "@/data/categories";
+import { getPdfUrl } from "@/lib/content/downloads";
 import { contentTypeLabel, difficultyLabel, formatDate } from "@/lib/utils";
-import { Bot, Clock, ExternalLink, FileText, GraduationCap, Play } from "lucide-react";
+import { Bot, Clock, Download, ExternalLink, FileText, GraduationCap, Play } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -35,6 +36,9 @@ export default async function ArticlePage({
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) notFound();
+
+  // Resolvido em runtime: o botão passa a existir assim que o PDF for enviado.
+  const pdfUrl = await getPdfUrl(slug);
 
   const category = getCategoryBySlug(article.category);
   const ContentIcon = contentTypeIcon[article.contentType] || FileText;
@@ -92,6 +96,32 @@ export default async function ArticlePage({
             <Clock style={{ width: "12px", height: "12px" }} />
             {article.readTime} min de leitura
           </span>
+        )}
+
+        {/* Só aparece quando o PDF de origem já foi enviado pelo painel de
+            documentos — o vínculo é resolvido pelo nome do arquivo. */}
+        {pdfUrl && (
+          <a
+            href={pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "4px 12px",
+              borderRadius: "100px",
+              border: "1px solid var(--border)",
+              background: "var(--bg)",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "var(--brand)",
+              textDecoration: "none",
+            }}
+          >
+            <Download style={{ width: "12px", height: "12px" }} />
+            Baixar PDF
+          </a>
         )}
       </div>
 
