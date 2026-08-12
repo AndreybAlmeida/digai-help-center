@@ -11,6 +11,10 @@ export function formatDate(dateString: string): string {
     day: "2-digit",
     month: "long",
     year: "numeric",
+    // As datas são strings tipo "2026-03-15", interpretadas como meia-noite UTC.
+    // Sem fixar o fuso, o build (UTC) renderiza "15 de março" e o navegador
+    // em UTC-3 renderiza "14" — data errada e hydration mismatch em todo card.
+    timeZone: "UTC",
   });
 }
 

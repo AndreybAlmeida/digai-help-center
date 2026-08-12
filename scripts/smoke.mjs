@@ -4,9 +4,14 @@ const BASE = process.env.BASE || "http://localhost:3000";
 const browser = await chromium.launch();
 let fails = 0;
 
+// O build da Vercel roda em UTC e os usuários estão em UTC-3. Rodar o navegador
+// em America/Sao_Paulo é o que expõe hydration mismatch de data — rodando tudo
+// no mesmo fuso, esse tipo de bug só aparece em produção.
+const TZ = { timezoneId: "America/Sao_Paulo", locale: "pt-BR" };
+
 async function check(name, { route = "/", storage = {}, act = null, mobile = false } = {}) {
   const ctx = await browser.newContext(
-    mobile ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } : {}
+    mobile ? { ...TZ, viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } : { ...TZ }
   );
   const page = await ctx.newPage();
   const errors = [];
