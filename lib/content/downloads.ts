@@ -18,6 +18,9 @@ export const ARTIGO_PDF: Record<string, string> = {
   "movimentar-candidatos-entre-vagas": "Como movimentar candidatos entre vagas - DigAÍ.pdf",
   "background-check": "DigAI_Background_Check.pdf",
   "ia-de-agendamento": "DigAI - Guia IA de agendamento.pdf",
+  "integracao-gupy-tutorial-completo": "Tutorial_Integracao_Gupy_DigAI_Documento.pdf",
+  "avaliando-candidatos-gupy": "Avaliando_Candidatos_DigAI_Gupy.pdf",
+  "templates-de-triagem": "Usando_Templates_DigAI_Gupy.pdf",
 };
 
 /** Normaliza para casar apesar de espaço duplo, "(1)" e diferença de acento. */

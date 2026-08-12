@@ -149,6 +149,21 @@ const LEARN: Record<string, [string, string, string]> = {
     "Configurar convite automático por subetapa",
     "Ler os status de entrega e os indicadores",
   ],
+  "integracao-gupy-tutorial-completo": [
+    "Criar a etapa gatilho na Gupy com o nome exato",
+    "Ativar a triagem no workspace da DigAI",
+    "Resolver as falhas mais comuns da integração",
+  ],
+  "avaliando-candidatos-gupy": [
+    "Identificar a tag DigAI Realizado na lista",
+    "Acessar nota e resultado pela aba Timeline",
+    "Ler a análise da IA e as respostas por etapa",
+  ],
+  "templates-de-triagem": [
+    "Criar um template com perguntas geradas por IA",
+    "Copiar o código único do template",
+    "Vincular o código nos Dados Internos da Gupy",
+  ],
 };
 
 function assertLearn(slug: string): [string, string, string] {

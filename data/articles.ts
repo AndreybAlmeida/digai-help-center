@@ -282,7 +282,7 @@ Após identificar um candidato, clique em **Convidar para triagem** para enviar 
     updatedAt: "2026-03-01",
     relatedContent: ["art-08", "art-09"],
     featured: true,
-    published: true,
+    published: false,
     sourceUrl: "https://app.getdemo.com.br/d/37dd6e67-fc41-4ee5-8e1e-b3c0d67d2d6c",
     content: `
 ## Integrando DigAI com Gupy
@@ -1236,6 +1236,239 @@ Recebe o convite por WhatsApp e e-mail com botão de acesso ao portal, escolhe d
 4. Use o relatório de status antes de escalar ao suporte
 
 O recrutador pode ajustar limite de convites e data limite direto no painel, sem pausar a vaga, com efeito instantâneo para os candidatos.
+    `,
+  },
+  {
+    id: "art-24",
+    slug: "integracao-gupy-tutorial-completo",
+    title: "Integração Gupy + DigAI — tutorial completo",
+    summary: "Os dois passos para ativar a integração: configurar a etapa gatilho na Gupy e ativar a triagem na DigAI. Cerca de 15 minutos.",
+    category: "integracoes",
+    contentType: "tutorial",
+    difficulty: "intermediate",
+    targetPersona: ["rh", "admin"],
+    keywords: ["gupy", "integração", "ats", "entrevista inteligente", "timeline", "api"],
+    tags: ["gupy", "integração", "ats"],
+    readTime: 10,
+    priority: 1,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-25", "art-26"],
+    published: true,
+    content: `
+## Integração Gupy + DigAI
+
+A gestão de vagas que você já conhece na Gupy, com a triagem por IA no WhatsApp que a DigAI oferece. Quando um candidato avança para a etapa de entrevista, a DigAI entra em ação automaticamente — sem exportações e sem logins paralelos.
+
+**O fluxo:** criar a vaga na Gupy → configurar a triagem na DigAI → candidato avança na Gupy → nota e hiperlink retornam na Timeline.
+
+> A integração vale apenas para **vagas novas**. Não é possível incluí-la em triagens já ativas com candidatos.
+
+## Passo 1 — Ativando a integração na Gupy
+
+Preencha os campos da vaga normalmente. A integração começa em **Definição de Etapas** → role até **Incluir uma etapa**.
+
+### O nome da etapa é o campo mais crítico
+
+No campo "Dê um nome para esta etapa", digite **exatamente**:
+
+\`\`\`
+Entrevista Inteligente
+\`\`\`
+
+Não funciona com aspas ao redor, tudo em minúsculas, só a primeira palavra maiúscula, nem com espaço extra no final.
+
+> Esse nome é o gatilho que a API monitora. Qualquer diferença — mesmo um espaço invisível — faz a integração **falhar silenciosamente**, sem aviso de erro.
+
+### Os demais campos
+
+| Campo | O que preencher |
+|---|---|
+| Fase do funil | Sugestão: Avaliação testes – testes – dinâmicas e/ou cases |
+| Objetivo da etapa | Visível ao candidato — um texto bem escrito aumenta a adesão |
+| Mensagem ao candidato | Sugestão: selecione *Entrevista* |
+| **Recursos online** | **Sempre** "Não, farei a etapa presencialmente ou em outra plataforma" |
+
+> **Nunca** selecione "Sim, utilizarei recursos de perguntas adicionais, testes ou vídeos" — isso quebra a integração completamente.
+
+**Texto sugerido para o objetivo da etapa:**
+
+> Nesta etapa, você realizará uma entrevista com a nossa Inteligência Artificial pelo WhatsApp. A entrevista é obrigatória para seguir no processo seletivo e tem como objetivo conhecer melhor sua experiência, trajetória profissional, interesses e perfil para a vaga. Você deverá responder às perguntas por áudio, com o máximo de detalhes possível. Reserve cerca de 10 a 15 minutos em um local tranquilo.
+
+## Passo 2 — Ativando a triagem na DigAI
+
+Após publicar a vaga, a DigAI recebe nome e descrição automaticamente via API.
+
+1. **Encontre o Workspace** — menu lateral → *Workspaces*. Toda vaga da Gupy vai para **Integração Gupy - DigAI**
+2. **Encontre a vaga** — ela aparece com status *Inativo*, aguardando configuração
+3. **Edite a triagem** — clique na vaga → *Dados Gerais* → configure perguntas, pré-requisitos e critérios (cerca de 10 minutos)
+4. **Etapas de Avaliação** → crie o pipeline → **Salvar e Ativar**
+
+> Mesmo gerindo o processo pela Gupy, crie as Etapas de Avaliação na DigAI: elas desbloqueiam recursos exclusivos como o assistente de IA e o agendamento automático.
+
+**Dica:** mova a vaga para o seu workspace de gestão em *Mais Opções → Mover*, para facilitar o acompanhamento.
+
+## O que acontece depois
+
+| Quando | O quê |
+|---|---|
+| Imediato | E-mail de convite disparado |
+| Até 30 minutos | WhatsApp com o link da triagem |
+| Até 10 min após a entrevista | Nota e hiperlink na aba **Timeline** do card na Gupy |
+
+## Problemas comuns
+
+**Não encontro a vaga no workspace da DigAI** — em 99% dos casos o problema é a nomenclatura da etapa na Gupy. Confirme que está exatamente "Entrevista Inteligente".
+
+**O candidato não recebeu o link** — verifique se a triagem está com status *Ativo* na DigAI. Sem ativação, os disparos não acontecem mesmo com a Gupy correta.
+
+**A nota não aparece na Gupy** — aguarde até 10 minutos e procure na aba *Timeline*, não na visão principal do card.
+
+**Posso gerenciar tudo pela Gupy?** — Sim, com limitações. A Gupy recebe apenas nota e hiperlink. Ouvir os áudios, análises de IA em todas as etapas, agendamento por IA, coleta de documentos e background check ficam **exclusivamente na DigAI**. É regra de negócio, não limitação técnica.
+    `,
+  },
+  {
+    id: "art-25",
+    slug: "avaliando-candidatos-gupy",
+    title: "Avaliando candidatos na integração Gupy",
+    summary: "Como identificar quem já fez a triagem, acessar a nota pela Timeline e aprofundar a análise dentro da DigAI.",
+    category: "integracoes",
+    contentType: "tutorial",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["gupy", "avaliar candidatos", "timeline", "tag digai", "nota", "transcrição"],
+    tags: ["gupy", "avaliação", "integração"],
+    readTime: 7,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-24", "art-26"],
+    published: true,
+    content: `
+## Avaliando candidatos na integração Gupy
+
+Na etapa Entrevista Inteligente convivem candidatos que já fizeram a triagem e candidatos que ainda não fizeram. O que os separa é uma tag.
+
+### 1. Identificar quem já realizou
+
+Na Gupy, acesse a vaga e clique na aba **Entrevista Int...** para filtrar a lista.
+
+- **Realizou** — o candidato exibe a tag **DigAI: Realizado** ao lado do nome. Nota e hiperlink já disponíveis na Timeline
+- **Ainda não realizou** — está na etapa, mas sem a tag. Pode não ter recebido o link ou não ter concluído
+
+> **Atenção:** a tag *#Liberado* é gerada pela própria Gupy e não tem relação com a DigAI. A tag que indica triagem concluída é exclusivamente *DigAI: Realizado*.
+
+### 2. Acessar a nota pela Timeline
+
+Clique no card do candidato e abra a aba **Timeline**. É ali que a DigAI publica o resultado automaticamente, via Public API, junto com os demais eventos da candidatura — não há um campo exclusivo para o resultado na interface da Gupy.
+
+Localize o evento **"Public API adicionou o comentário"** e expanda. Aparecem dois dados:
+
+- **Nota** — pontuação arredondada, média ponderada das respostas de cada etapa
+- **"Acesse o resultado aqui"** — hiperlink que abre a tela completa na DigAI
+
+### 3. O resultado completo na DigAI
+
+A tela concentra tudo em um lugar:
+
+| Informação | O que traz |
+|---|---|
+| Pontuação | Nota geral calculada pela performance em cada etapa |
+| Dados cadastrais | Nome, e-mail, CPF, celular, LinkedIn e Leitura Provável |
+| Nível de Experiência | Classificação automática: Baixa, Média ou Alta |
+| Proficiência no Idioma | Nível de comunicação oral identificado nos áudios |
+| Pré-requisitos | Conformidade com os requisitos mínimos da vaga |
+| Perfil Profissional | Análise comportamental inferida pela IA |
+
+### A análise da IA
+
+Dividida em três blocos:
+
+- **Pontos fortes** — competências que se destacaram, conforme o perfil de vaga configurado
+- **Pontos de melhoria** — lacunas identificadas: falta de exemplos específicos, dificuldade em demonstrar impacto, respostas genéricas. Útil para calibrar uma eventual entrevista presencial
+- **Palavras-chave** — termos recorrentes que sintetizam o perfil e agilizam a comparação
+
+### Respostas por etapa
+
+Cada pergunta recebe uma **Pontuação da IA** individual, com dois recursos:
+
+- **Carregar áudio** — a gravação feita pelo candidato no WhatsApp
+- **Transcrição do áudio** — versão em texto, para leitura rápida
+
+Expandindo a etapa, aparece a **Análise Detalhada da IA** daquela resposta: o que foi bem respondido, o que ficou superficial, o que poderia ter sido aprofundado.
+
+> Os áudios **não** são enviados para a Gupy — ficam disponíveis apenas dentro da DigAI.
+    `,
+  },
+  {
+    id: "art-26",
+    slug: "templates-de-triagem",
+    title: "Usando Templates de triagem na DigAI",
+    summary: "Crie um modelo de entrevista uma vez e vincule a qualquer vaga da Gupy pelo código do template.",
+    category: "integracoes",
+    contentType: "tutorial",
+    difficulty: "intermediate",
+    targetPersona: ["rh", "admin"],
+    keywords: ["templates", "triagem", "gupy", "código da vaga", "dados internos", "padronização"],
+    tags: ["templates", "gupy", "padronização"],
+    readTime: 7,
+    priority: 3,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-24", "art-25"],
+    published: true,
+    content: `
+## Usando Templates de triagem
+
+Um template é um **modelo reutilizável de entrevista por IA**: você define perguntas, perfil do cargo, tentativas, idioma e tempo de resposta uma vez, e aplica em quantas vagas quiser.
+
+- **Padronização** — vagas do mesmo perfil recebem as mesmas perguntas e critérios; candidatos avaliados em igualdade de condições
+- **Velocidade** — configure uma vez, vincule em segundos a cada nova vaga
+- **Flexibilidade** — edite quando quiser; vagas já vinculadas seguem na versão anterior, sem impacto retroativo
+
+> **Template ≠ Vaga.** O template é o modelo; a vaga é onde ele é aplicado. Um único template pode servir a dezenas de vagas.
+
+### 1. Acesse a seção Templates
+
+Menu lateral → seção **Pessoas** → **Templates** → aba **Templates de triagem**.
+
+A outra aba, *Agendamento de entrevistas*, é para templates de agendamento — não use para triagem.
+
+### 2. Crie o template com "Vaga com IA"
+
+Clique em **+ Criar template** no canto superior direito e selecione **Vaga com IA** — a IA gera as perguntas automaticamente com base no cargo e nas configurações. É o tipo recomendado para a maioria das vagas operacionais e comerciais.
+
+| Campo | Como preencher |
+|---|---|
+| Título | Descritivo: "Atendente Retenção SP", "Especialista Vendas — Comportamental" |
+| Quantidade de perguntas | Slider de 1 a 10. Operacional: 3 a 5. Técnico: até 7 |
+| Inclinação | Entre Técnico e Comportamental, conforme o perfil |
+| Tempo de resposta | Padrão 120s. Aumente para respostas mais elaboradas |
+| SLA de encerramento | Dias após os quais a triagem encerra automaticamente |
+| Limite de tentativas | Padrão 1. Aumente só com justificativa de negócio |
+
+> **Nível (senioridade) e Idioma** impactam diretamente na geração das perguntas. Perguntas para Júnior são diferentes das de Sênior.
+
+### 3. Copie o código do template
+
+Cada template recebe um **Código único e imutável** (ex.: \`7181\`) — ele não muda mesmo que você edite o template depois. Clique no ícone de cópia ao lado do número.
+
+> Copie antes de sair da tela. Se precisar, cole num bloco de notas antes de abrir a Gupy.
+
+### 4. Cole o código na Gupy
+
+Na vaga, menu lateral → **Dados internos** → campo **Código da vaga**.
+
+O campo já vem preenchido com um código padrão da Gupy (ex.: \`0646-9405645\`). **Não apague.** Posicione o cursor ao final, digite **exatamente um traço** — sem espaço antes ou depois — e cole o código do template:
+
+\`\`\`
+0646-9405645-7181
+\`\`\`
+
+Ao receber um candidato pela integração, a DigAI lê o Código da vaga e extrai o sufixo após o último traço. É esse número que identifica qual template aplicar.
+
+### O que esperar
+
+Na Definição de Etapas da Gupy, a **Etapa 2 — Entrevista Inteligente** aparece como "Presencial ou fora da plataforma". Isso é esperado: indica que a avaliação acontece fora da Gupy, conduzida pela DigAI via WhatsApp.
+
+A partir daí, candidatos que chegam à etapa recebem o link automaticamente — sem ação adicional do recrutador para cada um.
     `,
   },
 ];
