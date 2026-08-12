@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AccordionItem } from "@/components/ui/Accordion";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import RelatedItems from "@/components/faq/RelatedItems";
-import { initStore, getItemsByTipo, searchKnowledge } from "@/lib/knowledgeStore";
+import { initStore, getItemsByTipo } from "@/lib/knowledgeStore";
 import { KnowledgeItem, KnowledgeCategorySlug } from "@/types/knowledge";
 import { Bot, Search } from "lucide-react";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function FAQPage() {
   const [allItems, setAllItems] = useState<KnowledgeItem[]>([]);
 
   useEffect(() => {
-    fetch("/knowledge-export.json")
+    fetch("/api/knowledge/items")
       .then((r) => r.json())
       .then((data) => {
         const items: KnowledgeItem[] = (data.items ?? []).filter(
@@ -44,8 +44,27 @@ export default function FAQPage() {
       });
   }, []);
 
+  // Busca sobre os itens já carregados da API. Antes isso usava searchKnowledge(),
+  // que lê o localStorage no corpo do render — resultado divergente da lista
+  // exibida e hydration mismatch de brinde.
   const searched =
-    query.trim().length >= 2 ? searchKnowledge(query, 30).filter((i) => i.tipo === "faq") : allItems;
+    query.trim().length < 2
+      ? allItems
+      : (() => {
+          const q = query.trim().toLowerCase();
+          return allItems
+            .map((item) => {
+              let score = 0;
+              if ((item.pergunta ?? "").toLowerCase().includes(q)) score += 3;
+              if ((item.palavrasChave ?? []).some((k) => (k ?? "").toLowerCase().includes(q))) score += 2;
+              if ((item.resposta ?? "").toLowerCase().includes(q)) score += 1;
+              return { item, score };
+            })
+            .filter(({ score }) => score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 30)
+            .map(({ item }) => item);
+        })();
 
   const filtered =
     categoryFilter === "all"

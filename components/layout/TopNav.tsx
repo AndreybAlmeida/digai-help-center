@@ -82,7 +82,7 @@ export default function TopNav() {
         {!isMobile && (
           <nav style={{ display: "flex", alignItems: "center", gap: "4px" }}>
             {navLinks.map(({ href, label }) => {
-              const active = pathname.startsWith(href);
+              const active = pathname?.startsWith(href) ?? false;
               return (
                 <Link
                   key={href}

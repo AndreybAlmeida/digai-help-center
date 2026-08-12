@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://digaihelp.com"),
   title: {
     default: "DigAI — The First Talent Intelligence Platform in Brazil",
     template: `%s — Central de Ajuda DigAI`,

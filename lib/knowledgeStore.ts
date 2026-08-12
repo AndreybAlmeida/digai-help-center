@@ -7,12 +7,39 @@ const STORAGE_KEY = "digai_knowledge";
 
 // ─── Internal helpers ────────────────────────────────────────────────────────
 
+/**
+ * Normaliza um item vindo do storage. Itens gerados/importados podem chegar
+ * sem `palavrasChave` ou sem texto, e os consumidores fazem `.toLowerCase()` /
+ * `.some()` direto — sem isso, um único item torto derruba a página inteira.
+ */
+function normalizeItem(item: Partial<KnowledgeItem>): KnowledgeItem {
+  return {
+    ...item,
+    pergunta: item.pergunta ?? "",
+    resposta: item.resposta ?? "",
+    palavrasChave: Array.isArray(item.palavrasChave) ? item.palavrasChave : [],
+    relacionados: Array.isArray(item.relacionados) ? item.relacionados : [],
+  } as KnowledgeItem;
+}
+
 function readStore(): KnowledgeStore {
   if (typeof window === "undefined") return knowledgeStoreInitial;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return knowledgeStoreInitial;
-    return JSON.parse(raw) as KnowledgeStore;
+
+    const parsed = JSON.parse(raw) as Partial<KnowledgeStore>;
+    // JSON válido não garante shape válido: `{}`, `[]` ou `{"items":null}`
+    // passariam pelo try/catch e explodiriam em todos os consumidores.
+    if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.items)) {
+      return knowledgeStoreInitial;
+    }
+
+    return {
+      items: parsed.items.filter((i) => i && typeof i === "object" && i.id).map(normalizeItem),
+      lastUpdated: parsed.lastUpdated ?? knowledgeStoreInitial.lastUpdated,
+      version: typeof parsed.version === "number" ? parsed.version : 0,
+    };
   } catch {
     return knowledgeStoreInitial;
   }

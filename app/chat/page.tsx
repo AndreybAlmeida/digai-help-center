@@ -38,8 +38,11 @@ export default function ChatPage() {
   const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => endRef.current?.scrollIntoView({ behavior: "smooth" });
-  useEffect(scrollToBottom, [messages, loading]);
+  // Corpo em bloco de propósito: no Chrome 151+ scrollIntoView() devolve uma Promise,
+  // e um effect que retorna algo que não é função quebra o app no cleanup do React.
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;

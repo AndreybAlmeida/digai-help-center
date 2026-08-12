@@ -6,7 +6,7 @@ import { AccordionItem } from "@/components/ui/Accordion";
 import RelatedItems from "@/components/faq/RelatedItems";
 import { getArticlesByCategory } from "@/data/articles";
 import { getCategoryBySlug } from "@/data/categories";
-import { initStore, getItemsByCategoria } from "@/lib/knowledgeStore";
+import { initStore, getItemsByCategoria, getItemsByTipo } from "@/lib/knowledgeStore";
 import { KnowledgeItem, KnowledgeCategorySlug } from "@/types/knowledge";
 import { ContentType } from "@/types/content";
 import { Bot, CircleHelp } from "lucide-react";
@@ -28,7 +28,6 @@ export default function CategoryPage({
 }) {
   const { slug } = use(params);
   const category = getCategoryBySlug(slug);
-  if (!category) notFound();
 
   const allArticles = getArticlesByCategory(slug);
   const [filter, setFilter] = useState("all");
@@ -40,21 +39,30 @@ export default function CategoryPage({
   const cardItems = knowledgeItems.filter((i) => i.tipo !== "faq");
 
   useEffect(() => {
-    fetch("/knowledge-export.json")
+    fetch("/api/knowledge/items")
       .then((r) => r.json())
       .then((data) => {
-        const items: KnowledgeItem[] = (data.items ?? []).filter(
-          (i: KnowledgeItem) => i.publicado && i.categoria === slug
+        const allPublished: KnowledgeItem[] = (data.items ?? []).filter(
+          (i: KnowledgeItem) => i.publicado
         );
+        // "faq" slug shows ALL faq-type items across every category
+        const items = slug === "faq"
+          ? allPublished.filter((i) => i.tipo === "faq")
+          : allPublished.filter((i) => i.categoria === slug);
         setKnowledgeItems(items);
       })
       .catch(() => {
         initStore();
-        setKnowledgeItems(
-          getItemsByCategoria(slug as KnowledgeCategorySlug).filter((i) => i.publicado)
-        );
+        const fallback = slug === "faq"
+          ? getItemsByTipo("faq").filter((i) => i.publicado)
+          : getItemsByCategoria(slug as KnowledgeCategorySlug).filter((i) => i.publicado);
+        setKnowledgeItems(fallback);
       });
   }, [slug]);
+
+  // Depois de todos os hooks — chamar notFound() antes deles tornaria a ordem
+  // dos hooks condicional, que é exatamente o que o React proíbe.
+  if (!category) notFound();
 
   const filtered =
     filter === "all"
@@ -84,15 +92,21 @@ export default function CategoryPage({
           {category.description}
         </p>
         <p style={{ marginTop: "4px", fontSize: "12px", color: "var(--fg-subtle)" }}>
-          {allArticles.length + cardItems.length} {allArticles.length + cardItems.length === 1 ? "artigo" : "artigos"}
-          {faqItems.length > 0 && (
-            <span> · {faqItems.length} {faqItems.length === 1 ? "pergunta" : "perguntas"}</span>
+          {slug === "faq" ? (
+            <span>{faqItems.length} {faqItems.length === 1 ? "pergunta" : "perguntas"}</span>
+          ) : (
+            <>
+              {allArticles.length + cardItems.length} {allArticles.length + cardItems.length === 1 ? "artigo" : "artigos"}
+              {faqItems.length > 0 && (
+                <span> · {faqItems.length} {faqItems.length === 1 ? "pergunta" : "perguntas"}</span>
+              )}
+            </>
           )}
         </p>
       </div>
 
-      {/* Articles section */}
-      {allArticles.length > 0 && (
+      {/* Articles section — hidden on FAQ category (accordion-only page) */}
+      {slug !== "faq" && allArticles.length > 0 && (
         <>
           <div style={{ display: "flex", gap: "4px", marginBottom: "24px" }}>
             {typeOptions.map((opt) => (
@@ -140,8 +154,8 @@ export default function CategoryPage({
         </>
       )}
 
-      {/* Knowledge cards (tutorial, onboarding, boas-praticas, api) */}
-      {cardItems.length > 0 && (
+      {/* Knowledge cards (tutorial, onboarding, boas-praticas, api) — not on FAQ page */}
+      {slug !== "faq" && cardItems.length > 0 && (
         <div style={{ marginBottom: "40px" }}>
           <div style={{ display: "grid", gap: "10px", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}>
             {cardItems.map((item) => {
@@ -261,7 +275,7 @@ export default function CategoryPage({
       )}
 
       {/* Empty state when no articles AND no knowledge items */}
-      {allArticles.length === 0 && knowledgeItems.length === 0 && cardItems.length === 0 && (
+      {allArticles.length === 0 && knowledgeItems.length === 0 && (
         <div
           style={{
             borderRadius: "12px",

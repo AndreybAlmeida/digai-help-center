@@ -1,17 +1,29 @@
 "use client";
 
 import { getItemById } from "@/lib/knowledgeStore";
+import { KnowledgeItem } from "@/types/knowledge";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface RelatedItemsProps {
   ids?: string[];
 }
 
 export default function RelatedItems({ ids }: RelatedItemsProps) {
-  if (!ids || ids.length === 0) return null;
+  const [items, setItems] = useState<KnowledgeItem[]>([]);
 
-  const items = ids.map((id) => getItemById(id)).filter(Boolean);
+  // getItemById lê localStorage. Fazer isso no corpo do render dá saída
+  // diferente no servidor e no client — hydration mismatch garantido.
+  useEffect(() => {
+    if (!ids || ids.length === 0) {
+      setItems([]);
+      return;
+    }
+    setItems(ids.map((id) => getItemById(id)).filter((i): i is KnowledgeItem => Boolean(i)));
+  }, [ids]);
+
+  if (!ids || ids.length === 0) return null;
   if (items.length === 0) return null;
 
   return (
@@ -22,8 +34,8 @@ export default function RelatedItems({ ids }: RelatedItemsProps) {
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {items.map((item) => (
           <Link
-            key={item!.id}
-            href={`/faq#${item!.id}`}
+            key={item.id}
+            href={`/faq#${item.id}`}
             style={{
               display: "flex",
               alignItems: "center",
@@ -35,7 +47,7 @@ export default function RelatedItems({ ids }: RelatedItemsProps) {
             }}
           >
             <ArrowRight style={{ width: "12px", height: "12px", flexShrink: 0 }} />
-            {item!.pergunta}
+            {item.pergunta}
           </Link>
         ))}
       </div>

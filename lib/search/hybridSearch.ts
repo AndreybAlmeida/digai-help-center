@@ -1,5 +1,3 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { knowledgeSeed } from "@/data/knowledgeBase";
 import type { KnowledgeItem } from "@/types/knowledge";
 
@@ -8,12 +6,25 @@ export interface ContextItem {
   label: string; // "[FAQ]" or "[DOC: filename, p.N]"
   pergunta?: string;
   content: string;
+  url?: string; // relative URL to the relevant page
 }
 
 // ─── Lexical search (mantém lógica atual) ─────────────────────────────────────
 
 async function loadKnowledgeItems(): Promise<KnowledgeItem[]> {
   try {
+    if (process.env.DATABASE_URL) {
+      const { loadPublishedKnowledge } = await import("@/lib/db/queries");
+      const items = await loadPublishedKnowledge();
+      if (items.length > 0) return items as KnowledgeItem[];
+    }
+  } catch {
+    // fallback
+  }
+  // Fallback: read from file (local dev before first publish)
+  try {
+    const { readFile } = await import("fs/promises");
+    const { join } = await import("path");
     const filePath = join(process.cwd(), "public", "knowledge-export.json");
     const raw = await readFile(filePath, "utf-8");
     const data = JSON.parse(raw);
@@ -27,14 +38,20 @@ async function loadKnowledgeItems(): Promise<KnowledgeItem[]> {
 function lexicalSearch(query: string, items: KnowledgeItem[], limit = 3): KnowledgeItem[] {
   const q = query.toLowerCase();
   const scored = items.map((item) => {
+    // Campos podem chegar nulos do banco (ex.: palavras_chave nullable) — sem
+    // as guardas, um item incompleto derruba toda a rota /api/chat.
+    const pergunta = (item.pergunta ?? "").toLowerCase();
+    const resposta = (item.resposta ?? "").toLowerCase();
+    const chaves = Array.isArray(item.palavrasChave) ? item.palavrasChave : [];
+
     let score = 0;
-    if (item.pergunta.toLowerCase().includes(q)) score += 3;
-    if (item.palavrasChave.some((k) => k.toLowerCase().includes(q))) score += 2;
-    if (item.resposta.toLowerCase().includes(q)) score += 1;
+    if (pergunta.includes(q)) score += 3;
+    if (chaves.some((k) => (k ?? "").toLowerCase().includes(q))) score += 2;
+    if (resposta.includes(q)) score += 1;
     const words = q.split(/\s+/).filter((w) => w.length > 2);
     for (const word of words) {
-      if (item.pergunta.toLowerCase().includes(word)) score += 1;
-      if (item.palavrasChave.some((k) => k.toLowerCase().includes(word))) score += 0.5;
+      if (pergunta.includes(word)) score += 1;
+      if (chaves.some((k) => (k ?? "").toLowerCase().includes(word))) score += 0.5;
     }
     return { item, score };
   });
@@ -77,11 +94,15 @@ export async function findRelevantContextHybrid(query: string, k = 6): Promise<C
   const results: ContextItem[] = [];
 
   for (const item of faqItems) {
+    const url = item.tipo === "faq"
+      ? `/categoria/${item.categoria}`
+      : `/categoria/${item.categoria}`;
     results.push({
       source: "faq",
       label: "[FAQ]",
       pergunta: item.pergunta,
       content: `P: ${item.pergunta}\nR: ${item.resposta}`,
+      url,
     });
   }
 
@@ -99,6 +120,9 @@ export async function findRelevantContextHybrid(query: string, k = 6): Promise<C
 
 export function formatHybridContext(items: ContextItem[]): string {
   return items
-    .map((item) => `${item.label}\n${item.content}`)
+    .map((item) => {
+      const urlLine = item.url ? `\nURL: ${item.url}` : "";
+      return `${item.label}${urlLine}\n${item.content}`;
+    })
     .join("\n\n---\n\n");
 }
