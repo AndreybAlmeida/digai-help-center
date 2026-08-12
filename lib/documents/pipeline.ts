@@ -6,13 +6,13 @@ import {
   deleteFaqsByDocumentId,
   getDocumentById,
   getPublishedGeneratedFaqs,
+  loadPublishedKnowledge,
+  savePublishedKnowledge,
 } from "@/lib/db/queries";
 import { extractText } from "./parser";
 import { chunkText } from "./chunker";
 import { embedBatch } from "./embeddings";
 import { generateFaqsFromDocument } from "./faqGenerator";
-import { writeFile } from "fs/promises";
-import { join } from "path";
 import { knowledgeSeed } from "@/data/knowledgeBase";
 import type { KnowledgeItem } from "@/types/knowledge";
 
@@ -81,7 +81,8 @@ export async function processDocument(documentId: string): Promise<void> {
       faqs_generated_count: faqs.length,
     });
 
-    // Auto-publish: merge seed + all generated FAQs into knowledge-export.json
+    // Publica na base que a ANA lê. Se falhar aqui, o documento vai para
+    // 'erro' — antes a falha era engolida e o material sumia sem aviso.
     await autoPublishKnowledge();
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
@@ -90,37 +91,42 @@ export async function processDocument(documentId: string): Promise<void> {
   }
 }
 
-async function autoPublishKnowledge(): Promise<void> {
-  try {
-    const generatedRows = await getPublishedGeneratedFaqs();
-    const generatedItems: KnowledgeItem[] = generatedRows.map((row) => ({
-      id: row.id,
-      pergunta: row.pergunta,
-      resposta: row.resposta,
-      categoria: row.categoria as KnowledgeItem["categoria"],
-      palavrasChave: row.palavras_chave,
-      tipo: row.tipo as KnowledgeItem["tipo"],
-      nivel: row.nivel as KnowledgeItem["nivel"],
-      updatedAt: new Date(row.created_at).toISOString().slice(0, 10),
-      publicado: true,
-    }));
+/**
+ * Publica as FAQs geradas na base que a ANA realmente lê.
+ *
+ * Antes, esta função escrevia só em `public/knowledge-export.json`. O
+ * filesystem da Vercel é efêmero: a escrita "funcionava" (sem erro), mas o
+ * arquivo desaparecia no fim da invocação — e o `catch` engolia qualquer falha.
+ * Resultado: as FAQs ficavam em `generated_faqs` e nunca chegavam a
+ * `knowledge_published`, que é a fonte de /api/knowledge/items e da busca da
+ * ANA. 114 de 185 FAQs estavam invisíveis quando isso foi descoberto.
+ *
+ * O merge preserva o que não veio deste pipeline (seed e itens ingeridos à
+ * mão): só as entradas `ki-doc-*` são substituídas, para reprocessar um
+ * documento não duplicar nem apagar conteúdo de outra origem.
+ */
+export async function autoPublishKnowledge(): Promise<{ total: number; geradas: number }> {
+  const generatedRows = await getPublishedGeneratedFaqs();
+  const generatedItems: KnowledgeItem[] = generatedRows.map((row) => ({
+    id: row.id,
+    pergunta: row.pergunta,
+    resposta: row.resposta,
+    categoria: row.categoria as KnowledgeItem["categoria"],
+    palavrasChave: row.palavras_chave,
+    tipo: row.tipo as KnowledgeItem["tipo"],
+    nivel: row.nivel as KnowledgeItem["nivel"],
+    updatedAt: new Date(row.created_at).toISOString().slice(0, 10),
+    publicado: true,
+  }));
 
-    const seedPublished = knowledgeSeed.filter((i) => i.publicado);
-    const generatedIds = new Set(generatedItems.map((i) => i.id));
-    const merged = [
-      ...seedPublished.filter((i) => !generatedIds.has(i.id)),
-      ...generatedItems,
-    ];
+  const atuais = (await loadPublishedKnowledge()) as KnowledgeItem[];
+  const base = atuais.length > 0 ? atuais : knowledgeSeed.filter((i) => i.publicado);
 
-    const payload = {
-      items: merged,
-      lastUpdated: new Date().toISOString().slice(0, 10),
-      count: merged.length,
-    };
+  // Tudo que não é gerado por documento é preservado como está.
+  const preservados = base.filter((i) => !String(i.id).startsWith("ki-doc-"));
 
-    const filePath = join(process.cwd(), "public", "knowledge-export.json");
-    await writeFile(filePath, JSON.stringify(payload, null, 2), "utf-8");
-  } catch (err) {
-    console.error("[autoPublish] Failed to update knowledge-export.json:", err);
-  }
+  const merged = [...preservados, ...generatedItems];
+  await savePublishedKnowledge(merged);
+
+  return { total: merged.length, geradas: generatedItems.length };
 }

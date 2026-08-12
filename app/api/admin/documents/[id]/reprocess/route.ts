@@ -4,6 +4,14 @@ import { after } from "next/server";
 import { getDocumentById } from "@/lib/db/queries";
 import { processDocument } from "@/lib/documents/pipeline";
 
+/**
+ * O processamento roda dentro de after(), e o tempo dele conta para a duração
+ * da função. Sem isto, o padrão curto da Vercel matava a invocação no meio de
+ * PDFs grandes — e como o processo é morto pela plataforma, o catch nunca
+ * roda: o documento ficava preso em "processando" para sempre, sem erro.
+ */
+export const maxDuration = 300;
+
 async function isAuthenticated(): Promise<boolean> {
   const cookieStore = await cookies();
   return cookieStore.get("admin_auth")?.value === "1";

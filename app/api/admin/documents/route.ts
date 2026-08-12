@@ -5,6 +5,14 @@ import { insertDocument, getDocuments } from "@/lib/db/queries";
 import { after } from "next/server";
 import { processDocument } from "@/lib/documents/pipeline";
 
+/**
+ * O processamento roda dentro de after(), e o tempo dele conta para a duração
+ * da função. Sem isto, o padrão curto da Vercel matava a invocação no meio de
+ * PDFs grandes — e como o processo é morto pela plataforma, o catch nunca
+ * roda: o documento ficava preso em "processando" para sempre, sem erro.
+ */
+export const maxDuration = 300;
+
 const ALLOWED_MIMES = [
   "application/pdf",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",

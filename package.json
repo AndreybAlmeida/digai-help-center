@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "smoke": "node scripts/smoke.mjs",
-    "qa": "node scripts/qa-v2.mjs"
+    "qa": "node scripts/qa-v2.mjs",
+    "docs": "node scripts/documentos-status.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.79.0",
