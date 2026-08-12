@@ -1647,6 +1647,68 @@ Mesmo orçamento, resultado **até 8× diferente**. O que muda não é a verba �
 **Nunca:** frases de marca vazias ("vem ser", "protagonista") · local vago ("na sua região") · encher a arte de requisitos · fundo poluído · cargo escondido no texto · peça só de marca · mais de um CTA ou vários links.
     `,
   },
+  {
+    id: "art-29",
+    slug: "jornada-do-candidato-whatsapp",
+    title: "A entrevista pelo WhatsApp: a jornada do candidato",
+    summary: "O que a ANA fala com o candidato do início ao fim, o que é obrigatório, o que dá para pular e as regras de alteração do roteiro.",
+    category: "entrevista-inteligente",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["candidato", "whatsapp", "entrevista", "áudio", "acessibilidade", "tentativas", "feedback"],
+    tags: ["entrevista", "candidato", "experiência"],
+    readTime: 6,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-23", "art-18"],
+    published: true,
+    content: `
+## A jornada do candidato
+
+Saber exatamente o que a ANA fala com o candidato ajuda o recrutador a responder dúvidas sem escalar para o suporte.
+
+### A sequência da conversa
+
+1. **Apresentação** — a ANA se identifica como IA da DigAI e informa a vaga e a empresa
+2. **Número oficial** — informa que aquele é um número oficial e indica a lista pública em digai.ai/telefones-oficiais
+3. **Dados** — confirma nome completo, e-mail e CPF
+4. **Pré-requisitos** — perguntas simples e rápidas para conhecer o candidato
+5. **Regras** — autorização para registrar o áudio e a política de privacidade
+6. **Teste de áudio (icebreaker)** — não impacta a avaliação, só confirma que o microfone funciona
+7. **Trajetória** — experiência profissional e formação
+8. **Perguntas da triagem** — uma por etapa, com tempo definido para ler e responder
+9. **Feedback, NPS e encerramento**
+
+### O que o recrutador precisa saber
+
+**Só funciona no aplicativo do celular.** WhatsApp Web ou PC não é suportado. Se o candidato não conseguir iniciar pelo computador, oriente a clicar de novo no link pelo app.
+
+**Se o tempo acabar, a próxima pergunta é enviada automaticamente.** O candidato não deve responder depois disso — a resposta ficaria associada à pergunta errada.
+
+**Tentativas.** Quando há mais de uma, a ANA informa quantas restam e considera a melhor participação.
+
+**Reaproveitamento de respostas.** Se o candidato já participou de uma vaga similar, a ANA oferece reutilizar as respostas anteriores — opção habilitada pelo recrutador, sem prejuízo ao processo. Mesmo reutilizando, ele pode refazer a entrevista.
+
+**Currículo e LinkedIn são opcionais.** Podem ser pulados. O currículo aceita PDF ou Word, até 25 MB.
+
+**Acessibilidade.** O candidato tem um botão para sinalizar que precisa de algum recurso — a equipe então contata os responsáveis pela triagem para garantir o suporte.
+
+**Suporte técnico do candidato:** ajuda@digai.ai.
+
+### O feedback não é aprovação
+
+A ANA deixa explícito ao candidato que o feedback serve para ele conhecer os próprios pontos fortes e o que pode melhorar, e **não** tem relação com passar para a próxima etapa — essa decisão é do recrutador.
+
+### Alterar o roteiro de mensagens
+
+Mudanças no roteiro levam **até 72 horas para entrar em vigor, e durante esse período não há envio de mensagens.**
+
+> Não altere o roteiro com processos ativos em andamento sem considerar essa janela.
+
+Isso é diferente do SLA de personalização: o time DigAI leva até **10 dias** para aplicar as alterações solicitadas por planilha. As 72 horas são o tempo de propagação depois de aplicada.
+    `,
+  },
 ];
 
 // ─── Utilitários ─────────────────────────────────────────────────────────────

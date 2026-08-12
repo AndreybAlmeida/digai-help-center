@@ -181,6 +181,11 @@ const LEARN: Record<string, [string, string, string]> = {
     "Reconhecer o formato que afunda o CTR",
     "Revisar a peça pelo checklist antes de publicar",
   ],
+  "jornada-do-candidato-whatsapp": [
+    "Conhecer a jornada completa da entrevista",
+    "Saber o que orientar quando o candidato trava",
+    "Entender as regras de alteração do roteiro",
+  ],
 };
 
 function assertLearn(slug: string): [string, string, string] {
