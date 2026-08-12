@@ -965,6 +965,279 @@ Todo conteúdo variável — identificado entre colchetes — é fixo e não pod
 **SLA de personalização:** 10 dias após o recebimento da planilha.
     `,
   },
+  {
+    id: "art-20",
+    slug: "escrever-atribuicoes-da-vaga",
+    title: "Como escrever as atribuições de uma vaga",
+    summary: "Um prompt pronto para gerar responsabilidades, hard skills e soft skills de qualquer cargo em segundos — e alimentar a triagem com a informação certa.",
+    category: "gestao-de-vagas",
+    contentType: "tutorial",
+    difficulty: "beginner",
+    targetPersona: ["rh", "gestor"],
+    keywords: ["atribuições", "descrição de vaga", "prompt", "hard skills", "soft skills", "cadastro de vagas"],
+    tags: ["vagas", "boas práticas", "prompt"],
+    readTime: 6,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-15", "art-02"],
+    published: true,
+    content: `
+## Como escrever as atribuições de uma vaga
+
+O que você escreve no campo de atribuições não fica só na descrição pública: é a partir dele que a IA entende o que a posição exige e conduz a entrevista.
+
+- **Orienta a entrevista da IA** — responsabilidades e competências viram a matéria-prima dos critérios de avaliação
+- **Alinha recrutador e gestor** — escrever antes de abrir a vaga força a conversa sobre o dia a dia real
+- **Melhora a autosseleção** — candidatos que entendem o escopo se candidatam com mais consciência
+- **Acelera a abertura** — com um prompt padronizado, o time revisa em vez de redigir do zero
+
+> **Regra de ouro:** entrada genérica gera critério genérico.
+
+### O que o prompt entrega — e o que não entrega
+
+| Entrega | Não entrega |
+|---|---|
+| 8 a 12 atribuições, com verbos no infinitivo | Benefícios, salário ou faixa de remuneração |
+| 5 a 10 hard skills técnicas | Modelo de trabalho (presencial, híbrido, remoto) |
+| 5 a 8 soft skills comportamentais | Escolaridade, certificações ou tempo de experiência |
+| Descrição ampla e reutilizável entre vagas | Requisitos eliminatórios ou critérios de corte |
+
+Misturar tudo no mesmo campo polui a leitura da IA e da pessoa candidata. As atribuições devem falar apenas de **atividade e competência**.
+
+### Como usar em quatro passos
+
+1. **Cole o prompt no assistente** — ele define papel, regras e formato de saída
+2. **Informe apenas o nome do cargo** — "Analista Financeiro", "Coordenador de Logística"
+3. **Revise e ajuste ao seu contexto** — remova o que não se aplica, acrescente o que faltou
+4. **Reaproveite a mesma conversa** — para a próxima vaga, basta digitar o novo cargo
+
+### O prompt
+
+**Papel.** Você é um especialista em Recursos Humanos, desenho de cargos e recrutamento. Sua função é ajudar recrutadores e gestores a preencher a seção de atribuições do cargo quando eles informarem apenas o nome da posição. Seu objetivo não é criar uma Job Description completa, mas gerar uma descrição objetiva das principais responsabilidades, competências técnicas (hard skills) e comportamentais (soft skills) normalmente esperadas para aquele cargo.
+
+**Regras.** Considere as práticas mais comuns do mercado. Caso o cargo exista em diferentes segmentos, use uma descrição ampla e neutra. Não invente responsabilidades específicas de uma empresa. Não inclua benefícios, requisitos, salário, modelo de trabalho ou informações sobre a empresa. Não inclua qualificações, escolaridade ou tempo de experiência. O foco é apenas no que a pessoa fará e nas competências necessárias. Linguagem clara, objetiva e profissional, sem textos longos.
+
+**Estrutura obrigatória.** *Principais atribuições* — 8 a 12 responsabilidades em bullets, sempre com verbos no infinitivo (Planejar, Elaborar, Atuar junto, Monitorar, Garantir, Desenvolver). *Hard Skills* — 5 a 10 competências técnicas. *Soft Skills* — 5 a 8 competências comportamentais.
+
+**Instrução final.** Sempre que o usuário informar apenas o nome de um cargo, gere automaticamente as três seções seguindo exatamente esse formato. Se o cargo for genérico ou tiver múltiplas interpretações, use a versão mais comum do mercado.
+
+### Antes de publicar
+
+Confira se todas as atribuições existem na rotina do cargo **na sua empresa**, se nenhuma atividade crítica ficou de fora e se as hard skills refletem as ferramentas que o time usa de fato.
+
+**Evite:** colar a saída sem leitura crítica; empilhar 20 atribuições para não deixar nada de fora; usar siglas internas sem explicação; repetir a mesma competência em hard e soft skills.
+
+> Use a IA para vencer a página em branco — e o conhecimento do seu time para tornar a descrição verdadeira.
+    `,
+  },
+  {
+    id: "art-21",
+    slug: "movimentar-candidatos-entre-vagas",
+    title: "Como movimentar candidatos entre vagas",
+    summary: "Aproveite talentos que já passaram pelo seu processo, sem perder histórico, notas da IA nem documentos.",
+    category: "gestao-de-vagas",
+    contentType: "tutorial",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["movimentar", "reaproveitar candidatos", "banco de talentos", "workspace", "triagem"],
+    tags: ["pipeline", "candidatos", "workspace"],
+    readTime: 4,
+    priority: 3,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-17", "art-18"],
+    published: true,
+    content: `
+## Como movimentar candidatos entre vagas
+
+Em vez de recomeçar uma busca do zero, você move candidatos entre etapas da mesma triagem ou copia para outra vaga — em poucos cliques.
+
+- **Zero retrabalho** — o histórico da entrevista e a pontuação da IA seguem junto
+- **Decisão em lote** — selecione vários candidatos e movimente todos de uma vez
+- **Banco vivo de talentos** — bons perfis voltam a circular como "Reaproveitado"
+
+### Passo a passo
+
+**1. Selecione os candidatos.** No ranking da triagem, marque a caixa de cada candidato. A barra de ações aparece automaticamente no rodapé mostrando quantos estão selecionados. Clique em **Movimentar candidatos**.
+
+**2. Escolha o destino.** São duas rotas, uma decisão por vez:
+
+| Rota | O que faz |
+|---|---|
+| Mover nesta triagem | Avança o candidato entre as etapas do funil da vaga atual — ou desclassifica |
+| Levar para outra triagem | Copia o candidato para outra vaga ou workspace, mantendo o processo original intacto |
+
+**3. Selecione a workspace de destino.** Abra o campo *Workspace destino* e use a busca para filtrar. Você só verá as workspaces às quais tem acesso.
+
+> **Dica:** digite as primeiras letras do nome da empresa ou o prefixo numérico da workspace para chegar mais rápido.
+
+**4. Escolha a triagem e confira o resumo.** A faixa azul confirma exatamente o que vai acontecer antes de você concluir. Os candidatos copiados entram sempre na **etapa inicial** da nova triagem — nada é sobrescrito na vaga de origem.
+
+**5. Confirme a cópia.** O número no botão corresponde à quantidade de candidatos selecionados no passo 1.
+    `,
+  },
+  {
+    id: "art-22",
+    slug: "background-check",
+    title: "Background Check — verificação de antecedentes",
+    summary: "Verificação do histórico jurídico do candidato em todas as esferas do direito, executada durante a entrevista e entregue no próprio ranking.",
+    category: "triagem-inteligente",
+    contentType: "article",
+    difficulty: "intermediate",
+    targetPersona: ["rh", "admin"],
+    keywords: ["background check", "antecedentes", "processos", "jurídico", "compliance", "CPF"],
+    tags: ["triagem", "compliance", "produto"],
+    readTime: 6,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-05", "art-16"],
+    published: true,
+    content: `
+## Background Check
+
+Verificação do histórico jurídico do candidato em todas as esferas do direito, executada **durante** a entrevista com IA e entregue no mesmo lugar onde o recrutador já decide: o ranking e o card do candidato.
+
+### O que está e o que não está incluído
+
+| Incluído | Não incluído |
+|---|---|
+| Processos criminais em nome do candidato | Análise financeira, de crédito ou score |
+| Processos judiciais nas demais esferas | Consulta a órgãos de proteção ao crédito |
+| Classe e assunto do processo | Processos em segredo de justiça |
+| Número, tribunal e instância | Registros não publicados pelos tribunais |
+| Parte contrária e valor da causa | Juízo de valor ou recomendação automática |
+| Data de ativação e última movimentação | Eliminação automática de candidatos |
+
+Apresentamos apenas informações **publicamente disponíveis nos tribunais** — nada de fonte não oficial ou inferida. Processos em segredo de justiça são excluídos da apresentação, em respeito à legislação.
+
+### Como funciona
+
+1. **Solicitação do CPF na entrevista** — o roteiro passa a incluir a coleta do CPF, de forma natural na conversa pelo WhatsApp. É o único ajuste percebido no fluxo.
+2. **Consulta em paralelo** — a verificação roda enquanto o candidato segue respondendo. Nenhum tempo de processo é consumido esperando.
+3. **Resultado em até 5 minutos** — após a finalização da entrevista, aparece no ranking e no card.
+4. **Aplicado ao top 50** — a verificação cobre os 50 candidatos melhor ranqueados, concentrando o recurso onde a decisão de avanço acontece.
+
+O recrutador não precisa solicitar, disparar ou aguardar nada.
+
+### Onde visualizar
+
+No **ranking**, a coluna *Antecedentes* tem filtro próprio e dois estados:
+
+- **Verde** — nenhum registro encontrado nas fontes públicas para o CPF informado
+- **Vermelho** — foram encontrados registros; vale a análise antes de avançar ou descartar
+
+> **Vermelho não significa reprovação.** A marcação indica existência de registro, não culpa, condenação ou impedimento. Boa parte dos registros é de natureza cível e pode não ter qualquer relação com a função.
+
+No **card do candidato**, a seção *Verificação de antecedentes* traz a contagem por natureza e, para cada processo: classe e assunto, número, parte contrária, tribunal e instância, valor da causa, data de ativação e última movimentação. Quando não há registro em uma das naturezas, o campo aparece como "Nenhum".
+
+### Conformidade e boas práticas
+
+1. **Use o filtro para priorizar** — isole os candidatos com registro e concentre a leitura
+2. **Leia o detalhe antes de decidir** — um processo cível de alienação fiduciária não equivale a um criminal
+3. **Avalie a pertinência com o cargo** — critérios devem ser consistentes entre todos os candidatos do mesmo processo
+4. **Registro não é condenação** — verifique a última movimentação para saber se o caso segue ativo
+5. **Documente a decisão** — rastreabilidade protege a empresa e o candidato
+
+Para ativar na sua conta, fale com o time de Customer Success.
+    `,
+  },
+  {
+    id: "art-23",
+    slug: "ia-de-agendamento",
+    title: "IA de Agendamento — guia operacional",
+    summary: "Do calendário conectado à confirmação no WhatsApp: convites automáticos, disponibilidade por subetapa e acompanhamento de entrega.",
+    category: "entrevista-inteligente",
+    contentType: "tutorial",
+    difficulty: "intermediate",
+    targetPersona: ["rh", "admin"],
+    keywords: ["agendamento", "calendário", "google meet", "teams", "convite automático", "lembretes"],
+    tags: ["agendamento", "automação", "entrevista"],
+    readTime: 9,
+    priority: 1,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-17", "art-18"],
+    published: true,
+    content: `
+## IA de Agendamento
+
+O módulo conecta o funil de seleção aos calendários corporativos e aos canais do candidato, eliminando a troca manual de mensagens. Configurado uma vez por vaga, passa a rodar continuamente.
+
+- **Calendários** — Google Workspace (Calendar) e Microsoft 365 (Outlook), verificados em tempo real para evitar conflitos
+- **Videoconferência** — Google Meet ou Microsoft Teams, com link gerado automaticamente
+- **Canais do candidato** — e-mail e WhatsApp recebem convite, lembretes e confirmação
+
+### O fluxo em três movimentos
+
+1. **Entrada** — o candidato entra na subetapa, por triagem manual ou avanço automático por pontuação da IA
+2. **Sistema** — convite gerado com link de conferência e disparado nos canais integrados
+3. **Candidato** — escolhe o horário; a agenda do recrutador é bloqueada e a confirmação retorna pelos dois canais
+
+### 1. Conectar calendário e conferência
+
+Na barra lateral, abra **Calendário** → seção de aplicativos de videoconferência → **Adicionar** → selecione o app (ex.: Google Meet) → três pontos → **Definir como padrão**.
+
+Isso garante que todos os links enviados sejam criados pelo provedor correto, evitando falha de acesso na hora da entrevista. Conecte sempre a conta corporativa oficial.
+
+### 2. Configurar o agendamento por subetapa
+
+Em **Etapas de Avaliação**, habilite o módulo na subetapa correspondente:
+
+| Parâmetro | O que define |
+|---|---|
+| Formato | Individual (1 para 1) ou em grupo, com vários candidatos no mesmo bloco |
+| Convites na etapa | Limite máximo de convites automáticos; excedentes ficam pendentes |
+| Convidados adicionais | E-mails de gestores e líderes técnicos, inseridos na agenda de todos |
+| Modalidade | Online (link automático) ou Presencial (endereço obrigatório) |
+| Link de conferência | Herdado das configurações padrão do calendário |
+
+> Se a modalidade exige presença física, não avance sem o endereço — o candidato não recebe orientação de deslocamento sem ele.
+
+### 3. Convite automático e fila de espera
+
+- **Dentro do limite** — e-mail e WhatsApp saem no mesmo instante em que o candidato entra na subetapa
+- **Teto atingido** — os envios pausam e os excedentes ficam como *Aguardando Candidato / Pendente*
+- **Limite ampliado** — os pendentes são convidados automaticamente, sem seleção manual
+
+> **Atenção:** o limite de convites não é um teto de vagas, é um controle de ritmo de agenda. Ampliar sem revisar a disponibilidade pode gerar sobrecarga de horários no mesmo dia.
+
+### 4. Período e disponibilidade
+
+| Cenário | Modalidade | Quando usar |
+|---|---|---|
+| Banco de talentos | Contínuo (data sem fim) — janela rolante de 14 dias | Vagas de grande volume ou processos contínuos |
+| Processo estruturado | Datas fixas (início e fim) | Processos com prazos rígidos |
+
+Com datas fixas, se a janela expirar e o candidato acessar o link depois, não haverá horários — é preciso atualizar a vigência.
+
+Cada subetapa tem sua própria grade: **dias da semana** abertos, **duração** do bloco por entrevista e **janela horária** diária.
+
+> **Alerta:** disponibilidades idênticas em processos simultâneos criam concorrência de agenda — ocupar um horário numa vaga bloqueia automaticamente as demais, porque a varredura é feita em tempo real contra a agenda principal do recrutador.
+
+### 5. Status de entrega
+
+| Status | Significa |
+|---|---|
+| Entregue | Recebido com sucesso em todos os canais integrados |
+| Parcialmente entregue | Falha em um canal — diagnostique o contato antes de escalar ao suporte |
+| Pendente | Convite na fila ou aguardando liberação de limite |
+
+Clicando sobre o status, o sistema abre o relatório de rastreabilidade com canal de envio, tipo (recrutador ou automático) e confirmação de entrega.
+
+### 6. Do lado do candidato
+
+Recebe o convite por WhatsApp e e-mail com botão de acesso ao portal, escolhe data e horário num calendário interativo, recebe a confirmação no WhatsApp e dois lembretes automáticos: **24h antes** e **3h antes**.
+
+**Reagendar** devolve o link para nova escolha de data. **Cancelar** encerra o compromisso e dispara aviso oficial.
+
+### Boas práticas
+
+1. Evite disponibilidades idênticas em vagas simultâneas
+2. Prefira Contínuo para grande volume
+3. Monitore os indicadores em vermelho — janela vencida ou limite atingido
+4. Use o relatório de status antes de escalar ao suporte
+
+O recrutador pode ajustar limite de convites e data limite direto no painel, sem pausar a vaga, com efeito instantâneo para os candidatos.
+    `,
+  },
 ];
 
 // ─── Utilitários ─────────────────────────────────────────────────────────────

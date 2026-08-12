@@ -1,0 +1,15 @@
+{
+  "doc": "Como movimentar candidatos entre vagas - DigAÍ.pdf",
+  "driveId": "1p1enapIXKCveJPk2Wk46gzOfHJjtfeTB",
+  "categoria": "gestao-de-vagas",
+  "titulo": "Como movimentar candidatos entre vagas",
+  "resumo": "Aproveite talentos que já passaram pelo seu processo: mova entre etapas da mesma triagem ou copie para outra vaga, sem perder histórico, notas da IA nem documentos.",
+  "learn": ["Selecionar e movimentar candidatos em lote", "Escolher entre mover na triagem ou copiar para outra", "Copiar para outra workspace sem perder o processo original"],
+  "faqs": [
+    {"p":"Posso aproveitar candidatos de uma vaga em outra?","r":"Sim. Em vez de recomeçar uma busca do zero, você move candidatos entre etapas da mesma triagem ou copia para outra vaga, em poucos cliques. O histórico da entrevista, a pontuação da IA e os documentos seguem junto com o candidato — zero retrabalho. Bons perfis voltam a circular em novas vagas como \"Reaproveitado\", formando um banco vivo de talentos.","chaves":["movimentar","reaproveitar","outra vaga","banco de talentos"]},
+    {"p":"Como movimento candidatos entre vagas, passo a passo?","r":"1) No ranking da triagem, marque a caixa de cada candidato — a barra de ações aparece automaticamente no rodapé mostrando quantos estão selecionados; 2) clique em Movimentar candidatos e escolha o destino; 3) se for para outra vaga, abra o campo Workspace destino e use a busca para filtrar; 4) selecione a Triagem destino e confira o resumo na faixa azul; 5) confirme no rodapé do modal — o número no botão corresponde à quantidade de candidatos selecionados.","chaves":["passo a passo","movimentar","workspace","triagem destino"]},
+    {"p":"Qual a diferença entre \"Mover nesta triagem\" e \"Levar para outra triagem\"?","r":"São duas rotas, uma decisão por vez. Mover nesta triagem avança o candidato entre as etapas do funil da vaga atual — ou desclassifica. Levar para outra triagem copia o candidato para outra vaga ou workspace, mantendo o processo original intacto.","chaves":["mover","copiar","triagem","funil"]},
+    {"p":"O candidato copiado para outra vaga perde a avaliação?","r":"Não. O histórico da entrevista e a pontuação da IA seguem junto com o candidato, e nada é sobrescrito na vaga de origem. Os candidatos copiados entram sempre na etapa inicial da nova triagem.","chaves":["copiar","histórico","pontuação","etapa inicial"]},
+    {"p":"Posso movimentar vários candidatos de uma vez?","r":"Sim, a decisão é em lote: selecione vários candidatos no ranking e movimente todos de uma só vez. Sobre a workspace de destino, você só verá aquelas às quais tem acesso — digite as primeiras letras do nome da empresa ou o prefixo numérico para chegar mais rápido.","chaves":["lote","vários candidatos","workspace","acesso"]}
+  ]
+}

@@ -129,6 +129,26 @@ const LEARN: Record<string, [string, string, string]> = {
     "Entender os custos de mensageria da Meta",
     "Personalizar os textos da IA pela planilha",
   ],
+  "escrever-atribuicoes-da-vaga": [
+    "Usar o prompt pronto para gerar atribuições",
+    "Saber o que entra e o que não entra no campo",
+    "Revisar a saída da IA antes de publicar",
+  ],
+  "movimentar-candidatos-entre-vagas": [
+    "Selecionar e movimentar candidatos em lote",
+    "Escolher entre mover na triagem ou copiar",
+    "Copiar para outra workspace sem retrabalho",
+  ],
+  "background-check": [
+    "Entender o que a verificação cobre e o que não",
+    "Ler a coluna Antecedentes no ranking e no card",
+    "Aplicar as boas práticas de conformidade",
+  ],
+  "ia-de-agendamento": [
+    "Conectar calendário e videoconferência padrão",
+    "Configurar convite automático por subetapa",
+    "Ler os status de entrega e os indicadores",
+  ],
 };
 
 function assertLearn(slug: string): [string, string, string] {

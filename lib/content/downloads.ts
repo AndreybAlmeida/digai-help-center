@@ -14,6 +14,10 @@ export const ARTIGO_PDF: Record<string, string> = {
   "movimentacao-automatica-candidatos": "movimentacao-automatica-digai.pdf",
   "status-do-candidato": "Guia_Status_Candidato_DigAI (1).pdf",
   "whatsapp-numero-dedicado-manual": "manual_numero_personalizado_digai.pdf",
+  "escrever-atribuicoes-da-vaga": "DigAI_Guia_Atribuicoes_de_Cargo.pdf",
+  "movimentar-candidatos-entre-vagas": "Como movimentar candidatos entre vagas - DigAÍ.pdf",
+  "background-check": "DigAI_Background_Check.pdf",
+  "ia-de-agendamento": "DigAI - Guia IA de agendamento.pdf",
 };
 
 /** Normaliza para casar apesar de espaço duplo, "(1)" e diferença de acento. */
