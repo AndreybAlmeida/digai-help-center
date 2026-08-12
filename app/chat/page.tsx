@@ -36,6 +36,9 @@ export default function ChatPage() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+  // Criado sob demanda no client: gerar no corpo do componente daria valor
+  // diferente no servidor e na hidratação.
+  const sessionIdRef = useRef<string | null>(null);
 
   // Corpo em bloco de propósito: no Chrome 151+ scrollIntoView() devolve uma Promise,
   // e um effect que retorna algo que não é função quebra o app no cleanup do React.
@@ -51,12 +54,20 @@ export default function ChatPage() {
     setInput("");
     setLoading(true);
 
+    if (!sessionIdRef.current) {
+      sessionIdRef.current =
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `s-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [...messages, userMsg].map((m) => ({ role: m.role, content: m.content })),
+          sessionId: sessionIdRef.current,
         }),
       });
       const data = await res.json();

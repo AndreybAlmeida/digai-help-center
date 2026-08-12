@@ -7,11 +7,22 @@ import { CheckCheck, MessageCircleQuestion, Trash2 } from "lucide-react";
 interface UnansweredQuestion {
   id: string;
   pergunta: string;
+  resposta: string | null;
+  motivo: string | null;
+  ocorrencias: number;
+  ultima_ocorrencia: string | null;
+  session_id: string | null;
   created_at: string;
   resolved: boolean;
   resolved_at: string | null;
   notes: string | null;
 }
+
+const MOTIVO_LABEL: Record<string, string> = {
+  ana_desistiu: "ANA admitiu não saber",
+  sem_contexto: "Nada encontrado na base",
+  v1_sem_contexto: "Registro antigo (v1)",
+};
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR", {
@@ -69,7 +80,8 @@ export default function PerguntasPage() {
         <div>
           <h1 style={{ fontSize: "20px", fontWeight: 800, color: "var(--fg)" }}>Perguntas sem resposta</h1>
           <p style={{ marginTop: "4px", fontSize: "13px", color: "var(--fg-muted)" }}>
-            Perguntas que a ANA recebeu mas não encontrou contexto para responder.
+            Perguntas em que a ANA não soube responder. Ordenadas por quantas vezes se repetiram —
+            comece pelas do topo.
           </p>
         </div>
         <button
@@ -156,11 +168,55 @@ export default function PerguntasPage() {
 
               {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{ fontSize: "14px", fontWeight: 600, color: "var(--fg)", lineHeight: 1.4 }}>
-                  {item.pergunta}
-                </p>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap" }}>
+                  {item.ocorrencias > 1 && (
+                    <span
+                      title={`Perguntada ${item.ocorrencias} vezes`}
+                      style={{
+                        padding: "1px 7px",
+                        borderRadius: "100px",
+                        background: "rgba(220,38,38,0.1)",
+                        color: "#991b1b",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {item.ocorrencias}×
+                    </span>
+                  )}
+                  <p style={{ fontSize: "14px", fontWeight: 600, color: "var(--fg)", lineHeight: 1.4 }}>
+                    {item.pergunta}
+                  </p>
+                </div>
+
+                {item.resposta && (
+                  <details style={{ marginTop: "6px" }}>
+                    <summary style={{ fontSize: "12px", color: "var(--brand)", cursor: "pointer", fontWeight: 500 }}>
+                      Ver o que a ANA respondeu
+                    </summary>
+                    <p style={{
+                      marginTop: "6px",
+                      padding: "8px 10px",
+                      borderRadius: "6px",
+                      background: "var(--bg-muted)",
+                      fontSize: "12px",
+                      color: "var(--fg-muted)",
+                      lineHeight: 1.5,
+                      whiteSpace: "pre-wrap",
+                    }}>
+                      {item.resposta}
+                    </p>
+                  </details>
+                )}
+
                 <p style={{ fontSize: "12px", color: "var(--fg-subtle)", marginTop: "4px" }}>
-                  {formatDate(item.created_at)}
+                  {formatDate(item.ultima_ocorrencia ?? item.created_at)}
+                  {item.motivo && (
+                    <span style={{ marginLeft: "12px" }}>
+                      · {MOTIVO_LABEL[item.motivo] ?? item.motivo}
+                    </span>
+                  )}
                   {item.resolved && item.resolved_at && (
                     <span style={{ marginLeft: "12px", color: "#00896d" }}>
                       ✓ Resolvida em {formatDate(item.resolved_at)}

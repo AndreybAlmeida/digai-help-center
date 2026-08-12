@@ -1,6 +1,7 @@
 import { searchArticles } from "@/data/articles";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { findRelevantContextHybrid, formatHybridContext, type ContextItem } from "@/lib/search/hybridSearch";
+import { detectarLacuna } from "@/lib/search/detectUnanswered";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -9,6 +10,7 @@ interface ChatMessage {
 
 interface ChatRequest {
   messages: ChatMessage[];
+  sessionId?: string;
 }
 
 const SYSTEM_PROMPT = `Você é a ANA, assistente oficial da DigAI — plataforma de recrutamento com inteligência artificial.
@@ -40,12 +42,62 @@ function generateMockReply(userMessage: string, contextItems: ContextItem[]): st
   return "Olá! Sou a ANA, assistente da DigAI. Posso ajudar com vagas, triagem, ranking, integrações e relatórios. O que você precisa?";
 }
 
+// ─── Geração da resposta ──────────────────────────────────────────────────────
+
+/**
+ * Isolado num helper para existir um único ponto onde `reply` é conhecido —
+ * é lá que a detecção de lacuna precisa acontecer. Com um `return` por
+ * provedor, como era antes, a detecção teria que ser repetida três vezes.
+ */
+async function gerarResposta(
+  systemWithContext: string,
+  messages: ChatMessage[],
+  contextItems: ContextItem[],
+  perguntaUsuario: string
+): Promise<string> {
+  const openaiKey = process.env.OPENAI_API_KEY;
+  if (openaiKey) {
+    const { default: OpenAI } = await import("openai");
+    const client = new OpenAI({ apiKey: openaiKey });
+
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      max_tokens: 1024,
+      messages: [
+        { role: "system", content: systemWithContext },
+        ...messages.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
+      ],
+    });
+
+    return response.choices[0]?.message?.content ?? "";
+  }
+
+  const anthropicKey = process.env.ANTHROPIC_API_KEY;
+  if (anthropicKey) {
+    const { default: Anthropic } = await import("@anthropic-ai/sdk");
+    const client = new Anthropic({ apiKey: anthropicKey });
+
+    const response = await client.messages.create({
+      model: "claude-sonnet-4-5",
+      max_tokens: 1024,
+      system: systemWithContext,
+      messages: messages.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
+    });
+
+    const bloco = response.content[0];
+    return bloco && bloco.type === "text" ? bloco.text : "";
+  }
+
+  await new Promise((r) => setTimeout(r, 400));
+  return generateMockReply(perguntaUsuario, contextItems);
+}
+
 // ─── Main handler ─────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {
     const body: ChatRequest = await req.json();
-    const { messages } = body;
+    const { messages, sessionId } = body;
 
     if (!messages || messages.length === 0) {
       return NextResponse.json({ error: "Nenhuma mensagem enviada" }, { status: 400 });
@@ -59,56 +111,47 @@ export async function POST(req: NextRequest) {
     const contextItems = await findRelevantContextHybrid(lastUserMessage.content);
     const suggestedArticles = searchArticles(lastUserMessage.content).slice(0, 3);
 
-    // Log questions with no knowledge context (fire-and-forget)
-    if (contextItems.length === 0 && suggestedArticles.length === 0 && process.env.DATABASE_URL) {
-      import("@/lib/db/queries")
-        .then(({ logUnansweredQuestion }) => logUnansweredQuestion(lastUserMessage.content))
-        .catch(() => {});
-    }
-
     const systemWithContext = contextItems.length > 0
       ? `${SYSTEM_PROMPT}\n\nCONTEXTO DA BASE DE CONHECIMENTO:\n\n${formatHybridContext(contextItems)}`
       : SYSTEM_PROMPT;
 
-    // ── OpenAI ────────────────────────────────────────────────────────────────
-    const openaiKey = process.env.OPENAI_API_KEY;
-    if (openaiKey) {
-      const { default: OpenAI } = await import("openai");
-      const client = new OpenAI({ apiKey: openaiKey });
+    const reply = await gerarResposta(
+      systemWithContext,
+      messages,
+      contextItems,
+      lastUserMessage.content
+    );
 
-      const response = await client.chat.completions.create({
-        model: "gpt-4o-mini",
-        max_tokens: 1024,
-        messages: [
-          { role: "system", content: systemWithContext },
-          ...messages.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
-        ],
+    // ── Registro de lacuna da base ────────────────────────────────────────────
+    // after() é obrigatório aqui: sem ele a função serverless devolve a resposta
+    // e congela antes do insert completar — foi exatamente por isso que a v1
+    // nunca gravou nada em produção.
+    const lacuna = detectarLacuna({
+      pergunta: lastUserMessage.content,
+      resposta: reply,
+      contextItems,
+      suggestedArticlesCount: suggestedArticles.length,
+    });
+
+    if (lacuna.registrar && process.env.DATABASE_URL) {
+      after(async () => {
+        try {
+          const { logUnansweredQuestion } = await import("@/lib/db/queries");
+          await logUnansweredQuestion({
+            pergunta: lastUserMessage.content,
+            resposta: reply,
+            motivo: lacuna.motivo!,
+            melhorScore: lacuna.melhorScore,
+            contexto: messages.slice(-6).map((m) => ({ role: m.role, content: m.content })),
+            sessionId,
+          });
+        } catch (err) {
+          // Erro engolido em silêncio foi o que escondeu a falha da v1.
+          console.error("[chat] falha ao registrar lacuna:", err);
+        }
       });
-
-      const reply = response.choices[0]?.message?.content ?? "";
-      return NextResponse.json({ reply, suggestedArticles });
     }
 
-    // ── Anthropic (fallback) ──────────────────────────────────────────────────
-    const anthropicKey = process.env.ANTHROPIC_API_KEY;
-    if (anthropicKey) {
-      const { default: Anthropic } = await import("@anthropic-ai/sdk");
-      const client = new Anthropic({ apiKey: anthropicKey });
-
-      const response = await client.messages.create({
-        model: "claude-sonnet-4-5",
-        max_tokens: 1024,
-        system: systemWithContext,
-        messages: messages.map((m) => ({ role: m.role as "user" | "assistant", content: m.content })),
-      });
-
-      const reply = response.content[0].type === "text" ? response.content[0].text : "";
-      return NextResponse.json({ reply, suggestedArticles });
-    }
-
-    // ── Mock fallback (sem chave) ─────────────────────────────────────────────
-    const reply = generateMockReply(lastUserMessage.content, contextItems);
-    await new Promise((r) => setTimeout(r, 400));
     return NextResponse.json({ reply, suggestedArticles });
 
   } catch (err) {

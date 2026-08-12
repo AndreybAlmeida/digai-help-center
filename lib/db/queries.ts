@@ -205,17 +205,58 @@ export async function savePublishedKnowledge(items: unknown[]): Promise<void> {
 export interface UnansweredQuestionRow {
   id: string;
   pergunta: string;
+  pergunta_normalizada: string | null;
+  resposta: string | null;
+  contexto: { role: string; content: string }[] | null;
+  session_id: string | null;
+  motivo: string | null;
+  melhor_score: number | null;
+  ocorrencias: number;
+  ultima_ocorrencia: string | null;
   created_at: string;
   resolved: boolean;
   resolved_at: string | null;
   notes: string | null;
 }
 
-export async function logUnansweredQuestion(pergunta: string): Promise<void> {
+export interface LacunaInput {
+  pergunta: string;
+  resposta: string;
+  motivo: string;
+  melhorScore: number;
+  contexto?: { role: string; content: string }[];
+  sessionId?: string;
+}
+
+/**
+ * Registra uma lacuna da base. Repetição da mesma pergunta incrementa o
+ * contador em vez de criar linha nova — é o contador que permite priorizar
+ * o que escrever primeiro.
+ */
+export async function logUnansweredQuestion(input: LacunaInput): Promise<void> {
   const pool = getPool();
+  const normalizada = input.pergunta.trim().toLowerCase().replace(/\s+/g, " ").slice(0, 500);
+
   await pool.query(
-    `INSERT INTO unanswered_questions (pergunta) VALUES ($1)`,
-    [pergunta]
+    `INSERT INTO unanswered_questions
+       (pergunta, pergunta_normalizada, resposta, contexto, session_id, motivo, melhor_score)
+     VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7)
+     ON CONFLICT (pergunta_normalizada) DO UPDATE
+       SET ocorrencias       = unanswered_questions.ocorrencias + 1,
+           ultima_ocorrencia = NOW(),
+           resposta          = EXCLUDED.resposta,
+           contexto          = EXCLUDED.contexto,
+           motivo            = EXCLUDED.motivo,
+           melhor_score      = EXCLUDED.melhor_score`,
+    [
+      input.pergunta.slice(0, 2000),
+      normalizada,
+      (input.resposta ?? "").slice(0, 4000),
+      JSON.stringify(input.contexto ?? []),
+      input.sessionId ?? null,
+      input.motivo,
+      input.melhorScore,
+    ]
   );
 }
 
@@ -225,9 +266,10 @@ export async function getUnansweredQuestions(
 ): Promise<UnansweredQuestionRow[]> {
   const pool = getPool();
   const { rows } = await pool.query(
+    // Ordena por volume: a dúvida que mais se repete é a que mais dói.
     `SELECT * FROM unanswered_questions
      ${showResolved ? "" : "WHERE resolved = FALSE"}
-     ORDER BY created_at DESC
+     ORDER BY ocorrencias DESC, ultima_ocorrencia DESC NULLS LAST, created_at DESC
      LIMIT $1`,
     [limit]
   );

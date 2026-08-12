@@ -33,6 +33,8 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const migrations = [
   "db/migrations/001_init_documents.sql",
   "db/migrations/002_knowledge_published.sql",
+  "db/migrations/003_unanswered_questions.sql",
+  "db/migrations/004_unanswered_questions_v2.sql",
 ];
 
 for (const file of migrations) {
