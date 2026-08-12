@@ -1471,6 +1471,182 @@ Na Definição de Etapas da Gupy, a **Etapa 2 — Entrevista Inteligente** apare
 A partir daí, candidatos que chegam à etapa recebem o link automaticamente — sem ação adicional do recrutador para cada um.
     `,
   },
+  {
+    id: "art-27",
+    slug: "integracao-pandape",
+    title: "Integração Pandapé + DigAI",
+    summary: "Configure a vaga no Pandapé, ative a Entrevista Inteligente e use templates para não repetir trabalho a cada abertura.",
+    category: "integracoes",
+    contentType: "tutorial",
+    difficulty: "beginner",
+    targetPersona: ["rh", "admin"],
+    keywords: ["pandapé", "integração", "ats", "entrevista inteligente", "movimento automático", "templates"],
+    tags: ["pandapé", "integração", "ats"],
+    readTime: 10,
+    priority: 2,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-24", "art-26"],
+    published: true,
+    content: `
+## Integração Pandapé + DigAI
+
+Configurada uma vez por vaga, a integração roda sozinha: o candidato se inscreve no Pandapé, é movido automaticamente para a etapa Entrevista Inteligente, recebe convite por e-mail e WhatsApp, e as respostas com a avaliação da IA ficam organizadas dentro da vaga na DigAI.
+
+### As 3 regras de ouro
+
+Se algo não funcionar, 9 em cada 10 vezes o motivo está aqui.
+
+1. **O nome da etapa precisa ser exatamente "Entrevista Inteligente"** — sem erro de digitação, caractere especial ou espaço no final
+2. **A etapa precisa ser a 2ª do processo**, logo abaixo de Inscritos. A integração acontece unicamente na fase 2
+3. **A vaga precisa estar Publicada na DigAI** — publicar no Pandapé não basta
+
+## Parte 1 — Configurando a vaga no Pandapé
+
+1. Faça login e vá ao Dashboard
+2. Clique em **Criar Processo** (botão azul no canto superior direito)
+3. Escolha **Processo Padrão** — é o único compatível com a integração
+4. Preencha os dados da vaga normalmente
+5. Na etapa 3 (Gerenciamento), abra **Etapas do Processo**
+6. Clique em **+ Incluir Nova Etapa**
+7. Nomeie exatamente **Entrevista Inteligente**
+8. Arraste para a **2ª posição**, logo abaixo de Inscritos
+9. Ative a vaga na DigAI
+
+> Se a vaga já existe no Pandapé, pule para o passo 5.
+
+### O passo mais crítico do tutorial
+
+| Assim funciona | Assim quebra |
+|---|---|
+| Entrevista Inteligente | Espaço invisível no final — o erro mais comum |
+| | "Entrevista Inteligênte" — acento onde não existe |
+| | "Entrevista inteligente" — minúscula |
+| | "Entrevista DigAI", "Triagem IA" — nome diferente |
+
+**Como conferir:** antes de salvar, clique no final do texto e pressione **End**. Se o cursor parar logo depois do "e", está certo. Se ficar um espaço à direita, apague com Backspace.
+
+### Não esqueça o Movimento Automático
+
+Ative o **Movimento Automático** entre Inscritos e Entrevista Inteligente — é ele que envia todo candidato inscrito para a DigAI. Sem isso, você teria que mover cada pessoa na mão.
+
+Para conferir: na barra de etapas do topo, a ordem deve ser Inscritos → Entrevista Inteligente → demais etapas, e entre as duas primeiras deve aparecer a caixa **Movimento Automático Configurado** com a seta verde.
+
+### Depois de publicar no Pandapé
+
+A vaga cai na DigAI em **até 20 minutos**, no workspace **Integração Pandapé + DigaÍ**. Complete a construção e deixe o status como **Publicada**.
+
+> **Vaga em rascunho na DigAI = nenhum candidato entrevistado.** É o erro mais comum depois da configuração.
+
+## Parte 2 — Usando templates (opcional)
+
+Templates evitam reescrever perguntas e critérios a cada nova vaga.
+
+1. Na DigAI, abra a vaga → menu de três pontinhos → **Salvar como template**
+2. Informe título, descrição e SLA de encerramento → **Salvar como template**
+3. Vá em **Templates** na barra lateral
+4. No card do template, copie o **Código** de 4 dígitos
+5. No Pandapé, na etapa 1 (Descrição da vaga), role até o campo **Tags (Opcional)**
+6. Cole o código e clique em **Incluir** — ele deve aparecer como etiqueta abaixo do campo
+7. Siga a criação da vaga incluindo a etapa Entrevista Inteligente, como na Parte 1
+
+> **Cuidado:** cole apenas o código (ex.: \`3782\`). Não escreva o nome do template nem inclua outras palavras no mesmo campo — a DigAI não vai reconhecer.
+
+A vaga nasce na DigAI já com perguntas e critérios preenchidos. Criar uma vaga triada por IA passa a levar o mesmo tempo de publicar uma vaga comum.
+
+## Checklist final
+
+- O processo é do tipo **Processo Padrão**
+- Existe uma etapa chamada exatamente **Entrevista Inteligente**, sem espaço no final
+- Essa etapa é a **segunda** do funil
+- O **Movimento Automático** está ativado
+- A vaga está publicada e ativa no Pandapé
+- Após 20 minutos, a vaga apareceu no workspace **Integração Pandapé + DigaÍ**
+- A vaga foi finalizada na DigAI e está **Publicada**
+- Se usou template: o código de 4 dígitos está no campo Tags
+
+> **Boa prática:** depois de publicar, inscreva-se na vaga pelo link público com o seu próprio número e veja se o convite chega. É a forma mais rápida de confirmar a cadeia inteira antes de investir em divulgação.
+
+## Problemas mais comuns
+
+**A vaga não apareceu na DigAI** — confirme os 20 minutos, que está publicada e ativa no Pandapé, e que você está olhando o workspace certo.
+
+**Os candidatos não recebem o convite** — a vaga ainda está em rascunho na DigAI, ou o Movimento Automático não foi ativado.
+
+**Configurei tudo e nada acontece** — revise o nome da etapa caractere por caractere. Um espaço invisível não gera nenhum aviso de erro.
+
+**As perguntas do template não vieram** — verifique se o código corresponde a um template **Ativo** e se a tag foi realmente incluída, aparecendo como etiqueta.
+    `,
+  },
+  {
+    id: "art-28",
+    slug: "social-recruiting-anuncios",
+    title: "Social Recruiting — boas práticas de anúncio",
+    summary: "A anatomia da copy e da imagem que reduzem o custo por candidato, com casos reais de acerto e erro.",
+    category: "boas-praticas",
+    contentType: "article",
+    difficulty: "beginner",
+    targetPersona: ["rh"],
+    keywords: ["social recruiting", "anúncio", "copy", "criativo", "CTR", "custo por lead"],
+    tags: ["social recruiting", "boas práticas", "divulgação"],
+    readTime: 6,
+    priority: 3,
+    updatedAt: "2026-08-12",
+    relatedContent: ["art-15", "art-16"],
+    published: true,
+    content: `
+## Social Recruiting — boas práticas de anúncio
+
+Não é sobre design bonito. É sobre um formato que reduz o custo por entrevista e atrai candidatos qualificados.
+
+> **Regra de ouro:** concreto vence o genérico. Cargo visível, atribuições e um único ponto de contato superam qualquer peça "bonita" cheia de efeito.
+
+### Anatomia da copy vencedora
+
+| # | Bloco | Por quê |
+|---|---|---|
+| 1 | Cargo + cidade na 1ª linha | É o que aparece antes do "Ver mais". Sem isso, ninguém abre |
+| 2 | Gancho — pergunta no "você" | Faz a pessoa se autosselecionar: "sou eu" |
+| 3 | Concreto — o que faz de verdade | Especificidade = credibilidade. É o que mais determina a performance |
+| 4 | Valor — crescimento / salário | Em vaga operacional, salário explícito puxa muito |
+| 5 | CTA único e direto | Um caminho só, verbo de ação e urgência |
+
+Copy curta: 3 a 4 linhas.
+
+### Anatomia da imagem vencedora
+
+1. **Pessoa real na função** — uniforme e ambiente reais
+2. **Logomarca visível** — credibilidade imediata
+3. **Cargo é o herói** — destaque máximo, com cidade/UF
+4. **1 linha de tarefa ou salário** — nada de parágrafo na arte
+5. **Um CTA só** — faixa de contraste: "Inscreva-se agora"
+6. **Limpo e na cor da marca** — alto contraste, sem poluição
+
+### O formato que funciona vs. o que não funciona
+
+Mesmo orçamento, resultado **até 8× diferente**. O que muda não é a verba — é onde cada elemento fica dentro da arte.
+
+| ✓ Funciona | ✕ Não funciona |
+|---|---|
+| 1 pessoa ocupa a maior parte do quadro | Várias pessoas ou efeitos disputando atenção |
+| Cargo gigante no topo | Cargo pequeno ou perdido no meio |
+| 1 linha de tarefa/salário | 2 colunas de requisitos = poluição |
+| 1 faixa de CTA na base | O olho não sabe onde parar no feed |
+
+### Dois casos reais que não funcionaram
+
+**Estágio · Brasília/DF** — R$ 14,11 por lead, CTR 0,61%, 141 leads. Poluição extrema: 4 pessoas, efeitos visuais e duas colunas de requisitos (skills, perfil, jornada, bolsa, idade). Não dá para ler no feed.
+
+**Atendimento · Cariacica/ES** — R$ 14,71 por lead, CTR 0,68%, 66 leads. Peça 100% de marca ("VEM SER"), sem pessoa na função e sem ambiente. Cargo genérico e local vago ("na sua região"). A copy até era boa — foi a imagem que derrubou o CTR.
+
+> Nenhum dos dois falhou por falta de verba. Falharam porque a arte disputava atenção com ela mesma, ou não mostrava ninguém trabalhando.
+
+### Checklist antes de publicar
+
+**Sempre:** cargo + cidade na 1ª linha · pessoa real na função · copy concreta com as tarefas reais · salário/benefício quando houver · um CTA só · arte limpa com cargo em destaque · copy de 3–4 linhas.
+
+**Nunca:** frases de marca vazias ("vem ser", "protagonista") · local vago ("na sua região") · encher a arte de requisitos · fundo poluído · cargo escondido no texto · peça só de marca · mais de um CTA ou vários links.
+    `,
+  },
 ];
 
 // ─── Utilitários ─────────────────────────────────────────────────────────────

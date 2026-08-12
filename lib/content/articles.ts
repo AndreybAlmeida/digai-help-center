@@ -23,6 +23,13 @@ const KIND_OVERRIDE: Record<string, Kind> = {
   "api-digai-introducao": "tecnico",
   "api-webhooks": "tecnico",
   "api-candidatos": "tecnico",
+  // Materiais do Drive que são guias, não tutoriais passo a passo
+  "boas-praticas-uso-digai": "guia",
+  "filtros-digai-priorizar-candidatos": "guia",
+  "status-do-candidato": "guia",
+  "background-check": "guia",
+  "whatsapp-numero-dedicado-manual": "guia",
+  "social-recruiting-anuncios": "guia",
 };
 
 /**
@@ -163,6 +170,16 @@ const LEARN: Record<string, [string, string, string]> = {
     "Criar um template com perguntas geradas por IA",
     "Copiar o código único do template",
     "Vincular o código nos Dados Internos da Gupy",
+  ],
+  "integracao-pandape": [
+    "Criar a etapa na 2ª posição com o nome exato",
+    "Ativar o Movimento Automático e publicar",
+    "Vincular um template pelo campo Tags",
+  ],
+  "social-recruiting-anuncios": [
+    "Montar a copy em 5 blocos, do cargo ao CTA",
+    "Reconhecer o formato que afunda o CTR",
+    "Revisar a peça pelo checklist antes de publicar",
   ],
 };
 
