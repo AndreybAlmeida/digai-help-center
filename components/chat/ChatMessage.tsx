@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import ArticleCard from "@/components/article/ArticleCard";
 import { Article } from "@/types/content";
 import { Bot, User } from "lucide-react";
@@ -30,14 +31,45 @@ interface ChatMessageProps {
   suggestedArticles?: Article[];
 }
 
-function renderChatMarkdown(text: string) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={i} style={{ fontWeight: 600, color: "var(--fg)" }}>{part.slice(2, -2)}</strong>;
-    }
-    return <span key={i}>{part}</span>;
+function renderChatMarkdown(text: string): React.ReactNode[] {
+  // Split on numbered lists, bold, and markdown links
+  const lines = text.split("\n");
+  const result: React.ReactNode[] = [];
+
+  lines.forEach((line, li) => {
+    if (li > 0) result.push(<br key={`br-${li}`} />);
+
+    // Tokenize: **bold**, [label](url), plain text
+    const tokens = line.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+    tokens.forEach((token, ti) => {
+      if (token.startsWith("**") && token.endsWith("**")) {
+        result.push(
+          <strong key={`${li}-${ti}`} style={{ fontWeight: 600 }}>
+            {token.slice(2, -2)}
+          </strong>
+        );
+      } else {
+        const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          result.push(
+            <a
+              key={`${li}-${ti}`}
+              href={linkMatch[2]}
+              target={linkMatch[2].startsWith("http") ? "_blank" : undefined}
+              rel={linkMatch[2].startsWith("http") ? "noopener noreferrer" : undefined}
+              style={{ color: "var(--brand)", fontWeight: 600, textDecoration: "underline" }}
+            >
+              {linkMatch[1]}
+            </a>
+          );
+        } else {
+          result.push(<span key={`${li}-${ti}`}>{token}</span>);
+        }
+      }
+    });
   });
+
+  return result;
 }
 
 export default function ChatMessage({ role, content, suggestedArticles }: ChatMessageProps) {

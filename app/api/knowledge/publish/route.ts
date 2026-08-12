@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import { join } from "path";
 import { knowledgeSeed } from "@/data/knowledgeBase";
 import type { KnowledgeItem } from "@/types/knowledge";
 
@@ -46,18 +44,31 @@ export async function POST(req: NextRequest) {
       ...generatedFaqs.filter((i) => !existingIds.has(i.id)),
     ];
 
-    const payload = {
-      items: mergedItems,
-      lastUpdated: new Date().toISOString().slice(0, 10),
-      count: mergedItems.length,
-    };
+    // Persist to Neon Postgres (works in Vercel production)
+    if (process.env.DATABASE_URL) {
+      const { savePublishedKnowledge } = await import("@/lib/db/queries");
+      await savePublishedKnowledge(mergedItems);
+    }
 
-    const filePath = join(process.cwd(), "public", "knowledge-export.json");
-    await writeFile(filePath, JSON.stringify(payload, null, 2), "utf-8");
+    // Also write to local file for dev convenience (read-only on Vercel, so ignore errors)
+    if (!process.env.VERCEL) {
+      try {
+        const { writeFile } = await import("fs/promises");
+        const { join } = await import("path");
+        const filePath = join(process.cwd(), "public", "knowledge-export.json");
+        await writeFile(
+          filePath,
+          JSON.stringify({ items: mergedItems, lastUpdated: new Date().toISOString().slice(0, 10), count: mergedItems.length }, null, 2),
+          "utf-8"
+        );
+      } catch {
+        // Non-fatal in dev
+      }
+    }
 
     return NextResponse.json({ ok: true, count: mergedItems.length });
   } catch (err) {
     console.error("[publish]", err);
-    return NextResponse.json({ error: "Falha ao escrever arquivo" }, { status: 500 });
+    return NextResponse.json({ error: "Falha ao publicar" }, { status: 500 });
   }
 }

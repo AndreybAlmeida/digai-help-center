@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { initStore, getAllItems, mergeItems } from "@/lib/knowledgeStore";
+import { initStore, getAllItems, mergeItems, exportStore } from "@/lib/knowledgeStore";
 import { KnowledgeItem } from "@/types/knowledge";
 import KnowledgeTable from "@/components/admin/KnowledgeTable";
 import { Plus } from "lucide-react";
@@ -23,7 +23,16 @@ export default function BasePage() {
         if (Array.isArray(data?.items)) mergeItems(data.items);
       })
       .catch(() => {})
-      .finally(() => refresh());
+      .finally(() => {
+        refresh();
+        // Auto-publish current state to DB on every admin page load
+        const store = JSON.parse(exportStore());
+        fetch("/api/knowledge/publish", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items: store.items }),
+        }).catch(() => {});
+      });
   }, []);
 
   return (

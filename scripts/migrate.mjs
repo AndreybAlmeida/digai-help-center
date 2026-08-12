@@ -1,4 +1,5 @@
-import { neon } from "@neondatabase/serverless";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import ws from "ws";
 import { readFileSync } from "fs";
 
 // Lê .env.local manualmente
@@ -26,9 +27,20 @@ if (!process.env.DATABASE_URL) {
   process.exit(1);
 }
 
-const sql = neon(process.env.DATABASE_URL);
-const migration = readFileSync("db/migrations/001_init_documents.sql", "utf-8");
+neonConfig.webSocketConstructor = ws;
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-console.log("⏳  Rodando migration...");
-await sql.unsafe(migration);
-console.log("✅  Migration concluída!");
+const migrations = [
+  "db/migrations/001_init_documents.sql",
+  "db/migrations/002_knowledge_published.sql",
+];
+
+for (const file of migrations) {
+  console.log(`⏳  Rodando ${file}...`);
+  const sql = readFileSync(file, "utf-8");
+  await pool.query(sql);
+  console.log(`✅  ${file} concluída!`);
+}
+
+await pool.end();
+console.log("✅  Todas as migrations concluídas!");

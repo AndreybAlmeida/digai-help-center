@@ -17,7 +17,7 @@ export default function CategoryGrid() {
   const [faqCounts, setFaqCounts] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    fetch("/knowledge-export.json")
+    fetch("/api/knowledge/items")
       .then((r) => r.json())
       .then((data) => {
         const counts: Record<string, number> = {};

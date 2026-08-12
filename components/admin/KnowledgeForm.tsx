@@ -8,6 +8,7 @@ import { nivelLabel, tipoLabel } from "@/lib/utils";
 
 interface KnowledgeFormProps {
   initial?: KnowledgeItem;
+  initialPergunta?: string;
 }
 
 const ALL_CATEGORIAS: KnowledgeCategorySlug[] = [
@@ -19,11 +20,11 @@ const ALL_CATEGORIAS: KnowledgeCategorySlug[] = [
 const ALL_TIPOS: KnowledgeItemType[] = ["faq", "tutorial", "api", "onboarding", "boas-praticas"];
 const ALL_NIVEIS: KnowledgeLevel[] = ["basico", "intermediario", "avancado"];
 
-export default function KnowledgeForm({ initial }: KnowledgeFormProps) {
+export default function KnowledgeForm({ initial, initialPergunta }: KnowledgeFormProps) {
   const router = useRouter();
   const isEditing = Boolean(initial);
 
-  const [pergunta, setPergunta] = useState(initial?.pergunta ?? "");
+  const [pergunta, setPergunta] = useState(initial?.pergunta ?? initialPergunta ?? "");
   const [resposta, setResposta] = useState(initial?.resposta ?? "");
   const [categoria, setCategoria] = useState<KnowledgeCategorySlug>(initial?.categoria ?? "primeiros-passos");
   const [tipo, setTipo] = useState<KnowledgeItemType>(initial?.tipo ?? "faq");

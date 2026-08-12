@@ -189,3 +189,82 @@ export async function getPublishedGeneratedFaqs(): Promise<GeneratedFaqRow[]> {
   );
   return rows as GeneratedFaqRow[];
 }
+
+export async function savePublishedKnowledge(items: unknown[]): Promise<void> {
+  const pool = getPool();
+  await pool.query(
+    `INSERT INTO knowledge_published (id, items, updated_at)
+     VALUES ('singleton', $1::jsonb, NOW())
+     ON CONFLICT (id) DO UPDATE SET items = $1::jsonb, updated_at = NOW()`,
+    [JSON.stringify(items)]
+  );
+}
+
+// ─── Unanswered Questions ──────────────────────────────────────────────────────
+
+export interface UnansweredQuestionRow {
+  id: string;
+  pergunta: string;
+  created_at: string;
+  resolved: boolean;
+  resolved_at: string | null;
+  notes: string | null;
+}
+
+export async function logUnansweredQuestion(pergunta: string): Promise<void> {
+  const pool = getPool();
+  await pool.query(
+    `INSERT INTO unanswered_questions (pergunta) VALUES ($1)`,
+    [pergunta]
+  );
+}
+
+export async function getUnansweredQuestions(
+  showResolved = false,
+  limit = 100
+): Promise<UnansweredQuestionRow[]> {
+  const pool = getPool();
+  const { rows } = await pool.query(
+    `SELECT * FROM unanswered_questions
+     ${showResolved ? "" : "WHERE resolved = FALSE"}
+     ORDER BY created_at DESC
+     LIMIT $1`,
+    [limit]
+  );
+  return rows as UnansweredQuestionRow[];
+}
+
+export async function resolveUnansweredQuestion(
+  id: string,
+  notes?: string
+): Promise<void> {
+  const pool = getPool();
+  await pool.query(
+    `UPDATE unanswered_questions
+     SET resolved = TRUE, resolved_at = NOW(), notes = COALESCE($2, notes)
+     WHERE id = $1`,
+    [id, notes ?? null]
+  );
+}
+
+export async function deleteUnansweredQuestion(id: string): Promise<void> {
+  const pool = getPool();
+  await pool.query(`DELETE FROM unanswered_questions WHERE id = $1`, [id]);
+}
+
+// ─── Published Knowledge ───────────────────────────────────────────────────────
+
+export async function loadPublishedKnowledge(): Promise<unknown[]> {
+  try {
+    const pool = getPool();
+    const { rows } = await pool.query(
+      `SELECT items FROM knowledge_published WHERE id = 'singleton'`
+    );
+    if (rows.length > 0 && Array.isArray(rows[0].items)) {
+      return rows[0].items;
+    }
+  } catch {
+    // fallback to empty
+  }
+  return [];
+}

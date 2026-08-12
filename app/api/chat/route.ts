@@ -21,7 +21,8 @@ Regras:
 - Se não souber, diga: "Não encontrei informação suficiente sobre isso. Entre em contato com nosso suporte."
 - Mantenha o contexto da conversa — responda follow-ups com base nas mensagens anteriores
 - Respostas curtas e práticas (máximo 3-4 parágrafos)
-- Não substitua o recrutador — reforce que a DigAI potencializa o trabalho humano`;
+- Não substitua o recrutador — reforce que a DigAI potencializa o trabalho humano
+- IMPORTANTE — links: quando o contexto incluir uma linha "URL:", SEMPRE finalize sua resposta com o link no formato markdown: [Ver na Central de Ajuda →](url). Use a URL exatamente como fornecida no contexto, sem inventar.`;
 
 // ─── Mock fallback ────────────────────────────────────────────────────────────
 
@@ -57,6 +58,13 @@ export async function POST(req: NextRequest) {
 
     const contextItems = await findRelevantContextHybrid(lastUserMessage.content);
     const suggestedArticles = searchArticles(lastUserMessage.content).slice(0, 3);
+
+    // Log questions with no knowledge context (fire-and-forget)
+    if (contextItems.length === 0 && suggestedArticles.length === 0 && process.env.DATABASE_URL) {
+      import("@/lib/db/queries")
+        .then(({ logUnansweredQuestion }) => logUnansweredQuestion(lastUserMessage.content))
+        .catch(() => {});
+    }
 
     const systemWithContext = contextItems.length > 0
       ? `${SYSTEM_PROMPT}\n\nCONTEXTO DA BASE DE CONHECIMENTO:\n\n${formatHybridContext(contextItems)}`

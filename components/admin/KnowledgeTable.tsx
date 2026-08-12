@@ -4,8 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { KnowledgeItem, KnowledgeCategorySlug, KnowledgeItemType, KnowledgeLevel } from "@/types/knowledge";
 import { nivelLabel, tipoLabel } from "@/lib/utils";
-import { deleteItem } from "@/lib/knowledgeStore";
-import { Eye, EyeOff, Pencil } from "lucide-react";
+import { updateItem, exportStore } from "@/lib/knowledgeStore";
+import { Eye, EyeOff, Loader2, Pencil } from "lucide-react";
 
 interface KnowledgeTableProps {
   items: KnowledgeItem[];
@@ -21,6 +21,8 @@ export default function KnowledgeTable({ items, onRefresh }: KnowledgeTableProps
   const [filterNivel, setFilterNivel] = useState<KnowledgeLevel | "">("");
   const [filterStatus, setFilterStatus] = useState<"" | "published" | "draft">("");
   const [page, setPage] = useState(0);
+  const [publishing, setPublishing] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ id: string; msg: string; ok: boolean } | null>(null);
 
   const filtered = items.filter((i) => {
     const q = search.toLowerCase();
@@ -39,9 +41,34 @@ export default function KnowledgeTable({ items, onRefresh }: KnowledgeTableProps
   const uniqueCats = [...new Set(items.map((i) => i.categoria))].sort();
   const uniqueTipos = [...new Set(items.map((i) => i.tipo))].sort();
 
-  function handleTogglePublish(id: string) {
-    deleteItem(id); // soft-delete = hide
+  async function handleTogglePublish(item: KnowledgeItem) {
+    const newPublicado = !item.publicado;
+    updateItem(item.id, { publicado: newPublicado });
     onRefresh();
+    setPublishing(item.id);
+    try {
+      const store = JSON.parse(exportStore());
+      const res = await fetch("/api/knowledge/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: store.items }),
+      });
+      const ok = res.ok;
+      const toastId = Math.random().toString(36).slice(2);
+      setToast({
+        id: toastId,
+        msg: ok
+          ? newPublicado ? "Item publicado com sucesso!" : "Item ocultado."
+          : "Erro ao publicar. Tente novamente.",
+        ok,
+      });
+      setTimeout(() => setToast((t) => (t?.id === toastId ? null : t)), 3000);
+    } catch {
+      setToast({ id: "err", msg: "Erro de rede ao publicar.", ok: false });
+      setTimeout(() => setToast(null), 3000);
+    } finally {
+      setPublishing(null);
+    }
   }
 
   const selectStyle: React.CSSProperties = {
@@ -98,6 +125,22 @@ export default function KnowledgeTable({ items, onRefresh }: KnowledgeTableProps
           <option value="draft">Rascunho</option>
         </select>
       </div>
+
+      {/* Toast */}
+      {toast && (
+        <div style={{
+          marginBottom: "12px",
+          padding: "10px 16px",
+          borderRadius: "8px",
+          background: toast.ok ? "rgba(0,184,150,0.12)" : "rgba(239,68,68,0.1)",
+          border: `1px solid ${toast.ok ? "#00b896" : "#ef4444"}`,
+          color: toast.ok ? "#00896d" : "#991b1b",
+          fontSize: "13px",
+          fontWeight: 600,
+        }}>
+          {toast.msg}
+        </div>
+      )}
 
       {/* Count */}
       <p style={{ fontSize: "13px", color: "var(--fg-muted)", marginBottom: "12px" }}>
@@ -201,7 +244,8 @@ export default function KnowledgeTable({ items, onRefresh }: KnowledgeTableProps
                         Editar
                       </Link>
                       <button
-                        onClick={() => handleTogglePublish(item.id)}
+                        onClick={() => handleTogglePublish(item)}
+                        disabled={publishing === item.id}
                         title={item.publicado ? "Ocultar" : "Publicar"}
                         style={{
                           display: "flex",
@@ -212,11 +256,14 @@ export default function KnowledgeTable({ items, onRefresh }: KnowledgeTableProps
                           border: "1px solid var(--border)",
                           background: "var(--surface)",
                           fontSize: "12px",
-                          color: item.publicado ? "#991b1b" : "#00896d",
-                          cursor: "pointer",
+                          color: publishing === item.id ? "var(--fg-muted)" : item.publicado ? "#991b1b" : "#00896d",
+                          cursor: publishing === item.id ? "default" : "pointer",
+                          opacity: publishing === item.id ? 0.6 : 1,
                         }}
                       >
-                        {item.publicado ? (
+                        {publishing === item.id ? (
+                          <><Loader2 style={{ width: "12px", height: "12px", animation: "spin 1s linear infinite" }} /> Publicando…</>
+                        ) : item.publicado ? (
                           <><EyeOff style={{ width: "12px", height: "12px" }} /> Ocultar</>
                         ) : (
                           <><Eye style={{ width: "12px", height: "12px" }} /> Ativar</>
