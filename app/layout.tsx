@@ -72,7 +72,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${interTight.variable}`}>
-      <body>
+      {/* suppressHydrationWarning porque o script abaixo mexe no className do
+          <body> antes do React hidratar — é o padrão para init inline e evita
+          que uma classe legítima seja lida como divergência de hidratação. */}
+      <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: RAIL_INIT }} />
         <Sprite />
         <AppShell>{children}</AppShell>

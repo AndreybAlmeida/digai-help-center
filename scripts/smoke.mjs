@@ -65,8 +65,8 @@ await check("/categoria/slug-inexistente → 404", {
 await check("/chat mobile 390px", { route: "/chat", mobile: true });
 
 console.log("\n── localStorage corrompido (regressão knowledgeStore) ──");
-await check("/ + storage={} + busca", { route: "/", storage: corrupt, act: (p) => type(p, 'input[placeholder*="Buscar artigos"]', "vaga") });
-await check("/ + storage legado + busca", { route: "/", storage: legacy, act: (p) => type(p, 'input[placeholder*="Buscar artigos"]', "vaga") });
+await check("/ + storage={} + busca", { route: "/", storage: corrupt, act: (p) => type(p, '#q', "vaga") });
+await check("/ + storage legado + busca", { route: "/", storage: legacy, act: (p) => type(p, '#q', "vaga") });
 await check("/faq + storage={} + busca", { route: "/faq", storage: corrupt, act: (p) => type(p, 'input[placeholder*="Buscar perguntas"]', "vaga") });
 await check("/faq + storage legado + busca", { route: "/faq", storage: legacy, act: (p) => type(p, 'input[placeholder*="Buscar perguntas"]', "vaga") });
 
