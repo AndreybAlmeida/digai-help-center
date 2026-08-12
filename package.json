@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "qa": "node scripts/qa-v2.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.79.0",

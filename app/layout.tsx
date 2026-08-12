@@ -1,9 +1,23 @@
-import Footer from "@/components/layout/Footer";
-import TopNav from "@/components/layout/TopNav";
-import Providers from "@/components/shared/Providers";
+import Sprite from "@/components/icons/Sprite";
+import AppShell from "@/components/shell/AppShell";
 import { SITE_CONFIG } from "@/lib/config";
 import type { Metadata } from "next";
+import { Inter_Tight, Manrope } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--ff-display",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--ff-body",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://digaihelp.com"),
@@ -40,23 +54,28 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Aplica o estado do rail antes da primeira pintura, lendo o cookie.
+ *
+ * Ler o cookie via `cookies()` no servidor tornaria TODAS as rotas dinâmicas —
+ * o site inteiro perderia a geração estática por causa de uma preferência de
+ * menu. Este script roda como primeiro filho do <body>, então `document.body`
+ * já existe e a classe entra antes de qualquer pixel ir para a tela: mesmo
+ * resultado, sem abrir mão do estático.
+ */
+const RAIL_INIT = `(function(){try{if(document.cookie.indexOf("digai_rail=mini")>-1){document.body.classList.add("rail-collapsed")}}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body style={{ background: "var(--bg)", color: "var(--fg)", WebkitFontSmoothing: "antialiased" }}>
-        <Providers>
-          <div style={{ display: "flex", minHeight: "100vh", flexDirection: "column" }}>
-            <TopNav />
-            <main style={{ flex: 1, background: "var(--bg)" }}>
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </Providers>
+    <html lang="pt-BR" className={`${manrope.variable} ${interTight.variable}`}>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: RAIL_INIT }} />
+        <Sprite />
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

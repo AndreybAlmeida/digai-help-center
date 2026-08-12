@@ -1,0 +1,91 @@
+/* ============================================================
+   DigAI — Design System (light, canônico)
+   Fonte única dos tokens. Nenhum hex solto em componente.
+   ============================================================ */
+:root {
+  /* superfícies */
+  --bg: #FEFEFE;
+  --surface: #F4F6FB;
+  --border: #E6E9F0;
+  --tint: #EAF0FC;
+
+  /* marca */
+  --indigo: #121896;
+  --navy: #0C2A84;
+  --royal: #243C9C;
+  --slate: #364272;
+
+  /* IA — uso restrito: só categorias com ai:true */
+  --teal: #3FB6A4;
+  --mint: #66D8C6;
+  /* Versão do teal para TEXTO sobre fundo claro: #3FB6A4 dá 2.46:1 e reprova
+     em contraste. Já era a cor usada nos selos de IA — agora tokenizada. */
+  --teal-ink: #0A6A5C;
+
+  /* texto */
+  --ink: #242424;
+  --gray: #5A5F6E;
+
+  /* layout */
+  --rail: 248px;
+  --rail-mini: 76px;
+  --top: 66px;
+
+  /* forma */
+  --r-card: 18px;
+  --r-cover: 14px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(12,42,132,.04), 0 4px 14px rgba(12,42,132,.05);
+  --shadow-2: 0 10px 30px rgba(12,42,132,.10), 0 2px 6px rgba(12,42,132,.05);
+
+  /* dot das categorias sem artigo publicado */
+  --dot-vazio: #B9C4DE;
+
+  /* ─── Aliases legados ──────────────────────────────────────────────────────
+     As rotas fora do escopo da v2 (/chat, /faq, /contato, /admin) referenciam
+     estes nomes. Apontam para a paleta nova para o site inteiro ficar coerente
+     em vez de conviver com dois sistemas de cor. */
+  --brand: var(--indigo);
+  --brand-dark: var(--navy);
+  --brand-dim: var(--tint);
+  --teal-dim: rgba(63,182,164,.14);
+  --bg-subtle: var(--surface);
+  --bg-muted: var(--surface);
+  --fg: var(--ink);
+  --fg-muted: var(--gray);
+  --fg-subtle: #8A90A2;
+  --border-strong: #CFD6E4;
+  --foreground: var(--ink);
+  --background: var(--bg);
+  --muted-fg: var(--gray);
+  --muted: var(--surface);
+  --ring: rgba(36,60,156,.18);
+}
+
+/* Sem dark mode: o sistema canônico da DigAI é light (decisão §11.4 do spec). */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; font-size: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--royal); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--tint); color: var(--indigo); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
